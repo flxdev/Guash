@@ -1,0 +1,918 @@
+input[type='number']
+	-moz-appearance: textfield;
+input[type='submit']
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none; 
+input::-webkit-clear-button,
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button 
+	-webkit-appearance: none;
+input[type="password"]
+	font: small-caption
+	line-height: 1.65
+input
+	box-shadow : none
+	font-family: $f
+	color: #000
+	+rem(font-size,16px)
+	+placeholder 
+		font-family: $f
+	&::-ms-clear
+		display: none;
+svg
+	display: inline-block
+	max-width: 100%
+	max-height: 100%
+button
+	background: 0 0
+a
+	text-decoration: none
+	transition: color .3s
+	color: $active
+	&:not([class]):hover
+		color: $white
+*
+	+box
+	-webkit-tap-highlight-color: transparent
+	+placeholder 
+		font-family: $f
+		+rem(font-size,16px)
+
+textarea
+	resize: none
+	+placeholder 
+		font-family: $f
+		+rem(font-size,14px)
+ul
+	li>a 
+		display: inline-block
+		width: 100%
+html
+	font-size: 16px
+	line-height: 1
+	overflow-x: hidden
+	+r(1150)
+		font-size: 15px
+body
+	background-color: #fff
+	background-attachment: fixed
+	+box
+	+font-smoothing
+	text-rendering: optimizeLegibility
+	font-family: $f
+	min-width: 320px
+	-webkit-overflow-scrolling: touch;
+	& ::selection
+		background-color: $active
+		color: $white
+	& ::-moz-selection
+		background-color: $active
+		color: $white
+
+body, .out
+	width: 100%
+	height: 100%
+	&.modal_open
+		position: fixed
+	&.menu-open
+		position: fixed
+
+.loading
+	// position: relative
+	// &:before
+	// 	content: ''
+	// 	display: inline-block
+	// 	+coverdiv
+	// 	background-color: #FFF
+	// 	opacity: .7
+	// 	z-index: 8
+	*
+		opacity: .8
+		+tr(opacity .2s)
+		pointer-events: none
+.out
+	position: relative
+	// +r(768)
+	// 	overflow-x: hidden
+.page__header--wrap
+	position: fixed
+	left: 0
+	width: 100%
+	right: 0
+	top: 0
+	z-index: 20
+	visibility: hidden
+	transform: translateX(0)
+
+#logob
+	width: 100%
+	height: 100%
+	display: inline-block
+	
+.page
+	&__wrapper
+		background-color: #fff
+		display: flex
+		flex-wrap: nowrap
+		flex-direction: column
+		min-height: 100%
+		overflow: hidden
+	&__outer
+		width: 100%
+		display: block
+		height: 100%
+	&__header
+		// background: $bl
+		display: flex
+		flex-wrap: wrap
+		justify-content: space-between
+		align-items: center
+		position: relative
+		visibility: visible
+		+tr(transform .3s)
+		// backface-visibility: hidden
+	&__footer
+		position: relative
+		flex: 0 0 auto
+		background-color: #e3ecf2
+		flex-flow: row wrap
+	&__content
+		flex: 1 0 auto
+		width: 100%
+		* 
+		+rm(768)
+			+scrollbar
+				+rem(width,4px)
+			::-webkit-scrollbar-thumb 
+				+rem(width,6px)
+				+rem(border-radius,3px)
+				background: #888888
+				cursor: pointer
+
+
+
+// text-styles
+
+.title
+	font-family: $f
+	color: $blk
+	text-transform: uppercase;
+	font-weight: 400
+	span 
+		display: inline-block
+	i 
+		display: inline-block
+		+rem(max-width,39px)
+		vertical-align: middle
+		+r(740)
+			+rem(max-width,29px)
+		+r(400)
+			+rem(max-width,19px)
+		img
+			max-width: 100%
+			display: inline-block
+			
+			
+	&.white
+		color: $white
+	&.h1
+		line-height: 1.208;
+		+rem(font-size,48px)
+		+rem(letter-spacing,2.3px)
+		+r(740)
+			+rem(font-size,38px)
+		+r(400)
+			+rem(font-size,28px)	
+	&.h2
+		line-height: 1.381;
+		+rem(font-size,42px)
+		+rem(letter-spacing,2px)
+	&.h3
+		+rem(font-size,28px)
+		line-height: 1.214;
+		font-weight: 500
+		+rem(letter-spacing,1.4px)
+	&.h4
+		+rem(font-size,24px)
+		line-height: 1.417;
+		+rem(letter-spacing,1.7px)
+.text,.text-bold
+	+rem(font-size,18px)
+	color: $blk
+	line-height: 1.667;
+	+rem(letter-spacing,0.5px)
+.text-bold
+	font-weight: 500
+.text-sm
+	+rem(font-size,16px)
+	line-height: 1.4;
+	color: $gray2
+
+.btn
+	display: inline-block
+	outline: none
+	+nosel
+	cursor: pointer
+	white-space: nowrap
+	overflow: hidden
+	vertical-align: top
+	text-align: center
+	appearance: none
+	line-height: 1
+	font-family: $f 
+	+rem(font-size,16px)
+	border: 2px solid $active
+	+rem(padding,11px 15px)
+	// border-image: url(../img/gold.jpg)  140 repeat
+	border-image: url(../img/gold.jpg) 10 repeat stretch;
+	color: $graybtn
+	transition: color .3s, background-color .3s, border.3s
+	+rem(min-width,190px)
+	margin-top: 50px
+	filter: brightness(120%)
+	&:hover
+		color: $blk
+		border-image-slice: 12;
+	&.btn-blackcont
+		&:hover
+			color: $white
+	&.btn-white
+		border-color: $white
+		border-image: none
+		background-color: $white
+		color: $blk
+		&:hover
+			border-color: $btnhover
+			background-color: $btnhover
+			// border-image: none
+		&:active
+			border-color: $active
+			background-color: $active
+			transition-duration: 0
+.bron
+	&-wrapper
+		margin-left: 50px
+	&-inner
+		display: flex
+		flex-flow: row nowrap
+		align-items: center
+		+tr(opacity .3s)
+	&-img
+		+rem(width,48px)
+		&-inner
+			height: 100%
+			+rem(padding-top,7px)
+			+rem(height,40px)
+			svg
+				+rem(height,32px)
+				display: block
+				margin: 0 auto
+				+tr(fill .3s)
+				fill: $gray2
+			use 
+				+tr(fill .3s)
+			&.colored
+				filter: brightness(120%)
+			&.mono
+				padding-top: 4px
+				// display: none
+				svg
+					+rem(width,40px)	
+	&-text
+		+rem(font-size,12px)
+		font-weight: 500
+		text-transform: uppercase;
+		line-height: 1.4;
+		+rem(max-width,100px)
+		+rem(margin-left,16px)
+		+rem(letter-spacing,0.4px)
+		color: $gray2
+		+tr(color .3s)
+		text-align: left
+
+.header
+	&-row
+		width: 100%
+		display: flex
+		flex-flow: row nowrap
+		justify-content: space-between
+		align-items: center
+		+padlr(35px)
+		+rem(padding-top,50px)
+		+tr(padding-top .3s)
+		&-center
+			height: 100%
+			position: relative
+			+rem(width,150px)
+		&-right
+			text-align: right
+			.bron-wrapper
+				display: inline-block
+				vertical-align: middle
+		&-left
+			
+			+rem(height,50px)
+			+vertical
+			text-align: left
+			// +rem(margin-top,15px)
+			.header-btn-wrap
+				display: inline-block
+				vertical-align: middle
+				
+		&-right,&-left
+			width: calc(50% - (9.375rem / 2))
+		&-center
+			align-self: flex-start
+	&-logo
+		+rem(max-width,142px)
+		position: absolute
+		top: 0
+		transition: transform .3s ease-in-out, opacity .3s ease-in-out
+		svg
+			width: 100%
+		&.big
+			left: calc(50% - (8.875rem / 2))
+			+rem(top,50px)
+			+r(740)
+				+rem(max-width,85px)
+				left: calc(50% - (5.3125rem / 2))
+				+rem(top,00px)
+		&.small
+			+rem(max-width,47px)
+			left: calc(50% - (2.995rem / 2))
+			transform: translateY(40px)
+			opacity: 0
+			+rem(top,-1px)
+			+rem(height,49px)
+			use
+				fill: $gray2
+				+tr(fill .3s)
+	&-tel
+		&-wrapper
+			display: inline-block
+			vertical-align: middle
+			+rem(padding-right,5px)
+			transition: opacity .3s,visibility .3s
+			+r(1024)
+				display: none
+		&-item
+			display: block
+			width: 100%
+			color: $white
+			+rem(letter-spacing, 0.3px)
+			+rem(padding-bottom,2px)
+			&:hover
+				color: $active
+	&-lang
+		display: inline-block
+		vertical-align: middle
+		height: 100%
+		+rem(padding-left,60px)
+		transition: opacity .3s, visibility .3s
+		&-item
+			font-weight: 400
+			+rem(font-size,16px)
+			height: 100%
+			display: inline-block
+			+padlr(12px)
+			+rem(padding-top,16px)
+			+rem(padding-bottom,10px)
+			color: $white
+			+nosel
+			&.active
+				pointer-events: none
+				opacity: .8
+			&:hover
+				color: $active
+			&:not(:last-child)
+				position: relative
+				&:after
+					content: ''
+					position: absolute
+					+rem(top, 24px)
+					height: 1px
+					background-color: $white
+					+rem(width,10px)
+					left: calc( 100% - .35rem)
+
+.header-menu
+	&-wrap
+		position: fixed
+		left: 0
+		right: 0
+		bottom: 0
+		top: 0
+		width: 100vw
+		height: 100vh
+		margin: 0
+		background-color: rgba(0, 0, 0,.6);
+		z-index: 200
+		opacity: 0
+		visibility: hidden
+		transition: opacity .2s, visibility .2s
+		transition-timing-function: ease-in-out
+		contain: paint 
+		transition-delay: .5s
+		&.active
+			visibility: visible
+			opacity: 1
+			transition-delay: 0s
+			.header-menu-inner
+				transform: translateX(0)
+				transition-delay: .2s
+	&-inner
+		height: 100%
+		width: 100%
+		+rem(max-width,800px)
+		background-color: $blk
+		
+		transform: translateX(-100%)
+		+tr(transform .3s ease-in-out)
+
+		.bron-inner
+			&:hover
+				opacity: .75
+		.bron-text
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-image: url(../img/gold.jpg)
+			background-size: 250px 100px 
+			font-smoothing: subpixelAntialized 
+			filter: brightness(120%)
+			font-weight: 600
+			-webkit-font-smoothing: antialiased;
+	&-head
+		// +rem(padding-left,40px)
+		+rem(padding-right,10px)
+		.header-logo.big
+			+rem(max-width,110px)
+			+rem(top,-8px)
+			+rem(margin-left,5px)
+		+r(600)
+			.header-row
+				+rem(padding-top,20px)
+				+rem(padding-right,15px)
+			.header-row-center
+				display: none
+			.bron-text
+				display: none
+			.header-row-left,.header-row-right
+				width: 50%
+				white-space: nowrap
+			.header-row-left
+				text-align: right
+				.header-lang
+					padding-left: 0
+					+rem(margin-right,-42px)
+				
+	&-content 
+		+rem(padding-left,40px)
+		// height: 100%
+		width: 100%
+		// overflow: hidden
+		overflow-y: auto
+		height: 100%
+		+r(600)
+			padding-left: 0
+		&-inner
+			height: calc(100% - 6.25rem)
+			+rem(padding-right,115px)
+			+rem(padding-left,75px)
+			+rem(padding-top,80px)
+			+rem(padding-bottom,80px)
+			display: flex
+			flex-flow: column nowrap
+			justify-content: space-between
+			+r(740)
+				height: auto
+				.site-tel
+					+rem(margin-top,10px)
+			+r(600)
+				+rem(padding-top,30px)
+				justify-content: flex-start
+				height: auto
+				+padlr(15px)
+				padding-bottom: 0
+				.site-navigation
+					margin-top: 0
+					+rem(margin-bottom,30px)
+				.site-address
+					+rem(padding-bottom,90px)
+			+r(375)
+				.site-address-text
+					+rem(max-width,250px)	
+					margin-left: auto
+					margin-right: auto
+			.site-navigation
+				margin-top: auto
+				margin-bottom: auto
+			.site-tel
+				// margin-top: auto
+				+rem(margin-bottom,55px)
+
+
+
+.page__header
+	&.is-hidden
+		&>.header-row
+			+rem(padding-top,19px)
+			.header-logo.big 
+				transform: translateY(-80px) scale(.5)
+				opacity: 0
+				+r(600)
+					transform: none
+			.header-logo.small
+				transform: none
+				opacity: 1
+			.bron-img-inner.colored
+				display: none
+			.header-lang,.header-tel-wrapper
+				opacity: 0
+				visibility: hidden
+			.navTrigger
+				i 
+					background-color: $gray2
+	&:not(.is-hidden)
+
+		&>.header-row
+			.bron-img-inner.mono
+				display: none
+			.bron-inner
+				&:hover
+					opacity: .7
+			.bron-text
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-image: url(../img/gold.jpg)
+				background-size: 250px 100px 
+				font-smoothing: subpixelAntialized 
+				filter: brightness(120%)
+				font-weight: 600
+				-webkit-font-smoothing: antialiased;
+				+ie11
+					color: $active
+					background-image: none
+					font-weight: 500
+
+	&.blk
+		&>.header-row
+			.bron-inner,.header-btn-wrap,.header-logo.small
+				&:hover
+					svg, use
+						fill: $white
+					.bron-text
+						color: $white
+					i 
+						background-color: $white
+	&.white
+		&>.header-row
+			.bron-inner,.header-btn-wrap,.header-logo.small
+				&:hover
+					svg, use
+						fill: $blk
+					.bron-text
+						color: $blk
+					i 
+						background-color: $blk
+
+
+	&>.header-row
+		+r(608)
+			+rem(padding-top,20px)
+			+padlr(15px)
+			.header-btn-wrap
+				+rem(margin-left,-15px)
+				+rem(padding-left,15px)
+
+		+r(768)
+			.header-lang
+				display: none
+			.bron-text
+				display: none
+
+.navTrigger
+	+rem(width,37px)
+	margin: auto;
+	display: inline-block
+	vertical-align: middle
+	font-size: 0
+	i 
+		background-color: #fff;
+		content: "";
+		display: block;
+		width: 100%;
+		height: 4px;
+		will-change: transform;
+		transition: transform .25s, opacity .25s, margin .25s, height .25s, background-color .25s
+		transition-timing-function: ease-in-out
+		&:first-child
+			transition-delay: .1s
+		&:nth-child(2)
+			margin: 5px 0 0;
+			height: 2px
+		&:nth-child(3)
+			margin: 0 0 5px;
+			height: 2px
+		&:nth-child(4)
+			transition-delay: .1s
+
+.header-btn-wrap
+	+rem(margin-left,-35px)
+	+rem(padding-left,35px)
+	+rem(margin-right,-85px)
+	+rem(padding-right,85px)
+	+rem(margin-top,-20px)
+	+rem(padding-top,20px)
+	cursor: pointer
+	position: relative
+	+rem(min-width,157px)
+
+	.header-btn-inner
+		transition-delay: .8s
+	&:hover
+		+rm(1025)
+			i 
+				&:first-child
+					transform: translateY(-2px)
+				&:nth-child(4)
+					transform: translateY(2px)	
+	&.active
+		// +rem(margin-top,-35px)
+		.header-btn-inner
+			position: relative
+			z-index: 210
+			transition-delay: 0s
+
+		i 
+			background-color: $white !important
+			&:first-child
+				transform: translateY(-10px)	
+				opacity: 0
+				transition-delay: 0s
+			&:nth-child(4)
+				transform: translateY(10px)	
+				opacity: 0
+				transition-delay: 0s
+			&:nth-child(2)
+				margin: 0 0 -4px
+				transform: rotate(45deg)
+				transition-delay: .1s
+				height: 4px
+			&:nth-child(3)
+				margin: 0
+				transform: rotate(-45deg)
+				transition-delay: .1s
+				height: 4px
+		&:hover
+			i 
+				&:first-child
+					margin-bottom: inherit	
+				&:nth-child(4)
+					margin-top:  inherit
+
+
+.site
+	&-navigation
+		font-size: 0
+		&-col 
+			display: inline-block
+			vertical-align: top
+			width: 50%
+			+r(600)
+				width: 100%
+		&-item
+			display: inline-block
+			color: $white
+			width: 100%
+			+rem(font-size,24px)
+			text-transform: uppercase;
+			line-height: 2;
+			font-weight: 400
+			text-align: center;
+			position: relative
+			+rem(letter-spacing, 0.4px)
+			+padlr(10px)
+			+rem(padding-top,8px)
+			+rem(padding-bottom,12px)
+			+nosel
+			+r(600)
+				+rem(font-size,20px)
+				+rem(padding-top,5px)
+				+rem(padding-bottom,9px)
+			&:hover
+				color: $active
+			&.active
+				color: $gray2
+				pointer-events: none
+			// &:hover
+			// 	&:before
+			// 		transform: scale(1)
+			// 		opacity: 1
+			// &:before
+			// 	content: attr(data-text)
+			// 	position: absolute
+			// 	left: 0
+			// 	top: 0
+			// 	height: 100%
+			// 	width: 100%
+			// 	color: $active
+			// 	overflow: hidden
+			// 	transition: transform .15s, opacity .10s
+			// 	transition-timing-function: ease-in-out
+			// 	opacity: 0
+			// 	transform: scale(1.15)
+			// 	// +padlr(10px)
+			// 	+rem(padding-top,8px)
+			// 	+rem(padding-bottom,12px)
+	&-tel 
+		text-align: center
+		&-link
+			color: $white
+			font-weight: 500
+			+rem(font-size,24px)
+			display: block
+			+rem(letter-spacing, 0.4px)
+			+rem(margin, 10px 0 16px)
+			&:hover
+				color: $active
+		&-calback
+			+rem(font-size,17px)
+			&:hover
+				color: $white
+	&-address
+		+rem(font-size,17px)
+		text-align: center
+		&-text
+			color: $gray2
+			line-height: 1.15
+			+rem(margin,5px 0 12px)
+		&-links
+			a
+				display: inline-block
+				position: relative
+				+padlr(17px)
+				&:not(:last-child)
+					&:before
+						content: ''
+						display: inline-block
+						top: 1px
+						bottom: 0
+						position: absolute
+						width: 1px
+						background-color: $gray2
+						right: -2px
+.wrapper
+	position: relative
+	z-index: 0
+	&.blk
+		background-color: $blk
+	&.gray 
+		background-color: #efefef
+	.page-cover
+		+coverdiv
+		z-index: -1
+		&-inner
+			position: relative
+			height: 100%
+			width: 100%
+			+cover
+			&:before
+				content: ''
+				+coverdiv
+				background-color: rgba(0,0,0,.5)
+		img
+			width: 100%
+			height: 100%
+			object-fit: cover
+	&>div:not(.page-cover)
+		position: relative
+	.box
+		+padlr(15px)
+
+.landing-elem
+	.wrapper
+		width: 100%
+		height: 100%
+		overflow: hidden
+		position: relative
+		+r(740)
+			min-height: 100vh
+@keyframes Fade
+	0%
+		opacity: 1
+	50% 
+		opacity: 0.5
+	100%
+		opacity: 1		
+.page-head
+	text-align: center
+	+rem(padding-top,235px)
+	+rem(padding-bottom,100px)
+	+vertical
+
+	&.full
+		height: 100%
+		position: relative
+		&:after
+			content: ''
+			position: absolute
+			display: inline-block
+			+rem(width,21px)
+			+rem(height, 34px)
+			background-image: url(../img/icons/scroll.png)
+			+contain
+			left: 50%
+			transform: translateX(-50%)
+			+rem(bottom,50px)
+			animation: Fade 1.5s ease-in-out infinite
+			+r(600)
+				+rem(bottom,80px)
+	+r(1400)
+		+rem(padding-top,250px)
+	+r(600)
+		+rem(padding-top,175px)
+	+r(340)
+		+rem(padding-top,155px)
+	&-inner
+		display: inline-block
+		vertical-align: middle
+		+rem(max-width,700px)
+		.widget-wrapper
+			+rem(margin-top,85px)
+			+r(400)
+				+rem(margin-top,55px)
+.widget-wrapper
+	position: relative
+	+rem(min-height,41.5px)
+	width: 100%
+	display: inline-block
+	+rem(max-width,605px)
+	+padlr(10px)
+	+r(600)
+		+rem(max-width,222px)
+		+rem(min-height,450px)
+		iframe
+			height: 100% !important
+			min-width: 100% !important
+	&>div
+		position: absolute !important
+		left: 0
+		right: 0
+		+rem(top,-305px)
+		+r(600)
+			top: 0
+		iframe
+			min-height: 600px
+			position: relative
+			z-index: 1
+			// pointer-events: none
+			+r(600)
+				min-height: 370px
+.section
+	&-container
+		+rem(padding-top,106px)
+	&-head
+		+rem(max-width,410px)
+		text-align: center
+		margin: 0 auto
+		+rem(min-height,125px)
+		.section-svg
+			display: inline-block
+			width: 100%
+			height: 100%
+			img
+				display: block
+				margin: 0 auto
+				+rem(max-height,115px)
+			svg
+				width: 100%
+				+rem(font-size,48px)
+				+rem(margin-left,-22px)
+			&:not(:only-child)
+				+rem(max-height,115px)
+				+rem(margin-top,15px)
+				&~.title
+					+rem(margin-top,-87px)
+
+
+.landing-elem
+	.wrapper.blk		
+		.section-container
+			+rem(padding-top,130px)
+		.section-head
+			+rem(max-width,550px)
+	.wrapper
+		&:not(.blk)
+			.section-head	
+				.st1
+					fill: $blk
+	&:not(:nth-child(2))
+		.wrapper
+			&:not(.blk):not(.gray)
+				.section-head
+					+rem(padding-top,45px)
+					+rem(max-width,240px)
+
+
+

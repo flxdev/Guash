@@ -1,0 +1,65 @@
+include _mixins.pug
+//svg  с золотым тексотм ломаются если их пихать в контейнер к остальным, так что буду ложить инлайново
+//в шапке и в .bron-wrapper щолотые свг одинаковые, но у них разные айди, чтобы небыло конфликтов
+
+.header-row
+	.header-row-left
+		.header-btn-wrap.js-menu
+			.header-btn-inner
+				.navTrigger
+					i
+					i
+					i
+					i
+		.header-lang
+			a(href="#").header-lang-item
+				span Eng 
+			a(href="#").header-lang-item.active
+				span Рус
+	a(href="#").header-row-center
+		.header-logo.big
+			+biglogo
+			//- svg(class="icon icon-drop")
+			//- 	use(xlink:href="#Stoleshnikov" xmlns:xlink="http://www.w3.org/1999/xlink")
+		.header-logo.small
+			svg(class="icon icon-drop")
+				use(xlink:href="#logo-small" xmlns:xlink="http://www.w3.org/1999/xlink")
+	.header-row-right
+		.header-tel-wrapper
+			a(href="tel:+74955029430").header-tel-item +7 (495) 502-94-30
+		+bron
+.header-menu-wrap
+	.header-menu-inner
+		.header-menu-content
+			.header-menu-head
+				.header-row
+					.header-row-left
+						.header-lang
+							a(href="#").header-lang-item
+								span Eng 
+							a(href="#").header-lang-item.active
+								span Рус
+					a(href="#").header-row-center
+						.header-logo.big
+							+biglogo2
+					.header-row-right
+						+bron2
+			.header-menu-content-inner
+				.site-navigation
+					.site-navigation-col
+						a(href="#", data-text='Главная').site-navigation-item.active Главная
+						a(href="#", data-text='Об отеле').site-navigation-item Об отеле
+						a(href="#", data-text='Номера').site-navigation-item Номера
+						a(href="#", data-text='Что рядом').site-navigation-item Что рядом
+					.site-navigation-col
+						a(href="#",data-text='Отзывы').site-navigation-item Отзывы
+						a(href="#",data-text='Новости').site-navigation-item Новости
+						a(href="#",data-text='Контакты').site-navigation-item Контакты
+				.site-tel
+					a(href="tel:+434343434").site-tel-link +7 (495) 502-94-30
+					a(href="#",data-modal='callback').site-tel-calback.js-popup-button Обратный звонок
+				.site-address
+					.site-address-text Москва, м. Театральная, Столешников пер., 12/3,
+					.site-address-links
+						a(href="mailto:hello@hotelakvarel.ru") hello@hotelakvarel.ru
+						a(href="#") Карта проезда
