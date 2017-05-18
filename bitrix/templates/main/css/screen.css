@@ -286,6 +286,8 @@ html {
   font-size: 16px;
   line-height: 1;
   overflow-x: hidden; }
+  html.fp-enabled .out, html.fp-enabled .page__outer, html.fp-enabled .page__wrapper {
+    height: 100%; }
 
 body {
   background-color: #fff;
@@ -1166,6 +1168,10 @@ body, .out {
 .landing-elem:not(:nth-child(2)) .wrapper:not(.blk):not(.gray) .section-head {
   padding-top: 2.8125rem;
   max-width: 15rem; }
+
+.animate-up {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden; }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
 

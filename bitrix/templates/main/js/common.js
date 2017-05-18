@@ -103,9 +103,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	popUpsInit();
 	validateForms();
+
 	function LandingFullPage(){
 		var elem = $('.landing-wrapper');
 		if(elem.length){
+			var trg = conf.landEl.find('.animate-up');
+			var trg2 = conf.landEl.find('.animate-up2');
+			var trg2 = conf.landEl.find('.animate-bg');
+
+			var elemN , elNIndex, elemC,setHide;
 			elem.fullpage({
 				navigationPosition: 'right',
 				scrollingSpeed: 500,
@@ -113,19 +119,67 @@ document.addEventListener("DOMContentLoaded", function() {
 				sectionSelector: '.landing-elem',
 				responsiveWidth: 740,
 				keyboardScrolling: true,
+				fitToSection: true,
+				fitToSectionDelay: 500,
 				afterRender: function(){
-					var aElem = conf.landEl.filter('.active').index();
-					ChangeHeader(aElem);
+					elemN = conf.landEl.filter('.active')
+					elNIndex = elemN.index();
+					ChangeHeader(elNIndex);
+					UpFirst(elemN);
+					if(isMobile() == false){
+						setHide = TweenLite.set(trg, {
+							directionalRotation: {
+								rotationX: "-90_cw"
+							},
+	            y: 40
+	          });
+					}
+
 				},
 				onLeave: function(index, nextIndex, direction){
+					if(isMobile() == false){
+						setHide = TweenLite.set(trg, {
+							// opacity: 0,
+							directionalRotation: {
+								rotationX: "90_cw"
+							},
+							y: 40,
+							delay: .4
+						});
+					}
+					elemC = conf.landEl.eq(index - 1);
+					elemN = conf.landEl.eq(nextIndex - 1);
 					ChangeHeader(nextIndex - 1);
+					UpFirst(elemN);
+
 				}
 			});
+			conf.body.css('height','100$')
 		}
-		// setTimeout(function(){
-		// 	$.fn.fullpage.fitToSection();
-		// },100)
 	}LandingFullPage();
+	function UpFirst(elemNext, elemCurr){
+		if(isMobile() == false){
+			var trgUp = elemNext.find('.animate-up');
+			var trgUp2 = elemNext.find('.animate-up2');
+			var trgbg = elemNext.find('.animate-bg');
+			TweenLite.from(trgbg, .2,{
+				y: -80,
+				scale: 1.1,
+				transformOrigin: "50% 50%",
+				delay: .3
+			});
+			TweenLite.to(trgUp, .5 ,{
+				ease: Expo.easeOut,
+				directionalRotation: {
+					rotationX: "0_cw"
+				},
+				y: 0,
+				transformOrigin:"50% 50% -100%",
+				opacity: 1,
+				delay: .5
+			});
+		}
+	}
 	function ChangeHeader(index){
 		if(index === 0){
 			conf.header.removeClass(conf.hidden).removeClass(conf.blk).removeClass(conf.white);
@@ -369,4 +423,8 @@ function formResponse(form) {
 			});
 		}
 	}
+}
+function isMobile()
+{
+	return (/Android|webOS|iPhone|iPod|BlackBerry|Windows Phone|iemobile/i.test(navigator.userAgent) );
 }
