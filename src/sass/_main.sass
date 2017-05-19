@@ -196,21 +196,47 @@ body, .out
 		line-height: 1.214;
 		font-weight: 500
 		+rem(letter-spacing,1.4px)
+		+r(400)
+			+rem(font-size,17px)
 	&.h4
 		+rem(font-size,24px)
 		line-height: 1.417;
 		+rem(letter-spacing,1.7px)
+	&.gold 
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-image: url(../img/gold.jpg)
+		// background-size: 250px 100px 
+		filter: brightness(120%)
+
+		-webkit-font-smoothing: antialiased;
 .text,.text-bold
 	+rem(font-size,18px)
 	color: $blk
 	line-height: 1.667;
 	+rem(letter-spacing,0.5px)
+	+r(600)
+		+rem(font-size,15px)
 .text-bold
 	font-weight: 500
 .text-sm
 	+rem(font-size,16px)
 	line-height: 1.4;
 	color: $gray2
+.text-gold
+	+rem(font-size,14px)
+	text-transform: uppercase
+	line-height: 1.429;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-image: url(../img/gold.jpg)
+	background-size: 250px 100px 
+	font-weight: 600
+	-webkit-font-smoothing: antialiased;
+	+ie11
+		color: $active
+
+
 
 .btn
 	display: inline-block
@@ -232,7 +258,6 @@ body, .out
 	color: $graybtn
 	transition: color .3s, background-color .3s, border.3s
 	+rem(min-width,190px)
-	margin-top: 50px
 	filter: brightness(120%)
 	&:hover
 		color: $blk
@@ -256,6 +281,8 @@ body, .out
 .bron
 	&-wrapper
 		margin-left: 50px
+		+r(340)
+			margin-left: 0
 	&-inner
 		display: flex
 		flex-flow: row nowrap
@@ -263,6 +290,8 @@ body, .out
 		+tr(opacity .3s)
 	&-img
 		+rem(width,48px)
+		+r(600)
+			+rem(margin-left,35px)
 		&-inner
 			height: 100%
 			+rem(padding-top,7px)
@@ -549,7 +578,6 @@ body, .out
 				-webkit-text-fill-color: transparent;
 				background-image: url(../img/gold.jpg)
 				background-size: 250px 100px 
-				font-smoothing: subpixelAntialized 
 				filter: brightness(120%)
 				font-weight: 600
 				-webkit-font-smoothing: antialiased;
@@ -790,17 +818,19 @@ body, .out
 			object-fit: cover
 	&>div:not(.page-cover)
 		position: relative
-	.box
-		+padlr(15px)
 
+
+.box
+	display: block
+	margin: 0 auto
+	+rem(max-width, 1014px)
+	+padlr(15px)
 .landing-elem
 	.wrapper
 		width: 100%
 		height: 100%
 		overflow: hidden
 		position: relative
-		+r(740)
-			min-height: 100vh
 @keyframes Fade
 	0%
 		opacity: 1
@@ -874,37 +904,90 @@ body, .out
 				min-height: 370px
 .section
 	&-container
-		+rem(padding-top,106px)
+		// +rem(padding-top,106px)
+		display: flex
+		flex-direction: column
+		height: 100%
+		+rem(padding-top,86px)	
+		+r(1024)
+			max-width: calc(100% - 7rem)
+		+r(740)
+			max-width: 100%
+			+rem(padding-top,50px)	
+			+rem(padding-bottom,50px)
 	&-head
-		+rem(max-width,410px)
+		// +rem(width,410px)
 		text-align: center
 		margin: 0 auto
-		+rem(min-height,125px)
+		flex-grow: 0
+		width: 	21.3vw
+		// +rem(min-height,125px)
+		+r(1280)
+			width: 	28.3vw
+			// +rem(width,380px)
+		+r(768)
+			width: 	50.3vw
+		+r(600)
+			max-width: 	64.3vw
+			width: 100%
+		&-wrap 
+			position: absolute
+			left: 0
+			top: 11vh
+			width: 100%
+			+r(768)
+				+rem(top,80px)
+			+r(740)
+				position: static
+					
 		.section-svg
 			display: inline-block
 			width: 100%
 			height: 100%
 			img
 				display: block
-				margin: 0 auto
-				+rem(max-height,115px)
+				margin: 0 auto 
+				+rem(max-height,125px)
 			svg
 				width: 100%
 				+rem(font-size,48px)
-				+rem(margin-left,-22px)
 			&:not(:only-child)
 				+rem(max-height,115px)
 				+rem(margin-top,15px)
 				&~.title
 					+rem(margin-top,-87px)
+	&-content
+		flex-grow: 1
+		position: relative
+		+r(768)
+			+rem(margin-top,145px)
+		+r(740)
+			margin-top: 8vw
+		.hotel-about-wrap
+			+vcenter
+			width: 100%	
+			margin-top: 8vh
+			+r(1024)
+				margin-top: 4vh
 
-
+			+r(768)
+				margin-top: 0
+				position: static
+				transform: none
+				
+					
+.btn-wrap
+	margin-top: 4.5vh
+	text-align: center
+	+r(740)
+		+rem(margin-top,35px)
 .landing-elem
+	contain: paint
 	.wrapper.blk		
 		.section-container
 			+rem(padding-top,130px)
 		.section-head
-			+rem(max-width,550px)
+			+rem(width,550px)
 	.wrapper
 		&:not(.blk)
 			.section-head	
@@ -919,5 +1002,239 @@ body, .out
 
 
 
-.animate-up
+.animate-up,.animate-bg
 	backface-visibility: hidden
+	will-change: transform
+.fp-responsive .landing-wrapper,.fp-responsive .landing-wrapper .fp-slide,.fp-responsive .landing-wrapper .fp-tableCell,.fp-responsive .landing-wrapper .landing-elem
+    height: auto !important;
+		
+#fp-nav
+	position: fixed;
+	z-index: 1;
+	margin-top: -32px;
+	top: 50%;
+	opacity: 1;	
+	+rem(left, 21px)
+	+r(1024)
+		+rem(left, 17px)
+	&.white
+		a.active
+			span
+				background-color: $blk
+	ul 
+		margin: 0;
+		padding: 0;
+		li
+			display: block;
+			width: 20px;
+			height: 20px;
+			margin: 30px 7px;
+			position: relative;
+			a 
+				display: block;
+				position: relative;
+				z-index: 1;
+				width: 100%;
+				height: 100%;
+				cursor: pointer;
+				text-decoration: none;
+				&.active
+					span
+						height: 6px;
+						width: 6px;
+						margin: -3px 0 0 -3px;
+						border-radius: 100%;
+						background-color: $white
+				span 
+					border-radius: 50%;
+					position: absolute;
+					z-index: 1;
+					height: 6px;
+					width: 6px;
+					border: 0;
+					// background: #8f816c;
+					background: $gray2
+					left: 50%;
+					top: 50%;
+					margin: -3px 0 0 -3px;
+					transition: all 0.1s ease-in-out;
+
+
+.hotel-about
+	display: flex
+	flex-flow: row wrap
+	align-items:stretch
+	text-align: left
+	+r(1400)
+		.hotel-about-text
+			width: 65%
+		.hotel-about-img
+			width: 35%	
+	+r(800)
+		.hotel-about-text,.hotel-about-img
+			width: 100%
+			padding: 0
+		.hotel-about-text
+			order: 2
+			position: static
+			text-align: center
+			.feature-elem
+				justify-content: center
+			.hotel-about-text-feature
+				position: static
+				
+		.hotel-about-img
+			order: 1
+		position: relative
+		+rem(padding-top,40px)
+		.title
+			position: absolute
+			left: 0
+			width: 100%
+			top: 0
+	+r(600)
+		.hotel-about-text
+			text-align: left
+	img
+		width: 100%
+		display: block
+		margin: 0 auto
+		+rem(max-width,500px)
+		+r(768)
+			+rem(max-width,450px)
+	&-img,&-text
+		+r(800)
+			width: 100%
+	&-img
+		width: 48%	
+	&-text
+		width: 52%
+		position: relative
+		+rem(padding-bottom, 65px)
+		+rem(padding-right,25px)
+		.text-bold
+			+rem(margin-top,15px)
+		&-feature
+			display: flex
+			flex-flow: row wrap
+			position: absolute
+			left: 0
+			bottom: 0
+			width: 100%
+			+r(740)
+				+rem(margin-top,20px)		
+.feature-elem
+	display: flex
+	flex-flow: row nowrap
+	width: 50%
+	clear: both
+	+r(440)
+		flex-flow: row wrap	
+		.feature-elem-num,.feature-elem-text
+			width: 100%	
+			max-width: 100%	
+			padding-left: 0	
+			+rem(padding-right,35px)
+		.feature-elem-text
+			+rem(margin-top,10px)
+	&-num
+		font-size: 09px
+		+rem(height,50px)
+		white-space: nowrap
+		svg
+			+rem(width,42px)
+			display: inline-block
+			vertical-align: middle
+			height: 100%
+			&:nth-child(2)
+				+rem(margin-left,-10px)
+			use 
+				width: 100%
+	&-text
+		+rem(max-width,134px)
+		+rem(padding-left,20px)
+		text-align: left
+.chose
+	&-wrapper
+	&-inner
+		font-size: 0
+		+rem(margin-right,-30px)
+		overflow: hidden
+
+.card
+	&-cont
+		+rem(padding-right,30px)
+		display: inline-block
+		vertical-align: top
+		width: 50%	
+	&-inner
+		display: block
+		position: relative
+		height: 0
+		width: 100%
+		+cover
+		padding-bottom: 71%
+		z-index: 0
+		&:hover
+			+rm(1025)
+				.card-content-inner
+					background-color: rgba(0,0,0,.85)
+				.card-content-img
+					opacity: 0
+					&.color
+						opacity: 1
+				.title
+					opacity: 0
+					&.gold
+						opacity: 1
+
+	&-bg 
+		+cover
+		+coverdiv
+		z-index: -1
+	&-content 
+		+coverdiv
+		&-inner
+			height: 100%	
+			width: 100%	
+			position: relative
+			background-color: rgba(0,0,0,.3)
+			+tr(background-color .3s)
+			text-align: center
+		&-imgwrap
+			position: relative
+			+rem(height,75px)
+		&-img
+			position: absolute
+			left: 0	
+			top: 0	
+			right: 0
+			height: 100%
+			+tr(opacity .3s)
+			svg,img
+				display: block
+				height: 100%	
+				margin: 0 auto
+			&.mono
+				z-index: 1
+			&.colored
+				z-index: 0
+				// opacity: 0
+		&-title
+			position: relative
+			+rem(height,100px)
+			.title
+				position: absolute
+				left: 0
+				right: 0
+				top: 0
+				height: 100%
+				+tr(opacity .3s)
+				z-index: 0
+				font-weight: 400
+				&.gold
+					z-index: 1
+					opacity: 0
+
+				
+

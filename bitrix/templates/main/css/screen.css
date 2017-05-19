@@ -444,6 +444,13 @@ body, .out {
     font-size: 1.5rem;
     line-height: 1.417;
     letter-spacing: 0.10625rem; }
+  .title.gold {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: url(../img/gold.jpg);
+    -webkit-filter: brightness(120%);
+    filter: brightness(120%);
+    -webkit-font-smoothing: antialiased; }
 
 .text, .text-bold {
   font-size: 1.125rem;
@@ -458,6 +465,17 @@ body, .out {
   font-size: 1rem;
   line-height: 1.4;
   color: #888b8c; }
+
+.text-gold {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  line-height: 1.429;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: url(../img/gold.jpg);
+  background-size: 250px 100px;
+  font-weight: 600;
+  -webkit-font-smoothing: antialiased; }
 
 .btn {
   display: inline-block;
@@ -486,7 +504,6 @@ body, .out {
   -webkit-transition: color 0.3s, background-color 0.3s, border 0.3s;
   transition: color 0.3s, background-color 0.3s, border 0.3s;
   min-width: 11.875rem;
-  margin-top: 50px;
   -webkit-filter: brightness(120%);
   filter: brightness(120%); }
   .btn:hover {
@@ -831,7 +848,6 @@ body, .out {
   -webkit-text-fill-color: transparent;
   background-image: url(../img/gold.jpg);
   background-size: 250px 100px;
-  font-smoothing: subpixelAntialized;
   -webkit-filter: brightness(120%);
   filter: brightness(120%);
   font-weight: 600;
@@ -1047,9 +1063,13 @@ body, .out {
       object-fit: cover; }
   .wrapper > div:not(.page-cover) {
     position: relative; }
-  .wrapper .box {
-    padding-left: 0.9375rem;
-    padding-right: 0.9375rem; }
+
+.box {
+  display: block;
+  margin: 0 auto;
+  max-width: 63.375rem;
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem; }
 
 .landing-elem .wrapper {
   width: 100%;
@@ -1131,13 +1151,31 @@ body, .out {
       z-index: 1; }
 
 .section-container {
-  padding-top: 6.625rem; }
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+  padding-top: 5.375rem; }
 
 .section-head {
-  max-width: 25.625rem;
   text-align: center;
   margin: 0 auto;
-  min-height: 7.8125rem; }
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  width: 21.3vw; }
+  .section-head-wrap {
+    position: absolute;
+    left: 0;
+    top: 11vh;
+    width: 100%; }
   .section-head .section-svg {
     display: inline-block;
     width: 100%;
@@ -1145,50 +1183,277 @@ body, .out {
     .section-head .section-svg img {
       display: block;
       margin: 0 auto;
-      max-height: 7.1875rem; }
+      max-height: 7.8125rem; }
     .section-head .section-svg svg {
       width: 100%;
-      font-size: 3rem;
-      margin-left: -1.375rem; }
+      font-size: 3rem; }
     .section-head .section-svg:not(:only-child) {
       max-height: 7.1875rem;
       margin-top: 0.9375rem; }
       .section-head .section-svg:not(:only-child) ~ .title {
         margin-top: -5.4375rem; }
 
-.landing-elem .wrapper.blk .section-container {
-  padding-top: 8.125rem; }
+.section-content {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  position: relative; }
+  .section-content .hotel-about-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 100%;
+    margin-top: 8vh; }
 
-.landing-elem .wrapper.blk .section-head {
-  max-width: 34.375rem; }
+.btn-wrap {
+  margin-top: 4.5vh;
+  text-align: center; }
 
-.landing-elem .wrapper:not(.blk) .section-head .st1 {
-  fill: #000; }
+.landing-elem {
+  contain: paint; }
+  .landing-elem .wrapper.blk .section-container {
+    padding-top: 8.125rem; }
+  .landing-elem .wrapper.blk .section-head {
+    width: 34.375rem; }
+  .landing-elem .wrapper:not(.blk) .section-head .st1 {
+    fill: #000; }
+  .landing-elem:not(:nth-child(2)) .wrapper:not(.blk):not(.gray) .section-head {
+    padding-top: 2.8125rem;
+    max-width: 15rem; }
 
-.landing-elem:not(:nth-child(2)) .wrapper:not(.blk):not(.gray) .section-head {
-  padding-top: 2.8125rem;
-  max-width: 15rem; }
-
-.animate-up {
+.animate-up, .animate-bg {
   -webkit-backface-visibility: hidden;
-  backface-visibility: hidden; }
+  backface-visibility: hidden;
+  will-change: transform; }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+.fp-responsive .landing-wrapper, .fp-responsive .landing-wrapper .fp-slide, .fp-responsive .landing-wrapper .fp-tableCell, .fp-responsive .landing-wrapper .landing-elem {
+  height: auto !important; }
+
+#fp-nav {
+  position: fixed;
+  z-index: 1;
+  margin-top: -32px;
+  top: 50%;
+  opacity: 1;
+  left: 1.3125rem; }
+  #fp-nav.white a.active span {
+    background-color: #000; }
+  #fp-nav ul {
+    margin: 0;
+    padding: 0; }
+    #fp-nav ul li {
+      display: block;
+      width: 20px;
+      height: 20px;
+      margin: 30px 7px;
+      position: relative; }
+      #fp-nav ul li a {
+        display: block;
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        text-decoration: none; }
+        #fp-nav ul li a.active span {
+          height: 6px;
+          width: 6px;
+          margin: -3px 0 0 -3px;
+          border-radius: 100%;
+          background-color: #fff; }
+        #fp-nav ul li a span {
+          border-radius: 50%;
+          position: absolute;
+          z-index: 1;
+          height: 6px;
+          width: 6px;
+          border: 0;
+          background: #888b8c;
+          left: 50%;
+          top: 50%;
+          margin: -3px 0 0 -3px;
+          -webkit-transition: all 0.1s ease-in-out;
+          transition: all 0.1s ease-in-out; }
+
+.hotel-about {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  text-align: left; }
+  .hotel-about img {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    max-width: 31.25rem; }
+  .hotel-about-img {
+    width: 48%; }
+  .hotel-about-text {
+    width: 52%;
+    position: relative;
+    padding-bottom: 4.0625rem;
+    padding-right: 1.5625rem; }
+    .hotel-about-text .text-bold {
+      margin-top: 0.9375rem; }
+    .hotel-about-text-feature {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%; }
+
+.feature-elem {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-flow: row nowrap;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  width: 50%;
+  clear: both; }
+  .feature-elem-num {
+    font-size: 09px;
+    height: 3.125rem;
+    white-space: nowrap; }
+    .feature-elem-num svg {
+      width: 2.625rem;
+      display: inline-block;
+      vertical-align: middle;
+      height: 100%; }
+      .feature-elem-num svg:nth-child(2) {
+        margin-left: -0.625rem; }
+      .feature-elem-num svg use {
+        width: 100%; }
+  .feature-elem-text {
+    max-width: 8.375rem;
+    padding-left: 1.25rem;
+    text-align: left; }
+
+.chose-inner {
+  font-size: 0;
+  margin-right: -1.875rem;
+  overflow: hidden; }
+
+.card-cont {
+  padding-right: 1.875rem;
+  display: inline-block;
+  vertical-align: top;
+  width: 50%; }
+
+.card-inner {
+  display: block;
+  position: relative;
+  height: 0;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  padding-bottom: 71%;
+  z-index: 0; }
+
+.card-bg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; }
+
+.card-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+  .card-content-inner {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.3);
+    -webkit-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+    text-align: center; }
+  .card-content-imgwrap {
+    position: relative;
+    height: 4.6875rem; }
+  .card-content-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 100%;
+    -webkit-transition: opacity 0.3s;
+    transition: opacity 0.3s; }
+    .card-content-img svg, .card-content-img img {
+      display: block;
+      height: 100%;
+      margin: 0 auto; }
+    .card-content-img.mono {
+      z-index: 1; }
+    .card-content-img.colored {
+      z-index: 0; }
+  .card-content-title {
+    position: relative;
+    height: 6.25rem; }
+    .card-content-title .title {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 100%;
+      -webkit-transition: opacity 0.3s;
+      transition: opacity 0.3s;
+      z-index: 0;
+      font-weight: 400; }
+      .card-content-title .title.gold {
+        z-index: 1;
+        opacity: 0; }
+      @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
 
   * {
     -webkit-text-size-adjust: none; } }
-
-@media only screen and (max-width: 1400px) {
+      @media only screen and (max-width: 1400px) {
 
   .page-head {
-    padding-top: 15.625rem; } }
+    padding-top: 15.625rem; }
 
-@media only screen and (max-width: 1150px) {
+  .hotel-about .hotel-about-text {
+    width: 65%; }
+
+  .hotel-about .hotel-about-img {
+    width: 35%; } }
+      @media only screen and (max-width: 1280px) {
+
+  .section-head {
+    width: 28.3vw; } }
+      @media only screen and (max-width: 1150px) {
 
   html {
     font-size: 15px; } }
-
-@media only screen and (min-width: 1025px) {
+      @media only screen and (min-width: 1025px) {
 
   .header-btn-wrap:hover i:first-child {
     -webkit-transform: translateY(-2px);
@@ -1198,14 +1463,104 @@ body, .out {
   .header-btn-wrap:hover i:nth-child(4) {
     -webkit-transform: translateY(2px);
     -ms-transform: translateY(2px);
-    transform: translateY(2px); } }
+    transform: translateY(2px); }
 
-@media only screen and (max-width: 1024px) {
+  .card-inner:hover .card-content-inner {
+    background-color: rgba(0, 0, 0, 0.85); }
+
+  .card-inner:hover .card-content-img {
+    opacity: 0; }
+
+  .card-inner:hover .card-content-img.color {
+    opacity: 1; }
+
+  .card-inner:hover .title {
+    opacity: 0; }
+
+  .card-inner:hover .title.gold {
+    opacity: 1; } }
+      @media only screen and (max-width: 1024px) {
 
   .header-tel-wrapper {
-    display: none; } }
+    display: none; }
 
-@media only screen and (min-width: 768px) {
+  .section-container {
+    max-width: -webkit-calc(100% - 7rem);
+    max-width: calc(100% - 7rem); }
+
+  .section-content .hotel-about-wrap {
+    margin-top: 4vh; }
+
+  #fp-nav {
+    left: 1.0625rem; } }
+      @media only screen and (max-width: 800px) {
+
+  .hotel-about {
+    position: relative;
+    padding-top: 2.5rem; }
+
+  .hotel-about .hotel-about-text, .hotel-about .hotel-about-img {
+    width: 100%;
+    padding: 0; }
+
+  .hotel-about .hotel-about-text {
+    -webkit-box-ordinal-group: 3;
+    -webkit-order: 2;
+    -ms-flex-order: 2;
+    order: 2;
+    position: static;
+    text-align: center; }
+
+  .hotel-about .hotel-about-text .feature-elem {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+
+  .hotel-about .hotel-about-text .hotel-about-text-feature {
+    position: static; }
+
+  .hotel-about .hotel-about-img {
+    -webkit-box-ordinal-group: 2;
+    -webkit-order: 1;
+    -ms-flex-order: 1;
+    order: 1; }
+
+  .hotel-about .title {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 0; }
+
+  .hotel-about-img, .hotel-about-text {
+    width: 100%; } }
+      @media only screen and (max-width: 768px) {
+
+  .page__header > .header-row .header-lang {
+    display: none; }
+
+  .page__header > .header-row .bron-text {
+    display: none; }
+
+  .section-head {
+    width: 50.3vw; }
+
+  .section-head-wrap {
+    top: 5rem; }
+
+  .section-content {
+    margin-top: 9.0625rem; }
+
+  .section-content .hotel-about-wrap {
+    margin-top: 0;
+    position: static;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none; }
+
+  .hotel-about img {
+    max-width: 28.125rem; } }
+      @media only screen and (min-width: 768px) {
 
   .page__content::-webkit-scrollbar {
     width: 0.25rem; }
@@ -1215,16 +1570,7 @@ body, .out {
     border-radius: 0.1875rem;
     background: #888888;
     cursor: pointer; } }
-
-@media only screen and (max-width: 768px) {
-
-  .page__header > .header-row .header-lang {
-    display: none; }
-
-  .page__header > .header-row .bron-text {
-    display: none; } }
-
-@media only screen and (max-width: 740px) {
+      @media only screen and (max-width: 740px) {
 
   .title i {
     max-width: 1.8125rem; }
@@ -1244,10 +1590,23 @@ body, .out {
   .header-menu-content-inner .site-tel {
     margin-top: 0.625rem; }
 
-  .landing-elem .wrapper {
-    min-height: 100vh; } }
+  .section-container {
+    max-width: 100%;
+    padding-top: 3.125rem;
+    padding-bottom: 3.125rem; }
 
-@media only screen and (max-width: 608px) {
+  .section-head-wrap {
+    position: static; }
+
+  .section-content {
+    margin-top: 8vw; }
+
+  .btn-wrap {
+    margin-top: 2.1875rem; }
+
+  .hotel-about-text-feature {
+    margin-top: 1.25rem; } }
+      @media only screen and (max-width: 608px) {
 
   .page__header > .header-row {
     padding-top: 1.25rem;
@@ -1257,8 +1616,13 @@ body, .out {
   .page__header > .header-row .header-btn-wrap {
     margin-left: -0.9375rem;
     padding-left: 0.9375rem; } }
+      @media only screen and (max-width: 600px) {
 
-@media only screen and (max-width: 600px) {
+  .text, .text-bold {
+    font-size: 0.9375rem; }
+
+  .bron-img {
+    margin-left: 2.1875rem; }
 
   .header-menu-head .header-row {
     padding-top: 1.25rem;
@@ -1333,9 +1697,32 @@ body, .out {
     top: 0; }
 
   .widget-wrapper > div iframe {
-    min-height: 370px; } }
+    min-height: 370px; }
 
-@media only screen and (max-width: 400px) {
+  .section-head {
+    max-width: 64.3vw;
+    width: 100%; }
+
+  .hotel-about .hotel-about-text {
+    text-align: left; } }
+      @media only screen and (max-width: 440px) {
+
+  .feature-elem {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap; }
+
+  .feature-elem .feature-elem-num, .feature-elem .feature-elem-text {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 2.1875rem; }
+
+  .feature-elem .feature-elem-text {
+    margin-top: 0.625rem; } }
+      @media only screen and (max-width: 400px) {
 
   .title i {
     max-width: 1.1875rem; }
@@ -1343,22 +1730,28 @@ body, .out {
   .title.h1 {
     font-size: 1.75rem; }
 
+  .title.h3 {
+    font-size: 1.0625rem; }
+
   .page-head-inner .widget-wrapper {
     margin-top: 3.4375rem; } }
-
-@media only screen and (max-width: 375px) {
+      @media only screen and (max-width: 375px) {
 
   .header-menu-content-inner .site-address-text {
     max-width: 15.625rem;
     margin-left: auto;
     margin-right: auto; } }
+      @media only screen and (max-width: 340px) {
 
-@media only screen and (max-width: 340px) {
+  .bron-wrapper {
+    margin-left: 0; }
 
   .page-head {
     padding-top: 9.6875rem; } }
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .text-gold {
+    color: #e6bd50; }
 
   .page__header:not(.is-hidden) > .header-row .bron-text {
     color: #e6bd50;

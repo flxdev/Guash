@@ -113,45 +113,30 @@ document.addEventListener("DOMContentLoaded", function() {
 
 			var elemN , elNIndex, elemC,setHide;
 			elem.fullpage({
+				navigation: true,
 				navigationPosition: 'right',
 				scrollingSpeed: 500,
 				easingcss3: 'cubic-bezier(0.77, 0, 0.175, 1)',
 				sectionSelector: '.landing-elem',
 				responsiveWidth: 740,
 				keyboardScrolling: true,
-				fitToSection: true,
-				fitToSectionDelay: 500,
+				verticalCentered: false,
 				afterRender: function(){
 					elemN = conf.landEl.filter('.active')
 					elNIndex = elemN.index();
 					ChangeHeader(elNIndex);
 					UpFirst(elemN);
-					if(isMobile() == false){
-						setHide = TweenLite.set(trg, {
-							directionalRotation: {
-								rotationX: "-90_cw"
-							},
-	            y: 40
-	          });
-					}
-
+				},
+				afterResize: function(){
+					elemN = conf.landEl.filter('.active')
+					elNIndex = elemN.index();
+					ChangeHeader(elNIndex);
 				},
 				onLeave: function(index, nextIndex, direction){
-					if(isMobile() == false){
-						setHide = TweenLite.set(trg, {
-							// opacity: 0,
-							directionalRotation: {
-								rotationX: "90_cw"
-							},
-							y: 40,
-							delay: .4
-						});
-					}
 					elemC = conf.landEl.eq(index - 1);
 					elemN = conf.landEl.eq(nextIndex - 1);
 					ChangeHeader(nextIndex - 1);
 					UpFirst(elemN);
-
 				}
 			});
 			conf.body.css('height','100$')
@@ -162,7 +147,14 @@ document.addEventListener("DOMContentLoaded", function() {
 			var trgUp = elemNext.find('.animate-up');
 			var trgUp2 = elemNext.find('.animate-up2');
 			var trgbg = elemNext.find('.animate-bg');
+			TweenLite.set(trgUp, {
+				directionalRotation: {
+					rotationX: "90_cw"
+				},
+				y: 40,
+			});
 			TweenLite.from(trgbg, .2,{
+				force3D:true,
 				y: -80,
 				scale: 1.1,
 				transformOrigin: "50% 50%",
@@ -170,6 +162,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			});
 			TweenLite.to(trgUp, .5 ,{
 				ease: Expo.easeOut,
+				force3D:true,
 				directionalRotation: {
 					rotationX: "0_cw"
 				},
@@ -182,13 +175,13 @@ document.addEventListener("DOMContentLoaded", function() {
 	}
 	function ChangeHeader(index){
 		if(index === 0){
-			conf.header.removeClass(conf.hidden).removeClass(conf.blk).removeClass(conf.white);
+			conf.header.add('#fp-nav').removeClass(conf.hidden).removeClass(conf.blk).removeClass(conf.white);
 		}else{
 			var elem = conf.landEl.eq(index).find('.wrapper');
 			if(elem.hasClass(conf.blk)){
-				conf.header.addClass(conf.blk).removeClass(conf.white);
+				conf.header.add('#fp-nav').addClass(conf.blk).removeClass(conf.white);
 			}else if(elem.hasClass(conf.white) || elem.hasClass(conf.gray)){
-				conf.header.addClass(conf.white).removeClass(conf.blk);
+				conf.header.add('#fp-nav').addClass(conf.white).removeClass(conf.blk);
 			}else{
 				return false
 			}
