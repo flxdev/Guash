@@ -293,11 +293,14 @@ block content
 							.section-head.animate-up
 								.section-svg
 									+svgstay2
-						.section-content
+						.section-content.animate-bg
 							.chose-wrapper
 								.chose-inner
 									+card('room1.jpg','classic','16–21м2 с одной большой двуспальной и двумя односпальными кроватями. Завтрак включен.')
 									+card('room2.jpg','Superior','16–21м2 с одной большой двуспальной и двумя односпальными кроватями. Завтрак включен.sdfsd sdfsdfdsf dsfdsfsdf sdfdsfs sdfdsfds fdsfds fsdfsf')
+								.btn-wrap
+									a(href="#").btn
+										span Наши номера	
 			.landing-elem.fp-auto-height
 				.wrapper.white
 					.box.section-container
@@ -305,6 +308,13 @@ block content
 							.section-head.animate-up
 								.section-svg
 									+svgstay3
+						.section-content.animate-bg
+							.news-wrapper 
+								+news('n1.jpg','24 марта в самом сердце москвы открылся наш неповторимый дизайн-отель “Акварель”','')
+								+news('n2.jpg','мы открылись и по этому радостному поводу дарим всем скидку -30%',' Lorem ipsum dolor sit amet')
+								.btn-wrap
+									a(href="#").btn
+										span Все новости	
 			.landing-elem.fp-auto-height
 				.wrapper.gray
 					.box.section-container
@@ -313,8 +323,19 @@ block content
 								.section-svg
 									img(src="img/icons/hashtag.svg", alt="")
 								.title.h2 instagram
+						.section-content.animate-bg
+							.instawrap
+								.instawrap-inner
+									.instawrap-elem(style='background-image:url(img/inst/i1.jpg)')
+									.instawrap-elem(style='background-image:url(img/inst/i2.jpg)')
+									.instawrap-elem(style='background-image:url(img/inst/i3.jpg)')
+									.instawrap-elem(style='background-image:url(img/inst/i4.jpg)')
+								a(href="#").link-line
+									.text #hotel_akvarel
+									+line
+
 			.landing-elem.fp-auto-height
-				.wrapper.blk
+				include includes/_footer.pug
 		//- a(href="#").btn
 		//- 	span Подробнее об отеле		
 		//- button(type='submit').btn

@@ -1,10 +1,134 @@
 .modal-layout(data-modal='callback').js-popup-container
 	.modal-container
-		.modal-container-header
-			i.small-link.pop-close.closePopup
-		.modal-container-content
+		.modal-container-inner
+			.modal-container-header
+				.header-btn-wrap.active.closePopup
+					.header-btn-inner
+						.navTrigger
+							i
+							i
+							i
+							i
+			.modal-container-content
+				.modal-container-content-inner
+					.modal-title.title.h3.white форма обратной связи
+					//формы 2х типов, широкие и узкие, без модификатора узкая
+					form(action="/").modal-form.js-validate
+						.input-form
+							.input-item.s100
+								.input-wrapper.req
+									label(for='inp2') Имя
+									input.input-main(type="text",data-validation="length required",data-validation-length='min2',data-validation-error-msg="Не заполнено",id='inp2')
+							.input-item.s100
+								.input-wrapper.req
+									label(for='inp5') Телефон
+									input.input-main(type="tel",name='tel[0]',data-validation="custom",data-validation-regexp="^[-0-9()+ ]+$",data-validation-error-msg="Не заполнено",id='inp5')
+							.input-item.s100
+								.input-wrapper.req
+									label(for='inp6') E-mail
+									input.input-main(type="email",data-validation="email",data-validation-error-msg="Не заполнено",id='inp6')
+							.input-item.s100
+								.input-wrapper
+									label(for='text1') Сообщение
+									textarea.input-main(rows='4',id='text1') 
+						.form-submit
+							button(type='submit').btn.btn-white
+								span Отправить
 	//контейнер ответа модалки 
-	.modal-container.response(style='display: none')
-		.modal-container-header
-			i.small-link.pop-close.closePopup
-		.modal-container-content
+	.modal-container-content.response(style='display: none')
+		.modal-container-content-inner
+			.modal-title.title.h3.white Благодарим вас!
+			.text Ваше сообщение успешно отправлено! В течении часа с вами свяжется наш менеджер.
+.modal-layout(data-modal='callback-mini').js-popup-container
+	.modal-container
+		.modal-container-inner
+			.modal-container-header
+				.header-btn-wrap.active.closePopup
+					.header-btn-inner
+						.navTrigger
+							i
+							i
+							i
+							i
+			.modal-container-content
+				.modal-container-content-inner
+					.modal-title.title.h3.white обратный звонок
+					//формы 2х типов, широкие и узкие, без модификатора узкая
+					form(action="/").modal-form.js-validate
+						.input-form
+							.input-item.s100
+								.input-wrapper.req
+									label(for='inp2') Имя
+									input.input-main(type="text",data-validation="length required",data-validation-length='min2',data-validation-error-msg="Не заполнено",id='inp2')
+							.input-item.s100
+								.input-wrapper.req
+									label(for='inp5') Телефон
+									input.input-main(type="tel",name='tel[0]',data-validation="custom",data-validation-regexp="^[-0-9()+ ]+$",data-validation-error-msg="Не заполнено",id='inp5') 
+						.form-submit
+							button(type='submit').btn.btn-white
+								span Перезвоните мне
+	//контейнер ответа модалки 
+	.modal-container-content.response(style='display: none')
+		.modal-container-content-inner
+			.modal-title.title.h3.white Благодарим вас!
+			.text В течении часа с вами свяжется наш менеджер.
+
+
+.modal-layout(data-modal='feedback').js-popup-container
+	.modal-container
+		.modal-container-inner
+			.modal-container-header
+				.header-btn-wrap.active.closePopup
+					.header-btn-inner
+						.navTrigger
+							i
+							i
+							i
+							i
+			.modal-container-content
+				.modal-container-content-inner
+					.modal-title.title.h3.white Оставить отзыв
+					//.form-big широкая
+					form(action="/").modal-form.js-validate.form-big
+						.input-form
+							.input-item.s100
+								.input-rating.input-wrapper.js-stars
+									.star-wrapper
+										#rev-star-1.star-item(data-num='1')
+										#rev-star-2.star-item(data-num='2')
+										#rev-star-3.star-item(data-num='3')
+										#rev-star-4.star-item(data-num='4')
+										#rev-star-5.star-item(data-num='5')
+										input(type='number',style='width: 1px;height: 1px;opacity:0;',data-validation="required",data-validation-error-msg="Оценка обязательна").rev-hidden
+							.input-item.s100
+								.input-wrapper.req
+									label(for='inpo2') Заголовок отзыва
+									input.input-main(type="text",placeholder='Кратко опишите свою поездку',data-validation="length",data-validation-length='min5',data-validation-error-msg="Не заполнено",id='inpo2')
+							.input-item.s50
+								.input-wrapper.req
+									label(for='inpp2') Имя
+									input.input-main(type="text",data-validation="length",data-validation-length='min2',data-validation-error-msg="Не заполнено",id='inpp2')
+							.input-item.s50
+								.input-wrapper.req
+									label(for='inpp6') E-mail
+									input.input-main(type="email",data-validation="email",data-validation-error-msg="Не заполнено",id='inpp6')
+							.input-item.s50
+								.input-wrapper.req
+									label(for='inpp5') Телефон
+									input.input-main(type="tel",name='tel[0]',data-validation="custom",data-validation-regexp="^[-0-9()+ ]+$",data-validation-error-msg="Не заполнено",id='inpp5')
+							.input-item.s50
+								.input-wrapper.req
+									label(for='inpp5') Ссылка на соц.сеть
+									input.input-main(type="url",name='url[0]', data-validation="url",data-validation-error-msg="Некорректная ссылка",id='inpp5')
+							.input-item.s100
+								.input-wrapper
+									label(for='text2') Ваш отзыв
+									textarea.input-main(rows='3',id='text2') 
+						.form-submit
+							button(type='submit').btn.btn-white
+								span Добавить отзыв
+	//контейнер ответа модалки 
+	.modal-container-content.response(style='display: none')
+		.modal-container-content-inner
+			.modal-title.title.h3.white Благодарим вас за оставленный отзыв! 
+			.text После прохождения модерации ваш отзыв будет размещен на нашем сайте!

@@ -167,7 +167,30 @@ mixin card(img,title,text)
 						.title.h3.gold #{title}
 					.card-content-text 
 						.text.white #{text}
+		+line
+mixin news(img,name,text)
+	.news-elem
+		a(href="#").news-elem-inner
+			.news-elem-cont
+				.news-elem-img
+					.news-elem-img-main
+						.news-elem-img-bg(style='background-image: url(img/index/'+img+')')
+						.news-elem-img-button
+							.news-elem-img-button-wrap
+								.btn.btn-blackcont
+									span Узнать больше
+				.news-elem-name
+					.text-sm 24 марта 2017
+					.title.h4 #{name}
+					if text != ''
+						.text #{text}
+					+line
 
+mixin line
+	.line-cont
+		.line-cutter
+			.line-element
+				img(src="img/icons/line.svg", alt="")
 //-bullshit
 mixin bron
 	.bron-wrapper

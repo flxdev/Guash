@@ -23,8 +23,10 @@ html(lang="ru")
 							include includes/_header.pug			
 					main.page__content
 						block content
+					// .page__footer будет содержать футер на остальных страницах
 					footer.page__footer
-						include includes/_footer.pug
+						if main != true
+							include includes/_footer.pug
 		.modals
 			include includes/_modals.pug
 		//END out

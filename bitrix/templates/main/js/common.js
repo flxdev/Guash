@@ -189,10 +189,28 @@ document.addEventListener("DOMContentLoaded", function() {
 		if(index > 0){
 			conf.header.addClass(conf.hidden);
 		}
-
-
 	}
+	function stars(){
+		var parent = $('.js-stars'),
+			items = parent.find('.star-item'),
+			target = parent.find('.rev-hidden');
 
+		items.click(function(e) {
+			$(this).closest('.input-wrapper').removeClass('has-error').addClass('has-success');
+			e.preventDefault();
+			num = parseInt($(this).data("num"));
+			i = 1;
+			for (i = 1; i <= num; i++) {
+				$("#rev-star-" + i).addClass('active');
+			}
+			for (i = num + 1; i <= 5; i++) {
+				$("#rev-star-" + i).removeClass('active');
+			}
+			target.val(num);
+
+			return false;
+		});
+	}stars();
 //end of document.ready
 });
 //end of document.ready
@@ -227,63 +245,6 @@ jQuery.fn.toggleText = function() {
 };
 
 
-function initCustomSelectList() {
-	var _conf = {
-			initClass: 'cs-active',
-			f: {}
-		},
-		_items = $('.js-select-custom');
-	$.each(_items, function() {
-		var _select = $(this),
-			_button = _select.find('button'),
-			placeholder = _button.data('placeholder'),
-			_list = _select.find('.select-list');
-		_select.on('reinit', function() {
-			var _active = _list.find('input:checked');
-			if ($(this).hasClass('depends-on')) {
-				var item = $(this).closest('.input-item');
-				if (_active.length) {
-					var next = item.nextAll('.input-item').find('.depends-on');
-					next.removeClass('disabled').find('input').prop('checked', false);
-					next.trigger('reinit');
-				} else {
-					var next = item.nextAll('.input-item').find('.depends-on');
-					next.addClass('disabled').find('input').prop('checked', false);
-					next.trigger('reinit');
-				}
-			}
-			if (_active.length) {
-				if ($(this).hasClass('price-total')) {
-					_button.children('.btn-text').addClass('active').html(_active.siblings('.elem-price').html()).parent().addClass('is-checked')
-				} else {
-					_button.children('.btn-text').addClass('active').text('' + _active.siblings('span').text() + '').parent().addClass('is-checked')
-				}
-			} else {
-				_button.children('.btn-text').removeClass('active').text(_button.data('placeholder')).parent().removeClass('is-checked');
-			}
-			CheckForSelect($(this).parents('form'));
-		});
-		_button.off('click').on('click', function() {
-			_button.parent().toggleClass('active').siblings().removeClass('active');
-			return (false);
-		});
-		_select.off('click').on('click', 'label', function() {
-			var _label = $(this),
-				_input = _label.find('input');
-			_input.prop('checked', true);
-			_select.trigger('reinit');
-			_button.parent().removeClass('active');
-		});
-		_select.trigger('reinit');
-		_select.addClass(_conf.initClass);
-		 $(document).on('mouseup', function (e){
-			if (!_select.is(e.target)
-				&& _select.has(e.target).length === 0) {
-				_select.removeClass('active');
-			}
-		});
-	});
-}
 
 
 function validateForms() {
