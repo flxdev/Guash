@@ -61,6 +61,15 @@ html
 	&.fp-enabled
 		.out,.page__outer,.page__wrapper
 			height: 100%
+		body 
+			&.menu-open
+				position: fixed
+				.page__header.is-hidden
+					&>.header-row
+						.header-btn-wrap
+							+rem(height,65px)
+							+rem(margin-top,28px)
+							+tr(margin-top .3s)
 body
 	background-color: #fff
 	background-attachment: fixed
@@ -82,8 +91,9 @@ body, .out
 	height: 100%
 	&.modal_open
 		position: fixed
-	&.menu-open
-		position: fixed
+
+
+
 
 .loading
 	// position: relative
@@ -144,6 +154,8 @@ body, .out
 		flex: 0 0 auto
 		background-color: #e3ecf2
 		flex-flow: row wrap
+		.wrapper
+			height: 100vh
 	&__content
 		flex: 1 0 auto
 		width: 100%
@@ -570,7 +582,6 @@ body, .out
 				i 
 					background-color: $gray2
 	&:not(.is-hidden)
-
 		&>.header-row
 			.bron-img-inner.mono
 				display: none
@@ -662,7 +673,7 @@ body, .out
 	cursor: pointer
 	position: relative
 	+rem(min-width,157px)
-
+	+tr(margin-top .3s)
 	.header-btn-inner
 		transition-delay: .8s
 	&:hover
@@ -754,12 +765,12 @@ body, .out
 					+padlr(5px)
 					a
 						display: block
-						transition: transform .3s, filter .3s
+						transition: opacity .3s, filter .3s
 						+rem(width,32px)
 						+rem(height,32px)
 						&:hover
-							transform: scale(1.1)
 							filter: brightness(110%)
+							opacity: .6
 						svg
 							width: 100%
 							height: 100%
@@ -830,6 +841,8 @@ body, .out
 		background-color: $blk
 	&.gray 
 		background-color: #efefef
+	&.white
+		background-color: #FFF
 	.page-cover
 		+coverdiv
 		z-index: -1
@@ -861,6 +874,11 @@ body, .out
 		height: 100%
 		overflow: hidden
 		position: relative
+		.page-head
+			&.full
+				height: 100%
+				+r(600)
+					min-height: 100vh
 @keyframes Fade
 	0%
 		opacity: 1
@@ -873,10 +891,10 @@ body, .out
 	+rem(padding-top,235px)
 	+rem(padding-bottom,100px)
 	+vertical
-
 	&.full
-		height: 100%
+		height: 100vh
 		position: relative
+
 		&:after
 			content: ''
 			position: absolute
@@ -895,6 +913,9 @@ body, .out
 		+rem(padding-top,250px)
 	+r(600)
 		+rem(padding-top,175px)
+		&.full
+			min-height: 70vh
+			height: 70vh
 	+r(340)
 		+rem(padding-top,155px)
 	&-inner
@@ -905,33 +926,56 @@ body, .out
 			+rem(margin-top,85px)
 			+r(400)
 				+rem(margin-top,55px)
+html:not(.fp-enabled)
+	.page-head.full
+		.page-head-inner
+			+rem(padding-bottom,30px)
+		+r(600)
+			&:after
+				display: none
+				
+.bread
+	&-cont
+		+rem(padding-bottom,20px)
+		+rem(font-size,16px)
+	&-item
+		color: $gray1
+		&:not(:last-child)
+			&:after
+				display: inline-block
+				content: '/'
+				+rem(padding-left,6px)
+				+rem(padding-right,3px)
+				color: $gray1 !important
+		+tr(color .3s)
+		&:hover
+			color: $white
+				
 .widget-wrapper
 	position: relative
-	+rem(min-height,41.5px)
 	width: 100%
 	display: inline-block
-	+rem(max-width,605px)
-	+padlr(10px)
+	+rem(max-width,595px)
+	// +padlr(10px)
 	+r(600)
 		+rem(max-width,222px)
-		+rem(min-height,450px)
 		iframe
 			height: 100% !important
 			min-width: 100% !important
-	&>div
-		position: absolute !important
-		left: 0
-		right: 0
-		+rem(top,-305px)
-		+r(600)
-			top: 0
-		iframe
-			min-height: 600px
-			position: relative
-			z-index: 1
-			// pointer-events: none
-			+r(600)
-				min-height: 370px
+	// &>div
+	// 	position: absolute !important
+	// 	left: 0
+	// 	right: 0
+	// 	+rem(top,-305px)
+	// 	+r(600)
+	// 		top: 0
+	// 	iframe
+	// 		min-height: 600px
+	// 		position: relative
+	// 		z-index: 1
+	// 		// pointer-events: none
+	// 		+r(600)
+	// 			min-height: 370px
 .section
 	&-container
 		// +rem(padding-top,106px)
@@ -999,14 +1043,19 @@ body, .out
 	&-content
 		flex-grow: 1
 		position: relative
+		+vertical
+		height: calc(100% - 8.125rem)
 		+r(768)
 			+rem(margin-top,145px)
 		+r(740)
 			margin-top: 8vw
 		.hotel-about-wrap,.chose-wrapper,.news-wrapper,.instawrap
-			+vcenter
+			// +vcenter
 			width: 100%	
 			margin-top: 8vh
+			display: inline-block
+			vertical-align: middle
+			
 			+r(1024)
 				margin-top: 4vh
 			+r(768)
@@ -1044,16 +1093,18 @@ body, .out
 			&:not(.blk):not(.gray)
 				.section-head
 					+rem(padding-top,45px)
-					+r(1450)
+					+r(1600)
 						padding-top: 0
 					+rm(1451)
 						max-width: 12vw
+					+r(1450)
+						max-width: 15vw
 					+r(768)
 						max-width: 37vw
 
 
 
-.animate-up,.animate-bg
+.animate-up,.animate-bg,.animate-up2
 	backface-visibility: hidden
 	will-change: transform
 .fp-responsive .landing-wrapper,.fp-responsive .landing-wrapper .fp-slide,.fp-responsive .landing-wrapper .fp-tableCell,.fp-responsive .landing-wrapper .landing-elem
@@ -1415,13 +1466,14 @@ a:hover .line-cont,a:hover ~ .line-cont
 			display: block
 			+rm(1025)
 				&:hover
-						.news-elem-img-button
-							background-color: rgba(0,0,0,.8)
-							&-wrap
-								opacity: 1
-								transform: none
-								transition-delay: .25s
-
+					.news-elem-img-button
+						background-color: rgba(0,0,0,.8)
+						opacity: 1
+					.news-elem-img-button
+						&-wrap
+							opacity: 1
+							transform: translateY(0px)
+							transition-delay: .25s
 		&-cont
 			font-size: 0
 		&-img,&-name
@@ -1461,19 +1513,12 @@ a:hover .line-cont,a:hover ~ .line-cont
 						vertical-align: middle
 						color: $white
 						+rem(min-width,160px)
-						// border-width: 1px
-						-webkit-backface-visibility: hidden;
-						-webkit-transform: translateZ(0) scale(1.0, 1.0);
-						transform: translateZ(0);
-						
-
-						
-
 		&-name
 			width: 62%
 			+rem(padding-bottom,40px)
 			position: relative
 			+rem(min-height,200px)
+			text-align: left
 			+r(740)
 				+rem(margin-top,20px)
 				padding-bottom: 20px !important
@@ -1523,6 +1568,9 @@ a:hover .line-cont,a:hover ~ .line-cont
 			opacity: 0 !important
 		.line-element
 			width: 0 !important
+	&:active
+		.text
+			color: $active !important
 	.text
 		+rem(font-size,24px)
 		+rem(letter-spacing,1px)
@@ -1720,6 +1768,7 @@ a:hover .line-cont,a:hover ~ .line-cont
 				min-width: 0
 				text-align: left
 				+rem(padding-left,27px)
+
 				.header-btn-inner
 					+rem(padding-top,65px)
 		&-content 
@@ -1729,6 +1778,32 @@ a:hover .line-cont,a:hover ~ .line-cont
 			+rem(padding-left,30px)
 			+rem(padding-right,30px)
 			+vertical
+			&.response
+				transform: translateY(150px)
+				opacity: 0
+				display: block !important
+				transition: transform .3s, opacity .3s, visibility .3s
+				transition-delay: .3s
+				transition-timing-function: $t1
+				visibility: hidden
+				.modal-container-content-inner
+					+rem(max-width,470px)
+					position: relative
+					.title
+						+rem(margin-bottom,25px)
+					svg 
+						position: absolute
+						+rem(left,-40px)
+						+rem(top,-20px)
+						opacity: .15
+
+
+				&.visible
+					transform: translateY(0px)
+					opacity: 1
+					transition-delay: 0s
+					visibility: visible
+					
 			&-inner
 				width: 100%
 				display: inline-block
@@ -1745,6 +1820,17 @@ a:hover .line-cont,a:hover ~ .line-cont
 					color: $white
 				form 
 					+rem(margin-right,-17px)
+				.widget-wrapper
+					+rm(740)
+						+rem(padding-right,5px)
+				.bronvo-form
+					.form-submit
+						+rem(padding-right,12px)
+					.input-form
+						+rem(max-width,325px)
+						min-width: 0
+						+rem(margin, 30px auto 0px)
+
 .form-submit
 	display: block
 	margin: 0 auto
@@ -1756,7 +1842,8 @@ a:hover .line-cont,a:hover ~ .line-cont
 .form-big
 	.input-form
 		+rem(max-width,540px)
-.input-form
+
+.input-form 
 	font-size: 0
 	+rem(margin-right,-17px)
 	display: block
@@ -1772,7 +1859,12 @@ a:hover .line-cont,a:hover ~ .line-cont
 			width: 50%
 			+r(480)
 				width: 100%
-
+		&.s33
+			width: 33.33%
+			+r(600)
+				width: 100%
+				.btn 
+					width: 100%
 	.input-wrapper
 		position: relative
 		+rem(margin-bottom,19px)
@@ -1821,7 +1913,6 @@ a:hover .line-cont,a:hover ~ .line-cont
 				+placeholder
 					color: $white
 					opacity: 1 
-					font-weight: 700
 				&:valid
 					+placeholder
 						color: $white
@@ -1834,6 +1925,9 @@ a:hover .line-cont,a:hover ~ .line-cont
 				+rem(height,19px)
 				+rem(right, 12px)
 				z-index: 2
+				use 
+					+rem(width,19px)
+					+rem(height,19px)
 			&:focus
 				border-color: $gray2
 			+placeholder
@@ -1859,7 +1953,18 @@ a:hover .line-cont,a:hover ~ .line-cont
 			overflow: hidden
 			text-overflow: ellipsis
 			text-align: left
-
+.bronvo-form
+	+rem(margin-right,-10px)
+	.input-form
+		width: 100%
+		min-width: 100%
+		margin-right: 0
+		.input-item
+			+rem(padding-right,10px)
+		.input-main
+			background: transparent !important
+			+placeholder 
+				font-style: normal
 .star
 	&-wrapper
 		white-space: nowrap
@@ -1883,3 +1988,153 @@ a:hover .line-cont,a:hover ~ .line-cont
 			background-image: url(../img/icons/star-yellow.png)
 		&:not(.active):hover
 			transform: scale(1.15)
+
+
+/*Widget â†’  ÐšÐ°Ð»ÐµÐ½Ð´Ð°Ñ€ÑŒ */
+/*Widget â†’  ÐšÐ°Ð»ÐµÐ½Ð´Ð°Ñ€ÑŒ */
+.ui-widget 
+	font-family: Arial,sans-serif;
+	font-size: 14px;
+
+
+.ui-widget[style*="block"] 
+	display: table !important;
+
+.ui-widget-content 
+	padding: 0 18px 18px 12px;
+	border: 1px solid #ddd;
+	background: #fff;
+
+
+.ui-datepicker 
+	z-index: 201 !important;
+
+
+.ui-datepicker-inline .ui-datepicker 
+	padding: 0
+
+
+.ui-widget-header 
+	border: none;
+	background: #fff;
+	font-weight: bold;
+
+
+.ui-datepicker .ui-datepicker-title 
+	margin: 1em 2.3em 0.5em 2.3em;
+
+
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next 
+	top: 1em;
+	margin: 0 0;
+	border-radius: 3px;
+
+
+.ui-datepicker-inline .ui-datepicker-prev,
+.ui-datepicker-inline .ui-datepicker-next 
+	margin: 0 6px;
+
+
+.ui-datepicker .ui-datepicker-prev span,
+.ui-datepicker .ui-datepicker-next span 
+	display: block;
+	position: absolute;
+	left: 50%;
+	margin-left: -3px;
+	top: 50%;
+	margin-top: -6px;
+
+
+.ui-icon.ui-icon-circle-triangle-e,
+.ui-icon.ui-icon-circle-triangle-w 
+	width: 6px;
+	height: 12px;
+	background-image: url(../img/ui-icon-triangle.png);
+	background-position: 0 0;
+
+
+.ui-icon.ui-icon-circle-triangle-e 
+	background-position: -6px 0;
+
+
+.ui-datepicker-multi-3 .ui-datepicker-group:last-of-type 
+	width: 33.4%;
+
+
+.ui-datepicker td span,
+.ui-datepicker td a 
+	padding: 0.5em;
+
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default 
+	background: #fafafa;
+	border-radius: 2px;
+	border-color: #eee;
+
+
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover 
+	border-color: #bbb;
+	background: #fafafa;
+
+
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active 
+	border: 1px solid #3796e5;
+	background: #fff;
+
+
+.ui-state-highlight,
+.ui-widget-content .ui-state-highlight,
+.ui-widget-header .ui-state-highlight 
+	border: 1px solid #ff98bf;
+
+
+.ui-datepicker-month,
+.ui-datepicker-year 
+	position: relative;
+	font-family: Arial,sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	border-color: #ddd;
+	background: transparent;
+
+
+.ui-datepicker select.ui-datepicker-month,
+.ui-datepicker select.ui-datepicker-year 
+	width: auto;
+
+
+.ui-datepicker-prev,
+.ui-datepicker-next 
+	cursor: pointer;
+
+
+.ui-datepicker-unselectable.ui-state-disabled .ui-state-default 
+	position: relative;
+
+
+.ui-datepicker-unselectable.ui-state-disabled .ui-state-default:before 
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAAAA3NCSVQICAjb4U/gAAAAGFBMVEX/////AAD/AAD/AAD/AAD/AAD/AAD/AACiLPTRAAAACHRSTlMAESIzmaq77o6PbSQAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAWdEVYdENyZWF0aW9uIFRpbWUAMDIvMDgvMTfLiXpEAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAAVFJREFUSImlVcttwzAMNagRuoAPdc4pYGmAFvAAKeDem1iZoJ2/UaRaIsUnBQgPhi2Sj48f0cPwvPgR68gHg09sYIPBtEEIWk+3p1khhN2OQwsiAgSIb93gEAGKFy7ZkXQWNoe2GkRJXk2EeVlfQRhWQOM/pMHMfWYJIV2M7EgVVCRS0xYnSuL2MuYPWuq8zVJ05HBRKlccMmMNloVTiKER2s/V3t0VccAJjnEqp9K5f5kCBPkT0keIBkAY8KNZMcA9EZhCFLvhaxQhvn6aAIO5/rYNpq3JsU/ydo+pBUGxUCM0sLHUMNFUxAmySPzgyukOjMsjd9b0lI+durVcBlYh2CrTthZjpiTSvbyv8vq/cz3JHTSLjshv6VEhyphKcRnr7iJ1+irey2kWtTluXzlO20iFH+hujgwHPXHv/tTwjKYpdq0fa2D3MmIDesO6h+UPkSlTR/ReDKUAAAAASUVORK5CYII=');
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-position: center;	
+
+.ui-state-disabled,
+.ui-widget-content .ui-state-disabled,
+.ui-widget-header .ui-state-disabled 
+	opacity: 0.85;
+
+@media only screen and (max-width : 800px)
+	.ui-datepicker-multi

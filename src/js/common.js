@@ -142,19 +142,76 @@ var conf = {
 			conf.body.css('height','100$')
 		}
 	}LandingFullPage();
+	function ScrollHead(){
+		if(!conf.html.hasClass('fp-enabled')){
+			var container = $('.page-head-inner');
+			var windowHeight = $(window).innerHeight();
+			var scrollArea = windowHeight;
+			var square1 = container.find('.animate-up');
+			var square2 = container.closest('.wrapper').find('.page-cover');
+			var b = square1.height();
+			var range = parseInt($('.page-head').innerHeight() / 2);
+			var coef1 =  window.matchMedia("(max-width: 768px)").matches ? 0.5 : 0.2;
+			var coef2 =  window.matchMedia("(max-width: 768px)").matches ? 0.3 : 0.1;
+			$(window).on('resize',function(){
+				setTimeout(function(){
+					windowHeight = $(window).innerHeight();
+					scrollArea = windowHeight;
+					b = square1.height();
+					range = parseInt($('.page-head').innerHeight() / 2);
+					coef1 =  window.matchMedia("(max-width: 768px)").matches ? 0.5 : 0.2;
+					coef2 =  window.matchMedia("(max-width: 768px)").matches ? 0.3 : 0.1;
+					Movehead(scrollArea,square1,b,range);
+
+				});
+			});
+			$(window).on('scroll', function() {
+				Movehead(scrollArea,square1,b,range);
+			});
+
+			function Movehead(area,elem,elemh,range){
+			  var scrollTop = window.pageYOffset || window.scrollTop;
+			  var scrollPercent = scrollTop/area || 0;
+			  var offset = elem.offset().top;
+				offset = offset + elemh / 2;
+				var calc = 1 - (scrollTop - offset + range) / range;
+				if(scrollTop < windowHeight * 1.5){
+					TweenLite.set(square1, {
+						y: scrollPercent*window.innerWidth*coef1,
+					});
+					TweenLite.set(square2, {
+						y: scrollPercent*window.innerWidth*coef2,
+					});	
+				} 
+
+				square1.css({ 'opacity': calc });
+				if ( calc > '1' ) {
+					square1.css({ 'opacity': 1 });
+				} else if ( calc < '0' ) {
+					square1.css({ 'opacity': 0 });
+				}
+			}
+		}
+		
+	}ScrollHead();
 	function UpFirst(elemNext, elemCurr){
 		if(isMobile() == false){
 			var trgUp = elemNext.find('.animate-up');
 			var trgUp2 = elemNext.find('.animate-up2');
 			var trgbg = elemNext.find('.animate-bg');
-			TweenLite.set(trgUp, {		
+			TweenLite.set(trgUp, {
+				directionalRotation: { 
+					rotationX: "90_cw"
+				},
+				y: 40,
+			});
+			TweenLite.set(trgUp2, {		
 				directionalRotation: { 
 					rotationX: "90_cw"
 				},
 				y: 40,
 			});
 			TweenLite.from(trgbg, .2,{
-					force3D:true,
 					y: -80,
 					scale: 1.1,
 					transformOrigin: "50% 50%",
@@ -162,7 +219,6 @@ var conf = {
 			});
 			TweenLite.to(trgUp, .5 ,{
 				ease: Expo.easeOut,
-				force3D:true,
 				directionalRotation: {
 					rotationX: "0_cw"
 				},
@@ -170,6 +226,16 @@ var conf = {
 				transformOrigin:"50% 50% -100%",
 				opacity: 1,
 				delay: .5
+			});
+			TweenLite.to(trgUp2, .5 ,{
+				ease: Expo.easeOut,
+				directionalRotation: {
+					rotationX: "0_cw"
+				},
+				y: 0,  
+				transformOrigin:"50% 50% -100%",
+				opacity: 1,
+				delay: .6
 			});
 		}
 	}
@@ -211,6 +277,56 @@ var conf = {
 			return false;
 		});
 	}stars();
+	function datepick(){
+		var dtepick = $(".datepicker");
+		dtepick.each(function(){
+			var _ = $(this),
+				form = _.closest('.bronvo-form'),
+				frmTo = form.find('.datepicker[name=dto]')
+			_.datepicker({
+				inline: true,
+				dateFormat: "dd/mm/yy",
+				minDate: 0,
+				firstDay: 1,
+				dayNames: ["Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье", "Понедельник"],
+				dayNamesMin: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+				dayNamesShort: ["Пон", "Втр", "Срд", "Чет", "Пят", "Суб", "Вск"],
+				monthNames: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+				onSelect: function( selectedDate ) {
+					if ($(this).attr('name') == 'dfrom') {
+						var dt = $(this).datepicker('getDate');
+						if (dt) {
+							dt.setDate(dt.getDate() + 1);
+							frmTo.datepicker( "setDate", dt );
+							frmTo.datepicker( "option", "minDate", dt );
+						}
+					}
+				}
+			});
+		});
+		function make_url_params(elem) {
+			var form = elem.closest('.bronvo-form'),
+				lcode = form.find('input[name=lcode]').val(),
+				dfrom = form.find('input[name=dfrom]').val(),
+				dfto = form.find('input[name=dto]').val();
+
+			var url_params = 'lcode=' +lcode+ 
+							 '&dfrom='+dfrom+ 
+							 '&dto='+dfto;
+						 
+				url_params += '&lang='+'ru';
+			
+			
+			return url_params;
+		}
+		
+		$('.bronvo-form button[type=submit]').click(function(e){
+			var wb_url = '';
+			window.open('https://wubook.net/wbkd/wbk/?'+ make_url_params($(this)), 'wubook', 'width=840, height=840, scrollbars=yes, toolbar=yes, location=1, resizable=1');
+			return false;
+		});
+	}datepick()
+
 //end of document.ready
 });
 //end of document.ready
@@ -260,10 +376,12 @@ function validateForms() {
 				scrollToTopOnError: false,
 				onSuccess: function($form) {
 					formResponse(form_this);
+					return false;
 				},
-				onValidate: function($form) {
-					CheckForSelect(form_this);
-				}
+				// onValidate: function($form) {
+				// 	CheckForSelect(form_this);
+				// 	return false;
+				// },
 			});
 		});
 	}
@@ -303,16 +421,21 @@ function popUpsInit() {
 	};
 	_this.f.closePopup = function(_popup) {
 		var _res = Math.abs(_h),
-			_cont = _popup.find('.modal-container:not(.response)')
+			_cont = _popup.find('.modal-container-content:not(.response)')
 		_response = _popup.find('.response');
-
-		_this.c.header.removeClass(_this.conf.header_class);
+			console.log(conf.html,conf.body)
+		if($('html').hasClass('fp-enabled')){
+			$('body').hasClass('fp-viewing-0') ? _this.c.header.removeClass(_this.conf.header_class) : false;
+		}else{
+			_this.c.header.removeClass(_this.conf.header_class);
+		}
+		
 		_popup.removeClass(_this.conf.active_class);
 		_this.c.body.removeClass(_this.conf.body_class).removeAttr('style');
 		$(window).scrollTop(_res);
 		setTimeout(function() {
 			_cont.removeAttr('style');
-			_response.css('display', 'none');
+			_response.removeClass('visible');
 		}, 500);
 	};
 	_this.f.openPopup = function(_popup) {
@@ -368,12 +491,12 @@ function openOnLoad() {
 }
 
 function formResponse(form) {
-	if (form.closest('.modal-container').length) {
-		var cont = form.closest('.modal-container'),
+	if (form.closest('.modal-container-content').length) {
+		var cont = form.closest('.modal-container-content'),
 			resp = cont.next('.response');
 		if (resp.length) {
 			cont.fadeOut("slow", function() {
-				resp.fadeIn("slow");
+				resp.addClass("visible");
 			});
 		}
 	}

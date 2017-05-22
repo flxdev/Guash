@@ -34,11 +34,13 @@
 						.form-submit
 							button(type='submit').btn.btn-white
 								span Отправить
-	//контейнер ответа модалки 
-	.modal-container-content.response(style='display: none')
-		.modal-container-content-inner
-			.modal-title.title.h3.white Благодарим вас!
-			.text Ваше сообщение успешно отправлено! В течении часа с вами свяжется наш менеджер.
+			//контейнер ответа модалки 
+			.modal-container-content.response(style='display: none')
+				.modal-container-content-inner
+					svg(class="icon icon-drop")
+						use(xlink:href="#list" xmlns:xlink="http://www.w3.org/1999/xlink")
+					.modal-title.title.h3.white Благодарим вас!
+					.text Ваше сообщение успешно отправлено! В течении часа с вами свяжется наш менеджер.
 .modal-layout(data-modal='callback-mini').js-popup-container
 	.modal-container
 		.modal-container-inner
@@ -67,12 +69,79 @@
 						.form-submit
 							button(type='submit').btn.btn-white
 								span Перезвоните мне
-	//контейнер ответа модалки 
-	.modal-container-content.response(style='display: none')
-		.modal-container-content-inner
-			.modal-title.title.h3.white Благодарим вас!
-			.text В течении часа с вами свяжется наш менеджер.
+			//контейнер ответа модалки 
+			.modal-container-content.response(style='display: none')
+				.modal-container-content-inner
+					.modal-title.title.h3.white Благодарим вас!
+					.text В течении часа с вами свяжется наш менеджер.
+.modal-layout(data-modal='callback-mini').js-popup-container
+	.modal-container
+		.modal-container-inner
+			.modal-container-header
+				.header-btn-wrap.active.closePopup
+					.header-btn-inner
+						.navTrigger
+							i
+							i
+							i
+							i
+			.modal-container-content
+				.modal-container-content-inner
+					.modal-title.title.h3.white обратный звонок
+					//формы 2х типов, широкие и узкие, без модификатора узкая
+					form(action="/").modal-form.js-validate
+						.input-form
+							.input-item.s100
+								.input-wrapper.req
+									label(for='inp2') Имя
+									input.input-main(type="text",data-validation="length required",data-validation-length='min2',data-validation-error-msg="Не заполнено",id='inp2')
+							.input-item.s100
+								.input-wrapper.req
+									label(for='inp5') Телефон
+									input.input-main(type="tel",name='tel[0]',data-validation="custom",data-validation-regexp="^[-0-9()+ ]+$",data-validation-error-msg="Не заполнено",id='inp5') 
+						.form-submit
+							button(type='submit').btn.btn-white
+								span Перезвоните мне
+			//контейнер ответа модалки 
+			.modal-container-content.response(style='display: none')
+				.modal-container-content-inner
+					svg(class="icon icon-drop")
+						use(xlink:href="#list" xmlns:xlink="http://www.w3.org/1999/xlink")
+					.modal-title.title.h3.white Благодарим вас!
+					.text В течении часа с вами свяжется наш менеджер.
 
+.modal-layout(data-modal='bron').js-popup-container
+	.modal-container
+		.modal-container-inner
+			.modal-container-header
+				.header-btn-wrap.active.closePopup
+					.header-btn-inner
+						.navTrigger
+							i
+							i
+							i
+							i
+			.modal-container-content
+				.modal-container-content-inner
+					.modal-title.title.h3.white бронирование онлайн
+					.widget-wrapper
+						form(action="/").form.bronvo-form
+							.input-form
+								// инпут lcode 
+								input.input-main(type="hidden",name="lcode" value="1413618257")
+								.input-item.s100
+									.input-wrapper
+										input.input-main.datepicker(type="text",name='dfrom', readonly="readonly",placeholder="Заезд")
+										svg(class="icon icon-drop")
+											use(xlink:href="#calendar" xmlns:xlink="http://www.w3.org/1999/xlink")
+								.input-item.s100
+									.input-wrapper
+										input.input-main.datepicker(type="text",name="dto", readonly="readonly",placeholder="Выезд")
+										svg(class="icon icon-drop")
+											use(xlink:href="#calendar" xmlns:xlink="http://www.w3.org/1999/xlink")
+							.form-submit
+								button(type='submit').btn.btn-white
+									span Показать наличие
 
 .modal-layout(data-modal='feedback').js-popup-container
 	.modal-container
@@ -127,8 +196,10 @@
 						.form-submit
 							button(type='submit').btn.btn-white
 								span Добавить отзыв
-	//контейнер ответа модалки 
-	.modal-container-content.response(style='display: none')
-		.modal-container-content-inner
-			.modal-title.title.h3.white Благодарим вас за оставленный отзыв! 
-			.text После прохождения модерации ваш отзыв будет размещен на нашем сайте!
+			//контейнер ответа модалки 
+			.modal-container-content.response(style='display: none')
+				.modal-container-content-inner
+					svg(class="icon icon-drop")
+						use(xlink:href="#list" xmlns:xlink="http://www.w3.org/1999/xlink")
+					.modal-title.title.h3.white Благодарим вас за оставленный отзыв! 
+					.text После прохождения модерации ваш отзыв будет размещен на нашем сайте!

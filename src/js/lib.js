@@ -6,4 +6,5 @@
 //=include lib/TweenLite.min.js
 //=include lib/CSSPlugin.min.js
 //=include lib/EasePack.js
+//=include lib/jquery-ui.min.js
 

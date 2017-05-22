@@ -17,7 +17,26 @@ block content
 										img(src="img/icons/heart.png", alt="") 
 									| сквы
 							.widget-wrapper.animate-up2
-								#_bn_widget_.left
+								form(action="/").form.bronvo-form
+									.input-form
+										// инпут lcode 
+										input.input-main(type="hidden",name="lcode" value="1413618257")
+										.input-item.s33
+											.input-wrapper
+												input.input-main.datepicker(type="text",name='dfrom', readonly="readonly",placeholder="Заезд")
+												svg(class="icon icon-drop")
+													use(xlink:href="#calendar" xmlns:xlink="http://www.w3.org/1999/xlink")
+										.input-item.s33
+											.input-wrapper
+												input.input-main.datepicker(type="text",name="dto", readonly="readonly",placeholder="Выезд")
+												svg(class="icon icon-drop")
+													use(xlink:href="#calendar" xmlns:xlink="http://www.w3.org/1999/xlink")
+										.input-item.s33
+											button(type='submit').btn.btn-white
+												span Показать наличие
+								//- #_bn_widget_.left
+
+												
 					.page-cover
 						.page-cover-inner.animate-bg(style='background-image: url(img/pagehead/h1.jpg)')
 

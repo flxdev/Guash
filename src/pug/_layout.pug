@@ -37,59 +37,59 @@ html(lang="ru")
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.60/jquery.form-validator.min.js")
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.60/logic.js")
 		//скрипты модуля бронирования
-		script(src='http://widget.bnovo.ru/v2/js/bnovo.js')
-		script(type='text/javascript').
-			function frameLoaded() {
-			    var frame = $('iframe');
-			    if (frame != null) {
-			    	frame.each(function(){
-				    	$(this).ready(function(){
-						    var frmHead = $(frame).contents().find('head');
-							if (frmHead != null) {
-								 // stop the listener
-								frmHead.append($("<link/>", { rel: "stylesheet", href: "/css/widget.css", type: "text/css" }));
-							}
-				    	});
-			    	})
+		//- script(src='http://widget.bnovo.ru/v2/js/bnovo.js')
+		//- script(type='text/javascript').
+		//- 	function frameLoaded() {
+		//- 	    var frame = $('iframe');
+		//- 	    if (frame != null) {
+		//- 	    	frame.each(function(){
+		//- 		    	$(this).ready(function(){
+		//- 				    var frmHead = $(frame).contents().find('head');
+		//- 					if (frmHead != null) {
+		//- 						 // stop the listener
+		//- 						frmHead.append($("<link/>", { rel: "stylesheet", href: "/css/widget.css", type: "text/css" }));
+		//- 					}
+		//- 		    	});
+		//- 	    	})
 
-			    }
-			};
-			document.addEventListener("DOMContentLoaded", function() {
-				Bnovo_Widget.init(function(){
-					Bnovo_Widget.open('_bn_widget_', {
-					type: "horizontal",
-					lcode: "1234567890",
-					lang: "ru",
-					width: "100%",
-					background: "#000",
-					bg_alpha: "0",
-					padding: "20",
-					font_type: "arial",
-					font_color: "#ffffff",
-					font_size: "16",
-					without_title: "on",
-					title_color: "#222222",
-					title_size: "16",
-					inp_color: "#ffffff",
-					inp_bordhover: "#e6bd50",
-					inp_bordcolor: "#ffffff",
-					inp_alpha: "0",
-					btn_background: "#ffffff",
-					btn_background_over: "#d9d9d9",
-					btn_textcolor: "#000000",
-					btn_textover: "#000000",
-					btn_bordcolor: "#ffffff",
-					btn_bordhover: "#d9d9d9",
-					text_concierge: ""
-					});
-				});
+		//- 	    }
+		//- 	};
+		//- 	document.addEventListener("DOMContentLoaded", function() {
+		//- 		Bnovo_Widget.init(function(){
+		//- 			Bnovo_Widget.open('_bn_widget_', {
+		//- 			type: "horizontal",
+		//- 			lcode: "1234567890",
+		//- 			lang: "ru",
+		//- 			width: "100%",
+		//- 			background: "#000",
+		//- 			bg_alpha: "0",
+		//- 			padding: "20",
+		//- 			font_type: "arial",
+		//- 			font_color: "#ffffff",
+		//- 			font_size: "16",
+		//- 			without_title: "on",
+		//- 			title_color: "#222222",
+		//- 			title_size: "16",
+		//- 			inp_color: "#ffffff",
+		//- 			inp_bordhover: "#e6bd50",
+		//- 			inp_bordcolor: "#ffffff",
+		//- 			inp_alpha: "0",
+		//- 			btn_background: "#ffffff",
+		//- 			btn_background_over: "#d9d9d9",
+		//- 			btn_textcolor: "#000000",
+		//- 			btn_textover: "#000000",
+		//- 			btn_bordcolor: "#ffffff",
+		//- 			btn_bordhover: "#d9d9d9",
+		//- 			text_concierge: ""
+		//- 			});
+		//- 		});
 				
-			});
-			$(window).on('load',function () {
-				setTimeout(function(){
-					frameLoaded();
-				},100)
-			});
+		//- 	});
+		//- 	$(window).on('load',function () {
+		//- 		setTimeout(function(){
+		//- 			frameLoaded();
+		//- 		},100)
+		//- 	});
 
 			
 		script(src="js/common.min.js")

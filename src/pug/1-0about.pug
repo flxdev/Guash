@@ -1,0 +1,29 @@
+extends _layout
+
+block title
+	title  1-0 about
+block config
+	- var main = ''
+block content
+	.wrapper
+		.box.page-head.full
+			.page-head-inner
+				.bread-cont
+					a(href="#").bread-item 
+						span Главная
+				.title.h1.white.animate-up Об отеле akvarel
+					i
+						img(src="img/icons/heart.png", alt="") 
+		.page-cover
+			.page-cover-inner.animate-bg(style='background-image: url(img/pagehead/h1.jpg)')
+	.wrapper.white
+		.box
+			.section-head-wrap
+				.section-head.animate-up
+					.section-svg
+						+svgstay4
+			.content-wrapper
+				.columns
+					p Akvarel – это название с историей. В здании, где ныне находится отель, некогда находилось обувное ателье с таким названием. В Москве такое бывает очень часто: суть, жанр и контекст места давно поменялись, а историческая память сохранилась – и нам нравится быть среди тех, кто ее сохраняет. 
+					p Акварель — смешение, среда, где одно перетекает в другое – это метафора Москвы с ее разнообразными слоями жизни, кипучей, порой даже бьющей через край энергией и насыщенной культурной жизнью.
+					
