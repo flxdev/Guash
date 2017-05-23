@@ -156,6 +156,8 @@ body, .out
 		flex-flow: row wrap
 		.wrapper
 			height: 100vh
+			+r(740)
+				height: auto
 	&__content
 		flex: 1 0 auto
 		width: 100%
@@ -763,13 +765,13 @@ body, .out
 					height: 100%
 					display: inline-block
 					+padlr(5px)
+					filter: brightness(120%);
 					a
 						display: block
 						transition: opacity .3s, filter .3s
 						+rem(width,32px)
 						+rem(height,32px)
 						&:hover
-							filter: brightness(110%)
 							opacity: .6
 						svg
 							width: 100%
@@ -933,6 +935,17 @@ html:not(.fp-enabled)
 		+r(600)
 			&:after
 				display: none
+	.section-head-wrap
+		position: static
+	.hotel-about-text
+		.text-bold
+			+rem(margin-top,25px)
+		+screen(801,1400)
+			width: 52%
+	.hotel-about-img
+		+screen(801,1400)
+			width: 48%	
+		
 				
 .bread
 	&-cont
@@ -1167,6 +1180,16 @@ html:not(.fp-enabled)
 	flex-flow: row wrap
 	align-items:stretch
 	text-align: left
+	&-wrap
+		&.img-left
+			.hotel-about-text
+				padding-right: 0
+				padding-left: 10.5%
+				+r(985)
+					padding-left: 7.5%
+				+r(800)
+					padding-left: 0
+					padding-right: 0
 	+r(1400)
 		.hotel-about-text
 			width: 65%
@@ -1214,7 +1237,9 @@ html:not(.fp-enabled)
 		position: relative
 		+rem(padding-bottom, 65px)
 		+rem(padding-right,25px)
-		.text-bold
+		+rm(801)
+			+rem(margin-top,-5px)
+		.text-bold,.text
 			+rem(margin-top,15px)
 		&-feature
 			display: flex
@@ -2136,5 +2161,253 @@ a:hover .line-cont,a:hover ~ .line-cont
 .ui-widget-header .ui-state-disabled 
 	opacity: 0.85;
 
-@media only screen and (max-width : 800px)
-	.ui-datepicker-multi
+.content
+	&-wrapper
+		+rem(padding-top,105px)
+		+rem(padding-bottom,85px)
+		+r(1400)
+			+rem(padding-top,85px)
+			+rem(padding-bottom,65px)
+		+r(740)
+			+rem(padding-top,45px)
+			+rem(padding-bottom,35px)
+		.section-head-wrap
+			+rem(padding-top,35px)
+			+rem(margin-bottom,60px)
+			&.secretplace
+				padding-top: 0
+			+r(740)
+				padding-top: 0
+				+rem(margin-bottom,30px)
+			.section-head
+
+				+rm(1281)
+					width: 25.3vw
+				+rm(1681)
+					width: 20.3vw
+
+		.columns
+			column-count: 2
+			+rem(column-gap,40px)
+			+r(700)
+				column-count: 1
+			p 
+				+rem(font-size,18px)
+				color: $blk
+				line-height: 1.667;
+				+rem(margin-bottom,25px)
+.slider
+	&-wrap
+		padding-bottom: 47%
+		position: relative
+		+r(1024)
+			padding-bottom: 64.25%
+		.flickity-prev-next-button
+			filter: brightness(120%)
+			+r(600)
+				+rem(width,45px)
+				+rem(height,45px)
+			&.previous
+				transform: translateY(-50%) scale(-1,1)
+	&-inner
+		height: 100%
+		+coverdiv
+		.flickity-slider
+			will-change: transform
+	&-element
+		overflow: hidden
+		width: 100%
+		backface-visibility: hidden
+		height: 100%
+
+		&-inner
+			width: 100%
+			height: 100%
+			+cover
+			will-change: transform
+			contain: paint
+  
+.beauty
+	&-cont
+		display: block
+		+rem(max-width,960px)
+		+padlr(15px)
+		+rem(padding-top,30px)
+		margin: 0 auto
+		+rem(padding-bottom,70px)
+		+r(600)
+			padding-top: 10vw
+			padding-bottom: 12vw
+	&-svg
+		max-width: 23.3vw
+		display: block
+		margin: 0 auto
+		+r(600)
+			max-width: 75vw
+.rows
+	&-wrapper
+		font-size: 0
+	&-row 
+		display: flex
+		flex-flow: row wrap
+		justify-content: flex-start
+		align-itemms: stratch
+		&:nth-child(even)
+			+rm(951)
+				.rows-block	
+					&:first-child
+						order: 2
+					&:last-child
+						order: 1
+						text-align: right
+		+r(950)
+			.rows-block	
+				&:first-child
+					order: 2
+				&:last-child
+					order: 1
+					
+	&-block
+		width: 50%
+		+vertical
+		overflow: hidden
+		text-align: left
+		+r(950)
+			width: 100%
+		&-img
+			width: 100%
+			height: 100%
+			+cover
+			display: inline-block
+			vertical-align: middle
+			min-height: 66.8vh
+			contain: paint
+			+r(951)
+				height: 0
+				min-height: 0
+				padding-bottom: 65.25%
+
+		img
+			width: 100%
+			display: inline-block
+		&-content
+			display: inline-block
+			vertical-align: middle
+			text-align: left
+			width: 100%
+			+rem(max-width,650px)
+			+padlr(85px)
+			+rem(padding-top,25px)
+			+rem(padding-bottom,25px)
+			+r(1100)
+				+padlr(45px)
+			+r(950)
+				+rem(padding-top,55px)
+				+rem(padding-bottom,55px)
+			+r(360)
+				+padlr(15px)
+			.text 
+				+rem(margin-top,19px)
+				+rem(margin-bottom,33px)
+				// max-width: 60%
+			.btn 
+				+rem(min-width,160px)
+
+				
+.btn-next
+	width: 100%
+	text-align: center
+	font-size: 0
+	contain: paint
+	&:hover
+		+rm(1025)
+
+			.btn-next-inner
+				&:before
+					opacity: .9
+				.line
+					&-cont
+						opacity: 0
+					&-element
+						width: 0 !important
+						left: auto !important
+				.title
+					color: $active
+
+
+
+	&-inner
+		+padlr(20px)
+		+rem(padding-top,90px)
+		+rem(padding-bottom,80px)
+		+r(768)
+			+rem(padding-top,66px)
+			+rem(padding-bottom,50px)
+		+cover
+		+vertical
+		background-attachment: fixed
+		position: relative
+		z-index: 0
+		will-change: transform
+		background-attachment: fixed
+		transform: translateX(0)
+		contain: paint
+		&:before
+			content: ''
+			+coverdiv
+			background-color: $blk
+			opacity: .7
+			+tr(opacity .3s)
+			backface-visibility: hidden
+			z-index: 
+			z-index: 1
+	&-content 
+		display: inline-block
+		position: relative
+		z-index: 2
+		vertical-align: middle
+		backface-visibility: hidden
+		.text-sm
+			+rem(margin-bottom,15px)
+		.title
+			+rem(margin-bottom,10px)
+			+r(400)
+				+rem(font-size,28px)
+			+rm(1025)
+				+tr(color .3s)
+		.line
+			&-cont
+				opacity: 1
+				+rem(width,250px)
+				+rem(height,27px)
+				transform: rotate(-2deg)
+			&-element
+				width: 100% !important
+				left: 0 !important
+
+.specials
+	&-wrapper
+		+rem(padding-top,110px)
+		+rem(padding-bottom,110px)
+	&-content 
+		display: flex
+		flex-flow: row wrap
+		justify-content: space-between
+
+	&-head
+		text-align: center
+	&-item
+		+rem(margin-bottom,30px)
+		+rem(flex-basis, 118px)
+		flex-shrink: 0
+		text-align: center
+		
+	&-image
+	&-descr
+		text-align: center
+		
+
+		
+
+
+

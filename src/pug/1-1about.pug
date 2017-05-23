@@ -1,0 +1,64 @@
+extends _layout
+
+block title
+	title  комната для переговоров
+block config
+	- var main = ''
+block content
+	.wrapper
+		.box.page-head.full
+			.page-head-inner
+				.bread-cont
+					a(href="#").bread-item 
+						span Главная
+					a(href="#").bread-item 
+						span О нас
+				.title.h1.white.animate-up комната для переговоров
+		.page-cover
+			.page-cover-inner.animate-bg(style='background-image: url(img/pagehead/h2.jpg)')
+	.wrapper.white
+		.box
+			.content-wrapper
+				// модификатор.seсretplace
+				.section-head-wrap.secretplace
+					.section-head.animate-up
+						.section-svg
+							+svgstay
+				.content-content
+					//вот тут западло, в предыдущих таких блоках текст был жирным, в этом нет. поменял text-bold на .text
+					//если надо модификатор, напиши
+					.hotel-about-wrap
+						.hotel-about
+							.hotel-about-text
+								.hotel-about-text-content
+									.title.h3 место для важных встреч
+									.text Cкрытая от посторонних глаз, она дает вам возможность провести переговоры в конфиденциальной обстановке, организовать рабочую сессию, а если настроение к тому располагает — встречу в неформальной атмосфере закрытого винного клуба. Если же ваша встреча проходит в формате «без галстуков», мы будем рады предложить вам разнообразные вина из нашей частной энотеки.
+									.text У нас есть всё необходимое для того, чтобы ключевые игроки вашей команды — визионеры и экспериментаторы, тактики и стратеги, разработчики и аналитики — вышли после встречи со свежими идеями и новыми договоренностями.
+							.hotel-about-img
+								img(src="img/index/n1.jpg", alt="")
+	.wrapper.white
+		.slider-wrap
+			.slider-inner.js-slider
+				.slider-element
+					.slider-element-inner(style="background-image: url(img/pagehead/sli2.jpg)")
+				.slider-element
+					.slider-element-inner(style="background-image: url(img/pagehead/h1.jpg)")
+				.slider-element
+					.slider-element-inner(style="background-image: url(img/pagehead/sli1.jpg)")
+	.wrapper.gray
+		.box
+			.specials-wrapper
+				.specials-head
+					.title.h3 Мы полностью возьмем на себя организацию вашего делового совещания:
+				.specials-content
+					.specials-item
+						.specials-image
+							img(src="img/specials/wi-fi.svg", alt="")
+						.specials-descr
+							.text-bold Wi-Fi
+	.wrapper.blk
+		+next('лобби-бар')
+
+
+
+				

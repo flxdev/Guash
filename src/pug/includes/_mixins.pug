@@ -191,6 +191,13 @@ mixin line
 		.line-cutter
 			.line-element
 				img(src="img/icons/line.svg", alt="")
+mixin next(name)
+	a(href="#").btn-next
+		.btn-next-inner(style='background-image: url(img/pagehead/h1.jpg)')
+			.btn-next-content
+				.text-sm Далее:
+				.title.h3.white #{name}
+				+line
 //-bullshit
 mixin bron
 	.bron-wrapper

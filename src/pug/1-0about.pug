@@ -18,12 +18,76 @@ block content
 			.page-cover-inner.animate-bg(style='background-image: url(img/pagehead/h1.jpg)')
 	.wrapper.white
 		.box
-			.section-head-wrap
-				.section-head.animate-up
-					.section-svg
-						+svgstay4
 			.content-wrapper
-				.columns
-					p Akvarel – это название с историей. В здании, где ныне находится отель, некогда находилось обувное ателье с таким названием. В Москве такое бывает очень часто: суть, жанр и контекст места давно поменялись, а историческая память сохранилась – и нам нравится быть среди тех, кто ее сохраняет. 
-					p Акварель — смешение, среда, где одно перетекает в другое – это метафора Москвы с ее разнообразными слоями жизни, кипучей, порой даже бьющей через край энергией и насыщенной культурной жизнью.
-					
+				.section-head-wrap
+					.section-head.animate-up
+						.section-svg
+							+svgstay4
+				.content-content
+					.columns
+						p Akvarel – это название с историей. В здании, где ныне находится отель, некогда находилось обувное ателье с таким названием. В Москве такое бывает очень часто: суть, жанр и контекст места давно поменялись, а историческая память сохранилась – и нам нравится быть среди тех, кто ее сохраняет. 
+						p Акварель — смешение, среда, где одно перетекает в другое – это метафора Москвы с ее разнообразными слоями жизни, кипучей, порой даже бьющей через край энергией и насыщенной культурной жизнью.
+	.wrapper.white
+		.slider-wrap
+			.slider-inner.js-slider
+				.slider-element
+					.slider-element-inner(style="background-image: url(img/pagehead/sli1.jpg)")
+				.slider-element
+					.slider-element-inner(style="background-image: url(img/pagehead/h1.jpg)")
+				.slider-element
+					.slider-element-inner(style="background-image: url(img/pagehead/sli1.jpg)")
+	.wrapper.white
+		.box
+			.content-wrapper
+				.content-content
+					.hotel-about-wrap
+						.hotel-about
+							.hotel-about-text
+								.hotel-about-text-content
+									.title.h3 Антистресс-дизайн
+									.text-bold Akvarel Stoleshnikov – это 24 комфортабельных номера, интерьер которых отличает современная роскошь, функциональность и высокое качество отделки. Мы вложили новый для Москвы смысл в понятие дизайн-отеля. Уникальные дизайнерские решения встречают вас с самого первого шага, начиная от стойки ресепшн и заканчивая совершенно особенным подбором мебели и материалов в обстановке вашего номера. Никаких случайных предметов, чистое эстетическое наслаждение. Всё, чтобы создать атмосферу, в которой можно расслабиться и подзарядится для встречи с Москвой.
+							.hotel-about-img
+								img(src="img/index/room2square.jpg", alt="")
+	.wrapper.blk
+		.beauty-cont
+			.beauty-svg
+				+svgstay5
+	.wrapper.white
+		.rows-wrapper
+			.rows-row
+				.rows-block
+					.rows-block-img(style='background-image: url(img/index/row1.jpg)')
+				.rows-block
+					.rows-block-content
+						.title.h3 комната для переговоров
+						.text Cкрытая от посторонних глаз, она дает вам возможность провести переговоры в конфиденциальной обстановке, организовать рабочую сессию, а если настроение к тому располагает – встречу в неформальной атмосфере закрытого винного клуба.
+						a(href="#").btn
+							span Подробнее	
+			.rows-row
+				.rows-block
+					.rows-block-img(style='background-image: url(img/index/row2.jpg)')
+				.rows-block
+					.rows-block-content
+						.title.h3 стильный Лобби-бар
+						.text Лобби-бар с летней террасой, где благодаря стараниям нашего бармена вас ждут не только классические, но и новые вкусовые впечатления.
+						a(href="#").btn
+							span Подробнее	
+	.wrapper.gray
+		.box
+			.content-wrapper
+				.content-content
+					//модификатор .img-left
+					.hotel-about-wrap.img-left
+						.hotel-about
+							.hotel-about-img
+								img(src="img/index/room2square.jpg", alt="")
+							.hotel-about-text
+								.hotel-about-text-content
+									.title.h3 Бесценные советы
+									.text-bold В любое время дня и ночи вы можете рассчитывать на совет наших опытных сотрудников о том, куда стоит отправиться и что нового происходит в окрестных заведениях. Наша специальная карта центра Москвы поможет вам открыть двери заведений, зачастую остающихся секретом местных жителей. Мы также приготовили для вас специальные предложения от наших партнеров – магазинов, ресторанов, баров, салонов красоты, расположенных по соседству, которые мы тщательно отбираем.
+	.wrapper.blk
+		+next('Наши номера')
+
+
+
+				
