@@ -1,0 +1,80 @@
+extends _layout
+
+block title
+	title  наши номер
+block config
+	- var main = ''
+block content
+	.wrapper
+		.box.page-head.full
+			.page-head-inner
+				.bread-cont
+					a(href="#").bread-item 
+						span Главная
+					a(href="#").bread-item 
+						span Номера
+				.title.h1.white.animate-up Superior
+		.page-cover
+			.page-cover-inner.animate-bg(style='background-image: url(img/pagehead/h1.jpg)')
+	.wrapper.white
+		.box
+			.content-wrapper
+				//модификатор .room-inner
+				.section-head-wrap.room-inner
+					.section-head.animate-up
+						.section-svg
+							+svgstay2
+				.content-content
+					//модификатор .hotel-about-room
+					// используется только на стртаницах номеров судя по всему
+					.hotel-about-wrap.hotel-about-room
+						.hotel-about
+							.hotel-about-text
+								.hotel-about-text-content
+									.text Комфортабельный номер Superior отличается современной роскошью, уникальными дизайнерскими решениями. Все материалы, использованные в отделке номера, экологичны, а система индивидуального климат-контроля настраивается с точностью до градуса.
+									//хз ведет это на модалку или на сам сайт бронирования
+									a(href="#").btn
+										span Перейти к бронированию
+							.hotel-about-img
+								.room-descr
+									.text-bold Размер номера 25 – 27 м2. 1 большая двуспальная или 2 односпальные кровати. Размещение детей до 12 лет бесплатно без предоставления дополнительной кровати (все дети с родителями). Стоимость дополнительной кровати — 1500 рублей.
+	.wrapper.gray
+		.box
+			//.room-inner для таких секций на внутренней странице
+			// потому что мы не любим одинковые отступы  ¯\_(ツ)_/¯
+			.specials-wrapper.room-inner
+				.specials-head
+					.title.h3 удобства номера:
+				.specials-content
+					+special('wifi.png', 'Высокоскоростной Wi-Fi, спутниковое телевидение, USB-розетки')
+					+special('chay.png', 'Наборы для приготовления чая, минеральная вода')
+					+special('seif.png', 'Сейф')
+					+special('fen.png', 'Косметика Acqua di Colonia, мягкие банные халаты, тапочки, фен с ионной технологией')
+					+special('vino.png', 'Минибар (за дополнительную стоимость)')
+					+special('utug.png', 'Утюг и гладильная доска (по запросу)')
+	.wrapper.white
+		.slider-wrap
+			.slider-inner.js-slider
+				.slider-element
+					.slider-element-inner(style="background-image: url(img/pagehead/sli1.jpg)")
+				.slider-element
+					.slider-element-inner(style="background-image: url(img/pagehead/h1.jpg)")
+				.slider-element
+					.slider-element-inner(style="background-image: url(img/pagehead/sli1.jpg)")
+	.wrapper.white
+		.box
+			.specials-wrapper.room-inner
+				.specials-head
+					.title.h3 услуги отеля:
+				.specials-content
+					+special('eda.png', 'Завтрак включен в стоимость ')
+					+special('wash.png', 'Услуги стирки и глажения (за дополнительную стоимость)')
+					+special('comfort.png', 'Меню подушек')
+					+special('drink.png', 'Доставка из бара')
+					+special('24.png', 'Вызов такси, звонок-будильник, бронирование билетов и пр. дополнительные услуги')
+	.wrapper.blk
+		+next('отзывы')
+
+
+
+				

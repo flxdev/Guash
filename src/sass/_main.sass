@@ -161,7 +161,9 @@ body, .out
 	&__content
 		flex: 1 0 auto
 		width: 100%
+		font-size: 0
 		* 
+
 		+rm(768)
 			+scrollbar
 				+rem(width,4px)
@@ -655,15 +657,17 @@ body, .out
 		transition: transform .25s, opacity .25s, margin .25s, height .25s, background-color .25s
 		transition-timing-function: ease-in-out
 		&:first-child
-			transition-delay: .1s
+			transition-delay: .22s
 		&:nth-child(2)
 			margin: 5px 0 0;
 			height: 2px
+			transition-delay: .15s
 		&:nth-child(3)
 			margin: 0 0 5px;
 			height: 2px
+			transition-delay: .15s
 		&:nth-child(4)
-			transition-delay: .1s
+			transition-delay: .22s
 
 .header-btn-wrap
 	+rem(margin-left,-35px)
@@ -676,6 +680,7 @@ body, .out
 	position: relative
 	+rem(min-width,157px)
 	+tr(margin-top .3s)
+
 	.header-btn-inner
 		transition-delay: .8s
 	&:hover
@@ -683,9 +688,11 @@ body, .out
 			i 
 				&:first-child
 					transform: translateY(-2px)
+					transition-delay: .15s
 				&:nth-child(4)
-					transform: translateY(2px)	
-	&.active
+					transform: translateY(2px)
+					transition-delay: .15s
+	&.active,&.active:hover
 		// +rem(margin-top,-35px)
 		.header-btn-inner
 			position: relative
@@ -695,22 +702,22 @@ body, .out
 		i 
 			background-color: $white !important
 			&:first-child
-				transform: translateY(-10px)	
+				transform: translateY(-15px)	
 				opacity: 0
-				transition-delay: 0s
+				transition-delay: .1s
 			&:nth-child(4)
-				transform: translateY(10px)	
+				transform: translateY(15px)	
 				opacity: 0
-				transition-delay: 0s
+				transition-delay: .1s
 			&:nth-child(2)
 				margin: 0 0 -4px
 				transform: rotate(45deg)
-				transition-delay: .1s
+				transition-delay: .15s
 				height: 4px
 			&:nth-child(3)
 				margin: 0
 				transform: rotate(-45deg)
-				transition-delay: .1s
+				transition-delay: .15s
 				height: 4px
 		&:hover
 			i 
@@ -896,7 +903,6 @@ body, .out
 	&.full
 		height: 100vh
 		position: relative
-
 		&:after
 			content: ''
 			position: absolute
@@ -928,6 +934,12 @@ body, .out
 			+rem(margin-top,85px)
 			+r(400)
 				+rem(margin-top,55px)
+	&:not(.full)
+		+rem(padding-top,360px)
+		+rem(padding-bottom,75px)
+		.page-head-inner
+			+rem(min-height,170px)
+
 html:not(.fp-enabled)
 	.page-head.full
 		.page-head-inner
@@ -953,6 +965,10 @@ html:not(.fp-enabled)
 		+rem(font-size,16px)
 	&-item
 		color: $gray1
+		&:only-of-type
+			&:after
+				display: none
+				
 		&:not(:last-child)
 			&:after
 				display: inline-block
@@ -1190,6 +1206,21 @@ html:not(.fp-enabled)
 				+r(800)
 					padding-left: 0
 					padding-right: 0
+		&.hotel-about-room
+			.hotel-about
+				+r(768)
+					+rem(padding-top,10px)
+			.hotel-about-img,.hotel-about-text
+				vertical-align: middle
+			.hotel-about-text
+				+r(740)
+					+rem(padding-bottom,25px)
+				+rm(801)
+					+rem(padding-right,40px)
+				.btn 
+					+rem(margin-top,35px)
+					// +rem(margin-bottom,15px)
+					+padlr(35px)
 	+r(1400)
 		.hotel-about-text
 			width: 65%
@@ -1232,6 +1263,14 @@ html:not(.fp-enabled)
 			width: 100%
 	&-img
 		width: 48%	
+		.room-descr
+			width: 100%	
+			border: 7px solid #efefef
+			+rem(padding, 37px 55px)
+			+r(500)
+				+rem(padding, 20px 25px)
+			.text-bold
+				line-height: 1.6
 	&-text
 		width: 52%
 		position: relative
@@ -1241,6 +1280,7 @@ html:not(.fp-enabled)
 			+rem(margin-top,-5px)
 		.text-bold,.text
 			+rem(margin-top,15px)
+
 		&-feature
 			display: flex
 			flex-flow: row wrap
@@ -1559,7 +1599,8 @@ a:hover .line-cont,a:hover ~ .line-cont
 				+rem(margin-top,13px)
 				font-weight: 500
 				+rem(letter-spacing, 1.2px)
-				+rem(margin-right,-15px)
+				+rm(741)
+					+rem(margin-right,-15px)
 			.text 
 				+rem(margin-top,10px)
 				width: 100%
@@ -1935,16 +1976,19 @@ a:hover .line-cont,a:hover ~ .line-cont
 				cursor: pointer
 				position: relative
 				z-index: 2
+				+rem(padding-left,10px)
+				+rem(font-size,16px)
 				+placeholder
 					color: $white
 					opacity: 1 
+					+rem(font-size,16px)
 				&:valid
 					+placeholder
 						color: $white
 						opacity: 0 
 			&~ svg
 				position: absolute
-				top: 53%
+				top: 25%
 				pointer-events: none
 				+rem(width,19px)
 				+rem(height,19px)
@@ -2176,6 +2220,19 @@ a:hover .line-cont,a:hover ~ .line-cont
 			+rem(margin-bottom,60px)
 			&.secretplace
 				padding-top: 0
+			&.room-inner
+				.stt1
+					fill: $blk
+				+rm(1281)
+					.section-head
+						width: 33.3vw;
+				+r(1280)
+					.section-head
+						width: 43.3vw;
+				+r(768)
+					.section-head
+						width: 85.3vw;	
+						max-width: 85.3vw;	
 			+r(740)
 				padding-top: 0
 				+rem(margin-bottom,30px)
@@ -2189,10 +2246,12 @@ a:hover .line-cont,a:hover ~ .line-cont
 		.columns
 			column-count: 2
 			+rem(column-gap,40px)
+			column-fill: auto;
+			break-inside: avoid-column;
 			+r(700)
 				column-count: 1
 			p 
-				+rem(font-size,18px)
+				+rem(font-size,18px)	
 				color: $blk
 				line-height: 1.667;
 				+rem(margin-bottom,25px)
@@ -2252,6 +2311,7 @@ a:hover .line-cont,a:hover ~ .line-cont
 		flex-flow: row wrap
 		justify-content: flex-start
 		align-itemms: stratch
+		font-size: 0
 		&:nth-child(even)
 			+rm(951)
 				.rows-block	
@@ -2272,6 +2332,7 @@ a:hover .line-cont,a:hover ~ .line-cont
 		+vertical
 		overflow: hidden
 		text-align: left
+		font-size: 0
 		+r(950)
 			width: 100%
 		&-img
@@ -2281,12 +2342,24 @@ a:hover .line-cont,a:hover ~ .line-cont
 			display: inline-block
 			vertical-align: middle
 			min-height: 66.8vh
+			font-size: 0
 			contain: paint
 			+r(951)
 				height: 0
 				min-height: 0
 				padding-bottom: 65.25%
+			position: relative
 
+			&-cover
+				+coverdiv
+				+vertical
+				background-color: rgba(0,0,0,.5)
+				.key-elem
+					display: inline-block
+					width: 6%
+					vertical-align: middle
+					svg
+						width: 100%
 		img
 			width: 100%
 			display: inline-block
@@ -2389,25 +2462,238 @@ a:hover .line-cont,a:hover ~ .line-cont
 	&-wrapper
 		+rem(padding-top,110px)
 		+rem(padding-bottom,110px)
+		+r(768)
+			+rem(padding-top,70px)
+			+rem(padding-bottom,70px)
+		&.room-inner
+			+rem(padding-top,75px)
+			+rem(padding-bottom,50px)
+			+r(768)
+				+rem(padding-top,45px)
+				+rem(padding-bottom,50px)
+			.specials
+				&-head
+					+rem(margin-bottom,10px)
+				&-image
+					+rem(max-width,155px)
+					+r(500)
+						+rem(max-width,135px)
+				&-content 
+					+rm(1025)
+						+rem(margin-right,-45px)
+						+rem(margin-left,-45px)
 	&-content 
 		display: flex
 		flex-flow: row wrap
-		justify-content: space-between
-
+		justify-content: space-around
+		+rem(margin-right,-38px)
+		+rem(margin-left,-38px)
+		+r(1024)
+			margin: 0
 	&-head
 		text-align: center
+		+rem(margin-bottom,65px)
+		+r(768)
+			+rem(margin-bottom,40px)
+		.title
+			+rem(max-width,800px)
+			display: inline-block
+			line-height: 1.4
+			
 	&-item
 		+rem(margin-bottom,30px)
-		+rem(flex-basis, 118px)
+		+rem(flex-basis, 145px)
 		flex-shrink: 0
 		text-align: center
-		
+		flex-grow: 1
+		+r(768)
+			+rem(margin-bottom,10px)
 	&-image
+		+rem(max-width,145px)
+		display: block
+		margin: 0 auto
+		+r(500)
+			+rem(max-width,135px)
+		img
+			width: 100%
 	&-descr
 		text-align: center
+		.text-bold
+			font-weight: 400
+			+padlr(7px)
+			+rem(margin-top,1px)
+			line-height: 1.3
+			+rem(max-width,200px)
+			margin-left: auto
+			margin-right: auto
+			
 		
+.widget-container
+	width: 100%
+	text-align: center
+	+rem(padding-top,85px)
+	+rem(padding-bottom,110px)
+	+r(600)
+		+rem(padding-top,45px)
+		+rem(padding-bottom,55px)
+		.title
+			+rem(margin-bottom,35px)
+	.title
+		display: block
+		+rem(margin-bottom,55px)
+	.widget-wrapper
+		text-align: left
+	
+.news-mainwrap
+	+rem(padding-top,70px)
+	+r(600)
+		+rem(padding-top,45px)
+	&-sort
+		text-align: center
+		&-cont 
+			font-size: 0
+			white-space: nowrap
+			overflow-x: auto
+			.news-sort-elem
+				display: inline-block
+				vertical-align: top
+				+padlr(15px)
+				position: relative
+				+rem(letter-spacing, .2px)
+				white-space: normal
+				+rem(margin-bottom,50px)
+				+r(1024)
+					+rem(margin-bottom,25px)
+				&:before
+					position: absolute
+					content: ''
+					display: inline-block
+					+rem(height,10px)
+					+contain
+					background-image: url(../img/icons/active.png)
+					+rem(background-size,58px auto)
+					+rem(left,0)
+					+rem(right,0)
+					+rem(bottom,-8px)
+					opacity: 0
+					+tr(opacity .3s)
+				&.active
+					font-weight: 500
+					&:before
+						opacity: 1	
+	.news-wrapper
+		+rem(padding-top,60px)
+		+r(600)
+			+rem(padding-top,20px)
+		.news-elem
+			+rem(margin-bottom,60px)
+			+rm(741)
+				.news-elem-name
+					.title
+						+cut(4)
+			+r(740)
+				+rem(margin-bottom,30px)	
 
+	&-pagi
+		+rem(padding-top,10px)
+		+rem(padding-bottom,90px)
+		+r(768)
+			+rem(padding-bottom,40px)
+.pagi-cont
+	display: block
+	+rem(max-width,500px)
+	width: 100%
+	margin: 0 auto
+	white-space: nowrap
+	text-align: center
+	+rem(padding-bottom,40px)
+	span.divider
+		display: inline-block
+		vertical-align: middle
+		+rem(margin-top,10px)
+		+rem(font-size,16px)
+		font-weight: 500
+		+rem(padding-right,5px)
+		color: $blk
+	&-link
+		display: inline-block
+		vertical-align: middle
+		&:not(.right)
+			.pagi-cont-link-image
+				transform: scale(-1,1)
+		&:not(.disabled):hover
+			filter: brightness(120%)
+		&.disabled
+			opacity: .5
+			pointer-events: none
+		&-image
+			+vertical
+			+rem(width,44px)
+			+rem(height,44px)
+			+tr(filter .3s)
+			will-change: filter
+			+r(600)
+				+rem(width,35px)
+				+rem(height,35px)
+			svg
+				+rem(max-width,30px)
+				+rem(max-height,30px)
+				display: inline-block
+				vertical-align: middle
+				
+	&-pages
+		font-size: 0
+		display: inline-block
+		vertical-align: middle
+		+rem(padding-right,2px)
+	&-elem 
+		display: inline-block
+		vertical-align: middle
+		// +padlr(14px)
+		text-align: center
 		
+		position: relative
+		+rem(width,49px)
+		+r(600)
+			+rem(width,36px)
+			svg 
+				+rem(max-width,14px)
+				+rem(max-height,18px)
+		&:before
+			position: absolute
+			content: ''
+			display: inline-block
+			+rem(height,10px)
+			+contain
+			background-image: url(../img/icons/active.png)
+			+rem(background-size,58px auto)
+			+rem(left,-12px)
+			+rem(right,-8px)
+			+rem(bottom,-20px)
+			opacity: 0
+			+tr(opacity .3s)
+			+r(600)
+				+rem(left,-9px)
+				+rem(right,-5px)
+				+rem(bottom,-15px)
+				+rem(background-size,38px auto)
+		&.active
+			font-weight: 500
+			&:before
+				opacity: 1	
+		&-image
+			+vertical
+			svg 
+				+rem(max-width,20px)
+				+rem(max-height,24px)
+				display: inline-block
+				vertical-align: middle
+				
+
+
+
+
+
 
 
 

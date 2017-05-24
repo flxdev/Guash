@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			  var scrollTop = window.pageYOffset || window.scrollTop;
 			  var scrollPercent = scrollTop/area || 0;
 			  var offset = elem.offset().top;
-				offset = offset + elemh / 2;
+				offset = offset + elemh / 2.3;
 				var calc = 1 - (scrollTop - offset + range) / range;
 				if(scrollTop < windowHeight * 1.5){
 					TweenLite.set(square1, {
@@ -183,7 +183,6 @@ document.addEventListener("DOMContentLoaded", function() {
 						y: scrollPercent*window.innerWidth*coef2,
 					});
 				}
-				console.log(scrollTop)
 				if(scrollTop === undefined){
 					setTimeout(function(){
 						TweenLite.set(square1, {
@@ -196,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function() {
 				}
 
 				square1.css({ 'opacity': calc });
-				console.log(calc)
+				console.log(calc,range)
 				if ( calc > '1' ) {
 					square1.css({ 'opacity': 1 });
 				} else if ( calc < '0' || calc == NaN ) {
