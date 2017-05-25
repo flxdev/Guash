@@ -6,7 +6,7 @@ block config
 	- var main = ''
 block content
 	.wrapper
-		.box.page-head.full
+		.box.page-head
 			.page-head-inner
 				.bread-cont
 					a(href="#").bread-item 
@@ -94,28 +94,6 @@ block content
 								img(src="img/index/n1.jpg", alt="")
 	.wrapper.blk
 		.box
-			.widget-container
-				.title.h3.white поиск номера онлайн
-				.widget-wrapper
-					form(action="/").form.bronvo-form
-						.input-form
-							// инпут lcode 
-							input.input-main(type="hidden",name="lcode" value="1413618257")
-							.input-item.s33
-								.input-wrapper
-									input.input-main.datepicker(type="text",name='dfrom', readonly="readonly",placeholder="Заезд")
-									svg(class="icon icon-drop")
-										use(xlink:href="#calendar" xmlns:xlink="http://www.w3.org/1999/xlink")
-							.input-item.s33
-								.input-wrapper
-									input.input-main.datepicker(type="text",name="dto", readonly="readonly",placeholder="Выезд")
-									svg(class="icon icon-drop")
-										use(xlink:href="#calendar" xmlns:xlink="http://www.w3.org/1999/xlink")
-							.input-item.s33
-								button(type='submit').btn.btn-white
-									span Показать наличие
-	.wrapper.blk
-		.box
 			.widget-container(style='background-image: url(img/icons/keybg.png)')
 				.title.h3.white форма обратной связи
 				.widget-wrapper
@@ -127,29 +105,18 @@ block content
 				.rows-block
 					// тут появлятся дополднительный ребенок
 					.rows-block-img(style='background-image: url(img/index/row1.jpg)')
-						.rows-block-img-cover
-							.key-elem
-								+keygold
 				.rows-block
 					.rows-block-content
-						.title.h3 Classic
-						.text C16 – 21 м2. 1 большая двуспальная или 2 односпальные кровати. Завтрак включен.
-						a(href="#").btn
-							span Подробнее	
-			.rows-row
-				.rows-block
-					.rows-block-img(style='background-image: url(img/pagehead/sli1.jpg)')
-						.rows-block-img-cover
-							.key-elem
-								+keygold
-				.rows-block
-					.rows-block-content
-						.title.h3 superior
-						.text 25 – 27 м2. 1 большая двуспальная или 2 односпальные кровати. Размещение детей до 12 лет с родителями бесплатно. Завтрак включен.впечатления.
-						a(href="#").btn
-							span Подробнее	
+						.title.h3 Как до нас добраться
+						ul
+							li 15 минут пешком до Красной площади;
+							li в 7 минутах ходьбы от станции метро «Театральная»;
+							li в 3 остановках метро расположен Белорусский вокзал, откуда отправляются поезда «Аэроэкспресс» до международного аэропорта «Шереметьево» (время в пути составляет 35 минут). 
+	.wrapper.white
+		.map-container
+			#map.map-elem(data-lat='55.762515',data-lon='37.614681',data-icon='img/icons/pin.png')
 	.wrapper.blk
-		+next('отзывы')
+		+next('что рядом')
 
 
 

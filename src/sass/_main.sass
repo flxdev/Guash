@@ -85,6 +85,9 @@ body
 	& ::-moz-selection
 		background-color: $active
 		color: $white
+	&.menu-open
+		position: fixed
+		
 
 body, .out
 	width: 100%
@@ -211,17 +214,21 @@ body, .out
 		line-height: 1.381;
 		+rem(font-size,42px)
 		+rem(letter-spacing,2px)
+		+r(400)
+			+rem(font-size,24px)
 	&.h3
 		+rem(font-size,28px)
 		line-height: 1.214;
 		font-weight: 500
 		+rem(letter-spacing,1.4px)
 		+r(400)
-			+rem(font-size,17px)
+			+rem(font-size,20px)
 	&.h4
 		+rem(font-size,24px)
 		line-height: 1.417;
 		+rem(letter-spacing,1.7px)
+		+r(400)
+			+rem(font-size,19px)
 	&.gold 
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
@@ -970,7 +977,7 @@ html:not(.fp-enabled)
 		color: $gray1
 		&:only-of-type
 			&:after
-				display: none
+				display: none !important
 				
 		&:not(:last-child)
 			&:after
@@ -1224,6 +1231,44 @@ html:not(.fp-enabled)
 					+rem(margin-top,35px)
 					// +rem(margin-bottom,15px)
 					+padlr(35px)
+		&.contact
+			+rm(741)
+				+rem(margin-bottom,-15px)
+			.hotel-about-text
+				padding-bottom: 0
+			.contact-block
+				&:not(:last-child)
+					+rem(margin-bottom,28px)
+				&:first-child
+					+r(800)
+						+rem(margin-top,20px)
+				.title
+					+rem(font-size,18px)
+					font-weight: 500
+					+r(800)
+						position: static
+						
+				.text
+					+rem(margin-top,11px)
+					+rem(margin-bottom,20px)
+					+clr
+					+r(800)
+						text-align: left
+					a 
+						color: $text
+						display: inline-block
+						+rem(padding-right,45px)
+						&:hover
+							+rm(1025)
+								color: $active
+						&:active
+							color: $active
+							transition-duration: 0s
+				.site-navigation-item.soc
+					text-align: left
+					padding: 0
+					+rem(margin-left,-10px)
+	
 	+r(1400)
 		.hotel-about-text
 			width: 65%
@@ -1283,7 +1328,8 @@ html:not(.fp-enabled)
 			+rem(margin-top,-5px)
 		.text-bold,.text
 			+rem(margin-top,15px)
-
+		.title
+			text-align: left !important
 		&-feature
 			display: flex
 			flex-flow: row wrap
@@ -2230,6 +2276,8 @@ a:hover .line-cont,a:hover ~ .line-cont
 		text-align: center
 		+rem(margin-top,-30px)
 		+rem(padding-bottom,35px)
+		+r(740)
+			margin-top: 0
 	&-wrapper
 		+rem(padding-top,105px)
 		+rem(padding-bottom,85px)
@@ -2239,44 +2287,7 @@ a:hover .line-cont,a:hover ~ .line-cont
 		+r(740)
 			+rem(padding-top,45px)
 			+rem(padding-bottom,35px)
-		img 
-			max-width: 100%
-			display: block
-			+rem(margin,50px auto)
-		h2,h3,h4,.title
-			font-family: $f
-			color: $blk
-			text-transform: uppercase;
-			font-weight: 400
-			text-align: center
-			display: block
-			+rem(max-width,850px)
-			+rem(margin,45px auto)
-			&:first-child
-				margin-top: 0
-			&.gold 
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				background-image: url(../img/gold.jpg)
-				filter: brightness(120%)
 
-				-webkit-font-smoothing: antialiased;
-		h2,.title.h2
-			line-height: 1.45;
-			+rem(font-size,42px)
-			+rem(letter-spacing,2px)
-			font-weight: 500
-		h3,.title.h3
-			+rem(font-size,28px)
-			line-height: 1.214;
-			font-weight: 500
-			+rem(letter-spacing,1.4px)
-			+r(400)
-				+rem(font-size,17px)
-		h4,.title.h4
-			+rem(font-size,24px)
-			line-height: 1.417;
-			+rem(letter-spacing,1.7px)
 		.section-head-wrap
 			+rem(padding-top,35px)
 			+rem(margin-bottom,60px)
@@ -2299,24 +2310,147 @@ a:hover .line-cont,a:hover ~ .line-cont
 				padding-top: 0
 				+rem(margin-bottom,30px)
 			.section-head
-
 				+rm(1281)
 					width: 25.3vw
 				+rm(1681)
 					width: 20.3vw
 
 		.columns
-			column-count: 2
-			+rem(column-gap,40px)
-			column-fill: auto;
-			break-inside: avoid-column;
-			+r(700)
-				column-count: 1
+			// column-count: 2
+			// +rem(column-gap,40px)
+			// column-fill: auto;
+			// break-inside: avoid-column;
+			font-size: 0
+			// +r(700)
+			// 	column-count: 1
+			+rem(margin-right,-42px)
 			p 
 				+rem(font-size,18px)	
 				color: $blk
 				line-height: 1.667;
 				+rem(margin-bottom,25px)
+				display: inline-block
+				vertical-align: top
+				width: 50%
+				+rem(padding-right,42px)
+				+r(700)
+					width: 100%
+					text-align: justify
+				+r(500)
+					+rem(font-size,16px)
+					
+	&-back 
+		+rem(padding-bottom,35px)
+		a 
+			text-align: center
+			display: block
+			
+			.text-sm 
+				+rem(font-size,18px)
+
+			.line-cont 
+				+rem(max-width,175px)
+				+rem(height,25px)
+				+rem(margin-top,3px)
+				opacity: 1
+				.line-element
+					width: 100%;
+					left: 0;
+			&:hover
+				+rm(1025)
+					.line-cont
+						opacity: 0
+						.line-element
+							width: 0
+							left: auto
+
+	&-inner
+		+rem(padding-bottom,10px)
+		&>*:first-child
+			+rem(margin-top,15px)
+		h2,h3,h4,.title
+			&:first-child
+				margin-top: 0
+		blockquote
+			display: block
+			text-align: center
+			+rem(font-size,30px)
+			font-style: italic
+			line-height: 1.333;
+			+rem(padding-top,65px)
+			position: relative
+			+rem(margin,58px auto)
+			+rem(max-width,850px)
+			+rem(letter-spacing,1px)
+			+r(768)
+				+rem(font-size,25px)
+			+r(500)
+				+rem(font-size,18px)
+				+rem(margin,38px auto)
+				+rem(padding-top,45px)
+				&:before
+					+rem(width,25px)
+					+rem(height,41px)
+			&:before
+				content: ''
+				position: absolute
+				+rem(width,38px)
+				+rem(height,41px)
+				top: 0
+				left: 50%
+				transform: translateX(-50%)
+				+contain
+				background-image: url(../img/icons/blockquote.png)
+		img 
+			max-width: 100%
+			display: block
+			+rem(margin,45px auto)
+			+r(500)
+				+rem(margin,30px auto)
+		h2,h3,h4,.title
+			font-family: $f
+			color: $blk
+			text-transform: uppercase;
+			font-weight: 400
+			text-align: center
+			display: block
+			+rem(max-width,850px)
+			+rem(margin,45px auto)
+			+r(500)
+				+rem(margin,30px auto)
+			&.gold 
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-image: url(../img/gold.jpg)
+				filter: brightness(120%)
+
+				-webkit-font-smoothing: antialiased;
+		h2,.title.h2
+			line-height: 1.45;
+			+rem(font-size,42px)
+			+rem(letter-spacing,2px)
+			font-weight: 500
+			+r(768)
+				+rem(font-size,34px)
+			+r(500)
+				+rem(font-size,25px)
+		h3,.title.h3
+			+rem(font-size,28px)
+			line-height: 1.214;
+			font-weight: 500
+			+rem(letter-spacing,1.4px)
+			+r(768)
+				+rem(font-size,23px)
+			+r(500)
+				+rem(font-size,20px)
+		h4,.title.h4
+			+rem(font-size,24px)
+			line-height: 1.417;
+			+rem(letter-spacing,1.7px)
+			+r(768)
+				+rem(font-size,19px)
+			+r(500)
+				+rem(font-size,18px)
 .slider
 	&-wrap
 		padding-bottom: 47%
@@ -2604,6 +2738,21 @@ a:hover .line-cont,a:hover ~ .line-cont
 	text-align: center
 	+rem(padding-top,85px)
 	+rem(padding-bottom,110px)
+	+contain
+	background-position:  top -55px center
+	&[style*="background-image"]
+		+rem(padding-top,92px)
+		+rem(padding-bottom,96px)
+		.title
+			+rem(margin-bottom,30px)
+		.widget-wrapper
+			text-align: center
+			.btn 
+				&:hover
+					color: $white
+		+r(600)
+			+rem(padding-top,45px)
+			+rem(padding-bottom,55px)
 	+r(600)
 		+rem(padding-top,45px)
 		+rem(padding-bottom,55px)
@@ -2619,6 +2768,17 @@ a:hover .line-cont,a:hover ~ .line-cont
 	+rem(padding-top,70px)
 	+r(600)
 		+rem(padding-top,45px)
+	&.news-mainwrap-add
+		.news-wrapper
+			+rem(padding-bottom,60px)
+			+r(600)
+				+rem(padding-bottom,20px)	
+		&>.title
+			text-align: center
+			+rem(padding-top,15px)
+			+r(600)
+				+rem(padding-bottom,20px)
+			
 	&-sort
 		text-align: center
 		&-cont 
@@ -2767,10 +2927,20 @@ a:hover .line-cont,a:hover ~ .line-cont
 				vertical-align: middle
 				
 
-.content 
-	&-section
-	&-content 
-	&-back
+.map
+	&-container
+		height: 90vh
+	&-elem
+		height: 100%
+ul:not([class])
+	display: block
+	li 
+		+rem(font-size,18px)
+		line-height: 1.667;
+		text-align: left;
+		color: $blk
+		position: relative
+		+rem(padding-left,39px)
 
 
 

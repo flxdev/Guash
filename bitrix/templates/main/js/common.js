@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			  var scrollTop = window.pageYOffset || window.scrollTop;
 			  var scrollPercent = scrollTop/area || 0;
 			  var offset = elem.offset().top;
-				offset = offset + elemh / 2.3;
+				offset = offset + elemh / 2;
 				var calc = 1 - (scrollTop - offset + range) / range;
 				if(scrollTop < windowHeight * 1.5){
 					TweenLite.set(square1, {
@@ -338,13 +338,240 @@ document.addEventListener("DOMContentLoaded", function() {
 		});
 	}datepick()
 	Slider();
+	initMap();
 //end of document.ready
 });
 //end of document.ready
+function initMap() {
+	var element = document.getElementById('map');
+	var latcord = parseFloat(element.getAttribute('data-lat'));
+	var loncord = parseFloat(element.getAttribute('data-lon'));
+	var imgpath = element.getAttribute('data-icon');
+	var centercords = {lat: latcord, lng: loncord};
+	var map = new google.maps.Map(element, {
+		zoom: 18,
+		center: centercords,
+		fullscreenControl: true,
+		scrollwheel: false,
+		mapTypeControl: false,
+		scaleControl: false,
+		streetViewControl: false,
+		zoomControlOptions: {
+			  position: google.maps.ControlPosition.RIGHT_CENTER
+		},
+		 styles:[
+			{
+				"featureType": "all",
+				"elementType": "labels.text.fill",
+				"stylers": [
+					{
+						"saturation": 36
+					},
+					{
+						"color": "#333333"
+					},
+					{
+						"lightness": 40
+					}
+				]
+			},
+			{
+				"featureType": "all",
+				"elementType": "labels.text.stroke",
+				"stylers": [
+					{
+						"visibility": "on"
+					},
+					{
+						"color": "#ffffff"
+					},
+					{
+						"lightness": 16
+					}
+				]
+			},
+			{
+				"featureType": "all",
+				"elementType": "labels.icon",
+				"stylers": [
+					{
+						"visibility": "off"
+					}
+				]
+			},
+			{
+				"featureType": "administrative",
+				"elementType": "geometry.fill",
+				"stylers": [
+					{
+						"color": "#fefefe"
+					},
+					{
+						"lightness": 20
+					}
+				]
+			},
+			{
+				"featureType": "administrative",
+				"elementType": "geometry.stroke",
+				"stylers": [
+					{
+						"color": "#fefefe"
+					},
+					{
+						"lightness": 17
+					},
+					{
+						"weight": 1.2
+					}
+				]
+			},
+			{
+				"featureType": "landscape",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"color": "#f5f5f5"
+					},
+					{
+						"lightness": 20
+					}
+				]
+			},
+			{
+				"featureType": "landscape.man_made",
+				"elementType": "geometry.stroke",
+				"stylers": [
+					{
+						"color": "#bebebe"
+					}
+				]
+			},
+			{
+				"featureType": "poi",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"visibility": "on"
+					},
+					{
+						"color": "#f5f5f5"
+					},
+					{
+						"lightness": 21
+					}
+				]
+			},
+			{
+				"featureType": "poi.park",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"color": "#dedede"
+					},
+					{
+						"lightness": 21
+					}
+				]
+			},
+			{
+				"featureType": "road.highway",
+				"elementType": "geometry.fill",
+				"stylers": [
+					{
+						"color": "#ffffff"
+					},
+					{
+						"lightness": 17
+					}
+				]
+			},
+			{
+				"featureType": "road.highway",
+				"elementType": "geometry.stroke",
+				"stylers": [
+					{
+						"color": "#ffffff"
+					},
+					{
+						"lightness": 29
+					},
+					{
+						"weight": 0.2
+					}
+				]
+			},
+			{
+				"featureType": "road.arterial",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"color": "#ffffff"
+					},
+					{
+						"lightness": 18
+					}
+				]
+			},
+			{
+				"featureType": "road.local",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"color": "#ffffff"
+					},
+					{
+						"lightness": 16
+					}
+				]
+			},
+			{
+				"featureType": "transit",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"color": "#f2f2f2"
+					},
+					{
+						"lightness": 19
+					}
+				]
+			},
+			{
+				"featureType": "water",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"color": "#e9e9e9"
+					},
+					{
+						"lightness": 17
+					}
+				]
+			}
+		]
+	});
+	var img = {
+		url: imgpath,
+		// This marker is 20 pixels wide by 32 pixels high.
+		size: new google.maps.Size(100, 124),
+		// The origin for this image is (0, 0).
+		origin: new google.maps.Point(0, 0),
+		// The anchor for this image is the base of the flagpole at (0, 32).
+		anchor: new google.maps.Point(50, 0),
+		scaledSize: new google.maps.Size(50, 62)
+	};
+	var marker = new google.maps.Marker({
+		position: centercords,
+		map: map,
+		icon: img,
+
+	});
+}
 function Slider(){
 	var trg = $('.js-slider');
 	if(trg.length){
-		var arr = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="449 348 621.6 465.6" enable-background="new 449 348 621.6 465.6" xml:space="preserve"><g><defs><path id="SVarrow_1_" d="M813.5,564.3c0.2,1.5,0.6,3,2.6,5l8.7,8.8l1.2,1.2c0.5,0.5,0.3,0.2,0.4,0.4l0.5,0.4c0.3,0.3,0.6,0.6,0.7,0.9c0,0.1,0.1,0.3,0.2,0.4c-0.2,0.3,0.1,0.4,1.4,1c0.3,0.1-0.1,0.8-0.4,0.8c-1.7-0.1-2.2-0.2-2.3,0.1l0,0.1l-0.3,0.5c-0.2,0.4-0.4,0.7-0.5,1.1c-0.3,0.8-0.4,1.7-0.5,2.6c-2.7,2.1-4.6,6.9-8.3,6.5c-0.8-0.1-3.8,2.1-4.9,3.4c-3.8,4.8-6.8,10.1-12.6,13.4c-1.2,4.6-5.2,6-8.6,8.5c-5.8,4.3-11.4,9.1-14.7,15.5c-0.6,1.1-2.3,3.1-3.3,3.5c-2.7,1.3-4.9,3.5-7.3,5.8l-18.9,18.6c-1,0.9-2.5,2.5-2.5,3c-0.2,4.3-4.2,6.3-7.7,8.8c-1.3,1-3.1,2.6-3.7,3.7c-2.1,3.8-5.1,5.9-8.4,8.4c-2,1.5-3.9,3.8-5.5,5.9c-3,3.9-4,8.8-10.1,11c-0.7,0.3-2.6,2.6-3.4,4c-2.9,5.2-9.7,9-11.8,14.5c-0.1,0.3-1.3,1.1-2,1.6c-7.2,4.5-12,11.4-16.7,17.6c-3.3,4.4-6.3,8.7-10.9,11.8c-3.9,2.6-3.8,5.8-5.9,7.8c-2.4,2.4-6,3.2-8.6,6.7c-0.8,1-1.3,2.1-1.9,3.1c-0.9,1.8-1.8,3.5-2.7,5.3c-4.3,8.7-6.5,16.3-4.9,22c0.5,1.9,2.5,1.7,5.4-0.7c16-13.1,30.9-27.8,45.8-42.5c2.2-2.1,3.5-4.1,3.7-6.1c0.1-1.3,0.5-2.7,2.5-2.9c2.5-0.2,4.8-2.3,7.2-4.7l10.5-11.2l38.4-40.5c18.6-19.5,38.6-37.6,56.9-57.5c4.6-4.9,8.5-9.4,10.3-15c4.2-0.1,7.6-2.9,11.5-7l10.2-10.6l17.6-17.9l-18.2-18l-17.7-17.8c-1.6-1.6-3.6-3.5-5.2-4.2c-1.8-0.8-3.2-0.4-4.9-0.5c-2-7.2-3.3-9.9-7.8-12.9c-5.4-3.5-9.8-6.9-12.8-12.6c-0.5-0.9-1.7-2.2-2.7-3c-10.7-8.8-19.1-20-29.5-29.3c-11.7-10.5-22.6-22.1-34-33.1c-2.6-2.5-5.5-4.8-8.2-7c-4.4-3.5-4.4-3.4-3.9-7.7l-0.2-0.6c-4.2-4.4-4.2-4.4-7.7-4l0.1,1.1c-0.1-0.2-0.2-0.4-0.2-0.6c0-0.2,0.1-0.3,0.2-0.5l0.8-4.6l0,0.1c-5.1-4.4-10.3-8.7-12.4-14.5c-0.3-0.9-1.5-2.4-2.4-3.1c-4.4-3.6-8.4-8.6-13.5-10.5c-1.6-0.6-3.9-3.3-5.9-5l-0.3-0.1c-3.3-1.8-3.6-5.6-5.8-6.8c-5-2.8-8.1-6.7-11.1-11.1c-0.6-0.9-2.2-2.3-2.9-2.6c-3.7-1.3-6-3.7-8.1-7.5c-0.9-1.6-3-2.7-3.6-2.1c-2.1,2.3-4.7,4.2-2.4,10c1.2,3.1,1.5,5.8,2.6,8.8c1.9,5.4,4.3,10.9,9.5,16.8c2.1,2.4,4.4,5.2,5.5,7.5c3.5,7.3,10.1,14.3,14.6,21.4c1.5,2.3,3.2,4.1,5.6,5.5c2.7,1.5,9.6,7.8,12,10.6c0.6,0.7,1.3,1.3,2,2l1-0.9l-0.1,0l-0.9,0.9c0,1.4,0.4,3.9,2.5,4.3c4.2,0.9,8.3,6.3,12.4,7.6c0.8,0.3,3.6,3.6,3.9,4.7c1.3,5.4,5.7,9.3,10.6,12.2c4.3,2.6,7.8,4.8,9.8,9.6c0.3,0.8,1.7,2,2.7,3c7.8,7.8,15.4,15.8,23.8,22.9c1.3,1.1,2.6,2.7,3.5,4c4.9,6.9,11.4,12,17.5,17.4c1.9,1.7,4.7,2.3,6.3,4c1.8,1.9,2.6,4.5,4.1,6.8c0.9,1.4,2.4,2.9,3.8,4C799,552,805.8,559.2,813.5,564.3L813.5,564.3z M684.4,749.2c0.1-0.2,1-0.5,1.6-0.8c-0.1,0.3-0.1,0.6-0.3,0.9l-4.2,5l0.1,0.7l-0.1-0.7C682.5,752.5,683.4,750.8,684.4,749.2z M655.5,384.2c0.6,0,1.4,0.3,2.1,0.5c0.1,0.5,0.3,1.3,0.1,1.5c-0.2,0.2-1-0.2-1.5-0.3C655.9,385.3,655.3,384.2,655.5,384.2z M680.1,748l0.6,0.1c-0.4,0.3-0.8,0.6-1.4,1C679.7,748.6,679.9,748.3,680.1,748z M831.3,605.9l0.4-0.7l0.4,0.1L831.3,605.9z M670,770.5l0,0.6l-0.6,0.1L670,770.5z"/></defs><clipPath id="SVarrow_2_"><use xlink:href="#SVarrow_1_"  overflow="visible"/></clipPath><g clip-path="url(#SVarrow_2_)"><defs><rect id="SVarrow_3_" x="624.6" y="348" width="253.5" height="465.6"/></defs><clipPath id="SVarrow_4_"><use xlink:href="#SVarrow_3_"  overflow="visible"/></clipPath><g clip-path="url(#SVarrow_4_)"><image overflow="visible" width="2590" height="1940" xlink:href="../img/gold.jpg"  transform="matrix(0.24 0 0 0.24 449 347.9571)"></image></g></g></g></svg>';
+		var arr = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="449 348 621.6 465.6" enable-background="new 449 348 621.6 465.6" xml:space="preserve"><g><defs><path id="SVarrow_1_" d="M813.5,564.3c0.2,1.5,0.6,3,2.6,5l8.7,8.8l1.2,1.2c0.5,0.5,0.3,0.2,0.4,0.4l0.5,0.4c0.3,0.3,0.6,0.6,0.7,0.9c0,0.1,0.1,0.3,0.2,0.4c-0.2,0.3,0.1,0.4,1.4,1c0.3,0.1-0.1,0.8-0.4,0.8c-1.7-0.1-2.2-0.2-2.3,0.1l0,0.1l-0.3,0.5c-0.2,0.4-0.4,0.7-0.5,1.1c-0.3,0.8-0.4,1.7-0.5,2.6c-2.7,2.1-4.6,6.9-8.3,6.5c-0.8-0.1-3.8,2.1-4.9,3.4c-3.8,4.8-6.8,10.1-12.6,13.4c-1.2,4.6-5.2,6-8.6,8.5c-5.8,4.3-11.4,9.1-14.7,15.5c-0.6,1.1-2.3,3.1-3.3,3.5c-2.7,1.3-4.9,3.5-7.3,5.8l-18.9,18.6c-1,0.9-2.5,2.5-2.5,3c-0.2,4.3-4.2,6.3-7.7,8.8c-1.3,1-3.1,2.6-3.7,3.7c-2.1,3.8-5.1,5.9-8.4,8.4c-2,1.5-3.9,3.8-5.5,5.9c-3,3.9-4,8.8-10.1,11c-0.7,0.3-2.6,2.6-3.4,4c-2.9,5.2-9.7,9-11.8,14.5c-0.1,0.3-1.3,1.1-2,1.6c-7.2,4.5-12,11.4-16.7,17.6c-3.3,4.4-6.3,8.7-10.9,11.8c-3.9,2.6-3.8,5.8-5.9,7.8c-2.4,2.4-6,3.2-8.6,6.7c-0.8,1-1.3,2.1-1.9,3.1c-0.9,1.8-1.8,3.5-2.7,5.3c-4.3,8.7-6.5,16.3-4.9,22c0.5,1.9,2.5,1.7,5.4-0.7c16-13.1,30.9-27.8,45.8-42.5c2.2-2.1,3.5-4.1,3.7-6.1c0.1-1.3,0.5-2.7,2.5-2.9c2.5-0.2,4.8-2.3,7.2-4.7l10.5-11.2l38.4-40.5c18.6-19.5,38.6-37.6,56.9-57.5c4.6-4.9,8.5-9.4,10.3-15c4.2-0.1,7.6-2.9,11.5-7l10.2-10.6l17.6-17.9l-18.2-18l-17.7-17.8c-1.6-1.6-3.6-3.5-5.2-4.2c-1.8-0.8-3.2-0.4-4.9-0.5c-2-7.2-3.3-9.9-7.8-12.9c-5.4-3.5-9.8-6.9-12.8-12.6c-0.5-0.9-1.7-2.2-2.7-3c-10.7-8.8-19.1-20-29.5-29.3c-11.7-10.5-22.6-22.1-34-33.1c-2.6-2.5-5.5-4.8-8.2-7c-4.4-3.5-4.4-3.4-3.9-7.7l-0.2-0.6c-4.2-4.4-4.2-4.4-7.7-4l0.1,1.1c-0.1-0.2-0.2-0.4-0.2-0.6c0-0.2,0.1-0.3,0.2-0.5l0.8-4.6l0,0.1c-5.1-4.4-10.3-8.7-12.4-14.5c-0.3-0.9-1.5-2.4-2.4-3.1c-4.4-3.6-8.4-8.6-13.5-10.5c-1.6-0.6-3.9-3.3-5.9-5l-0.3-0.1c-3.3-1.8-3.6-5.6-5.8-6.8c-5-2.8-8.1-6.7-11.1-11.1c-0.6-0.9-2.2-2.3-2.9-2.6c-3.7-1.3-6-3.7-8.1-7.5c-0.9-1.6-3-2.7-3.6-2.1c-2.1,2.3-4.7,4.2-2.4,10c1.2,3.1,1.5,5.8,2.6,8.8c1.9,5.4,4.3,10.9,9.5,16.8c2.1,2.4,4.4,5.2,5.5,7.5c3.5,7.3,10.1,14.3,14.6,21.4c1.5,2.3,3.2,4.1,5.6,5.5c2.7,1.5,9.6,7.8,12,10.6c0.6,0.7,1.3,1.3,2,2l1-0.9l-0.1,0l-0.9,0.9c0,1.4,0.4,3.9,2.5,4.3c4.2,0.9,8.3,6.3,12.4,7.6c0.8,0.3,3.6,3.6,3.9,4.7c1.3,5.4,5.7,9.3,10.6,12.2c4.3,2.6,7.8,4.8,9.8,9.6c0.3,0.8,1.7,2,2.7,3c7.8,7.8,15.4,15.8,23.8,22.9c1.3,1.1,2.6,2.7,3.5,4c4.9,6.9,11.4,12,17.5,17.4c1.9,1.7,4.7,2.3,6.3,4c1.8,1.9,2.6,4.5,4.1,6.8c0.9,1.4,2.4,2.9,3.8,4C799,552,805.8,559.2,813.5,564.3L813.5,564.3z M684.4,749.2c0.1-0.2,1-0.5,1.6-0.8c-0.1,0.3-0.1,0.6-0.3,0.9l-4.2,5l0.1,0.7l-0.1-0.7C682.5,752.5,683.4,750.8,684.4,749.2z M655.5,384.2c0.6,0,1.4,0.3,2.1,0.5c0.1,0.5,0.3,1.3,0.1,1.5c-0.2,0.2-1-0.2-1.5-0.3C655.9,385.3,655.3,384.2,655.5,384.2z M680.1,748l0.6,0.1c-0.4,0.3-0.8,0.6-1.4,1C679.7,748.6,679.9,748.3,680.1,748z M831.3,605.9l0.4-0.7l0.4,0.1L831.3,605.9z M670,770.5l0,0.6l-0.6,0.1L670,770.5z"/></defs><clipPath id="SVarrow_2_"><use xlink:href="#SVarrow_1_"  overflow="visible"/></clipPath><g clip-path="url(#SVarrow_2_)"><defs><rect id="SVarrow_3_" x="624.6" y="348" width="253.5" height="465.6"/></defs><clipPath id="SVarrow_4_"><use xlink:href="#SVarrow_3_"  overflow="visible"/></clipPath><g clip-path="url(#SVarrow_4_)"><image overflow="visible" width="2590" height="1940" xlink:href="/local/templates/main/img/gold.jpg"  transform="matrix(0.24 0 0 0.24 449 347.9571)"></image></g></g></g></svg>';
 		trg.each(function(){
 			var _ = $(this);
 			_.flickity({
