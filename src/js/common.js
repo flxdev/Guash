@@ -173,7 +173,7 @@ var conf = {
 			  var scrollTop = window.pageYOffset || window.scrollTop;
 			  var scrollPercent = scrollTop/area || 0;
 			  var offset = elem.offset().top;
-				offset = offset + elemh / 2.3;
+				offset = offset + elemh / 2;
 				var calc = 1 - (scrollTop - offset + range) / range;
 				if(scrollTop < windowHeight * 1.5){
 					TweenLite.set(square1, {

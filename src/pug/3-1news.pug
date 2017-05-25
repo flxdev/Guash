@@ -1,0 +1,53 @@
+extends _layout
+
+block title
+	title  новости
+block config
+	- var main = ''
+block content
+	.wrapper
+		.box.page-head
+			.page-head-inner
+				.bread-cont
+					a(href="#").bread-item 
+						span Главная
+				.title.h1.white.animate-up новости
+		.page-cover
+			.page-cover-inner.animate-bg(style='background-image: url(img/pagehead/hs1.jpg)')
+	.wrapper.white
+		.box
+			.content-wrapper
+				.content-date
+					.text-sm 24 марта 2017
+				.content-content
+					h2 24 марта в самом сердце москвы открылся наш неповторимый дизайн-отель “Акварель”.
+					.columns
+						p 24 марта состоялось торжественное открытие небольш-ого отеля с красивым, живописным названием «Акварель».  Он представляет собой современное здание, которое соответствует всем установленным стандартам. Здесь все продумано до мелочей, как говорится, «бог в деталях».  Отель «Акварель»  находится в исторической части горо-да Москва. Отель «Акварель» представляет собой гостини-цу, в которой имеется 24 комфортабельных, удобных и современных номеров. 
+						p В торжественной церемонии приняли участие глава Ступинского района Павел Челпан, ключевые клиенты и поставщики отеля, представители инвесторов и управляющей компании. В качестве хозяина церемонии выступил Региональный директор AccorHotels в России и странах СНГ Алексис Деларофф.
+					img(src="img/index/room2.jpg", alt="")
+					blockquote Мы вложили частичку нашей души в каждый сантиметр отеля “Акварель”. Мы хотим пожелать вам отличного отдыха и самых ярких впечатлений от проведенного времени в нашем отеле.
+				.content-back
+					a(href="#") 
+						.text-sm Назад ко всем новостям
+						+line
+	.wrapper.blk
+		.box
+			.widget-container(style='background-image: url(img/icons/keybg.png)')
+				.title.h3.white форма обратной связи
+				.widget-wrapper
+					a(href="#",data-modal='callback').btn.js-popup-button
+						span Связаться с нами
+
+	.wrapper.gray
+		.box
+			.news-mainwrap.news-mainwrap-add
+				.title.h3 читайте другие новости:
+				.news-wrapper 
+					+news('n1.jpg','24 марта в самом сердце москвы открылся наш неповторимый дизайн-отель “Акварель”','')
+					+news('n2.jpg','мы открылись и по этому радостному поводу дарим всем скидку -30%',' Lorem ipsum dolor sit amet')
+	.wrapper.blk
+		+next('контактная информация')
+
+
+
+				

@@ -1,0 +1,156 @@
+extends _layout
+
+block title
+	title  контактная информация
+block config
+	- var main = ''
+block content
+	.wrapper
+		.box.page-head.full
+			.page-head-inner
+				.bread-cont
+					a(href="#").bread-item 
+						span Главная
+				.title.h1.white.animate-up контактная информация
+		.page-cover
+			.page-cover-inner.animate-bg(style='background-image: url(img/pagehead/h1.jpg)')
+	.wrapper.white
+		.box
+			.content-wrapper
+				.section-head-wrap.secretplace
+					.section-head.animate-up
+						.section-svg
+							+svgstay4
+				.content-content
+					//модификатор .contact
+					.hotel-about-wrap.contact
+						.hotel-about
+							.hotel-about-text
+								.hotel-about-text-content
+									.contact-block
+										.title.h4 Адрес
+										.text Москва, м. Театральная, Столешников пер., 12/3
+									.contact-block
+										.title.h4 телефон
+										.text 
+											a(href="tel:+74955029430") +7 (495) 502-94-30  
+											a(href="tel:+74955029430") +7 (495) 502-94-30 
+									.contact-block
+										.title.h4 whatsapp
+										.text 
+											a(href="tel:+79099005484") +7 (909) 900-54-84
+									.contact-block
+										.title.h4 e-mail
+										.text 
+											a(href="mailto:hello@hotelakvarel.ru ") hello@hotelakvarel.ru 
+									.contact-block
+										.site-navigation-item.soc
+											.soc-item
+												a(href="#").soc-item-link
+													svg(version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewbox='15.1 23 1486.8 1475.5', enable-background='new 15.1 23 1486.8 1475.5', xml:space='preserve')
+														g
+															defs
+																circle#SVinsta_1_(cx='761.8', cy='750', r='727')
+															clippath#SVinsta_2_
+																use(xlink:href='#SVinsta_1_', overflow='visible')
+															g(clip-path='url(#SVinsta_2_)')
+																defs
+																	rect#SVinsta_3_(x='-220.4', y='23', width='1969.8', height='1475.5')
+																clippath#SVinsta_4_
+																	use(xlink:href='#SVinsta_3_', overflow='visible')
+																g(transform='matrix(1 0 0 1 -1.525879e-005 0)', clip-path='url(#SVinsta_4_)')
+																	image(overflow='visible', width='2590', height='1940', xlink:href='../img/gold.jpg', transform='matrix(0.7606 0 0 0.7606 -220.4224 23)')
+														g#insta(display='none')
+															circle(display='inline', fill='none', stroke='#000000', stroke-width='60', stroke-miterlimit='10', cx='762', cy='750', r='126.3')
+															circle(display='inline', cx='925.4', cy='597.4', r='19.4')
+															path(display='inline', fill='none', stroke='#000000', stroke-width='60', stroke-miterlimit='10', d='M615.2,476.5h293.5\
+															c70,0,126.7,56.7,126.7,126.7v293.5c0,70-56.7,126.7-126.7,126.7H615.2c-70,0-126.7-56.7-126.7-126.7V603.2\
+															C488.5,533.2,545.2,476.5,615.2,476.5z')
+														g
+															path#Facebook(d='M692.7,561.6c0,15.5,0,84.5,0,84.5h-61.9v103.3h61.9v306.9h127.1V749.3h85.3c0,0,8-49.5,11.9-103.7\
+															c-11.1,0-96.7,0-96.7,0s0-60.1,0-70.6c0-10.6,13.9-24.8,27.6-24.8c13.7,0,42.5,0,69.3,0c0-14.1,0-62.6,0-107.5\
+															c-35.7,0-76.3,0-94.2,0C689.6,442.8,692.7,546.2,692.7,561.6z')
+											.soc-item
+												a(href="#").soc-item-link
+													svg(version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewbox='15.1 23 1486.8 1475.5', enable-background='new 15.1 23 1486.8 1475.5', xml:space='preserve')
+														g
+															defs
+																circle#svg3342_1_(cx='761.8', cy='750', r='727')
+															clippath#svg3342_2_
+																use(xlink:href='#svg3342_1_', overflow='visible')
+															g(clip-path='url(#svg3342_2_)')
+																defs
+																	rect#svg3342_3_(x='-220.4', y='23', width='1969.8', height='1475.5')
+																clippath#svg3342_4_
+																	use(xlink:href='#svg3342_3_', overflow='visible')
+																g(transform='matrix(1 0 0 1 -1.525879e-005 0)', clip-path='url(#svg3342_4_)')
+																	image(overflow='visible', width='2590', height='1940', xlink:href='../img/gold.jpg', transform='matrix(0.7606 0 0 0.7606 -220.4224 23)')
+														g#insta
+															circle(fill='none', stroke='#000000', stroke-width='60', stroke-miterlimit='10', cx='762', cy='750', r='126.3')
+															circle(cx='925.4', cy='597.4', r='19.4')
+															path(fill='none', stroke='#000000', stroke-width='60', stroke-miterlimit='10', d='M615.2,476.5h293.5c70,0,126.7,56.7,126.7,126.7\
+															v293.5c0,70-56.7,126.7-126.7,126.7H615.2c-70,0-126.7-56.7-126.7-126.7V603.2C488.5,533.2,545.2,476.5,615.2,476.5z')
+							.hotel-about-img
+								img(src="img/index/n1.jpg", alt="")
+	.wrapper.blk
+		.box
+			.widget-container
+				.title.h3.white поиск номера онлайн
+				.widget-wrapper
+					form(action="/").form.bronvo-form
+						.input-form
+							// инпут lcode 
+							input.input-main(type="hidden",name="lcode" value="1413618257")
+							.input-item.s33
+								.input-wrapper
+									input.input-main.datepicker(type="text",name='dfrom', readonly="readonly",placeholder="Заезд")
+									svg(class="icon icon-drop")
+										use(xlink:href="#calendar" xmlns:xlink="http://www.w3.org/1999/xlink")
+							.input-item.s33
+								.input-wrapper
+									input.input-main.datepicker(type="text",name="dto", readonly="readonly",placeholder="Выезд")
+									svg(class="icon icon-drop")
+										use(xlink:href="#calendar" xmlns:xlink="http://www.w3.org/1999/xlink")
+							.input-item.s33
+								button(type='submit').btn.btn-white
+									span Показать наличие
+	.wrapper.blk
+		.box
+			.widget-container(style='background-image: url(img/icons/keybg.png)')
+				.title.h3.white форма обратной связи
+				.widget-wrapper
+					a(href="#",data-modal='callback').btn.js-popup-button
+						span Связаться с нами
+	.wrapper.white
+		.rows-wrapper
+			.rows-row
+				.rows-block
+					// тут появлятся дополднительный ребенок
+					.rows-block-img(style='background-image: url(img/index/row1.jpg)')
+						.rows-block-img-cover
+							.key-elem
+								+keygold
+				.rows-block
+					.rows-block-content
+						.title.h3 Classic
+						.text C16 – 21 м2. 1 большая двуспальная или 2 односпальные кровати. Завтрак включен.
+						a(href="#").btn
+							span Подробнее	
+			.rows-row
+				.rows-block
+					.rows-block-img(style='background-image: url(img/pagehead/sli1.jpg)')
+						.rows-block-img-cover
+							.key-elem
+								+keygold
+				.rows-block
+					.rows-block-content
+						.title.h3 superior
+						.text 25 – 27 м2. 1 большая двуспальная или 2 односпальные кровати. Размещение детей до 12 лет с родителями бесплатно. Завтрак включен.впечатления.
+						a(href="#").btn
+							span Подробнее	
+	.wrapper.blk
+		+next('отзывы')
+
+
+
+				

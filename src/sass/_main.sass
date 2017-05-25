@@ -937,6 +937,9 @@ body, .out
 	&:not(.full)
 		+rem(padding-top,360px)
 		+rem(padding-bottom,75px)
+		+r(500)
+			+rem(padding-top,180px)
+			+rem(padding-bottom,35px)
 		.page-head-inner
 			+rem(min-height,170px)
 
@@ -1339,6 +1342,7 @@ html:not(.fp-enabled)
 		width: 50%
 		position: relative
 		+rem(padding-bottom,80px)
+		contain: paint
 		+r(1400)
 			+rem(padding-bottom,20px)
 		+r(1024)
@@ -1364,6 +1368,7 @@ html:not(.fp-enabled)
 		+cover
 		padding-bottom: 71%
 		z-index: 0
+		contain: paint
 		+r(1400)
 			padding-bottom: 68%
 		&:hover
@@ -1486,6 +1491,8 @@ a:hover .line-cont,a:hover ~ .line-cont
 		opacity: 0
 		+tr(opacity .3s)
 		margin: 0 auto
+		contain: paint
+		will-change: transform
 	&-cutter
 		height: 100%
 		width: 100%		
@@ -1532,13 +1539,14 @@ a:hover .line-cont,a:hover ~ .line-cont
 			+rm(1025)
 				&:hover
 					.news-elem-img-button
-						background-color: rgba(0,0,0,.8)
-						opacity: 1
+						// opacity: 1
+					.news-elem-img-bg
+						opacity: .2
 					.news-elem-img-button
 						&-wrap
 							opacity: 1
 							transform: translateY(0px)
-							transition-delay: .25s
+							transition-delay: .15s
 		&-cont
 			font-size: 0
 		&-img,&-name
@@ -1550,34 +1558,46 @@ a:hover .line-cont,a:hover ~ .line-cont
 		&-img
 			width: 38%
 			padding-right: 3.85%
+			
 			&-main
 				padding-bottom: 67%
 				width: 100%
-				background-color: $gray2
+				background-color: $blk
 				position: relative
-				z-index: 0	
+				z-index: 0
 			&-bg
 				+coverdiv
 				+cover
 				z-index: -1
+				will-change: opacity
+				backface-visibility: hidden
+				+tr(opacity .3s)
+
 			&-button
 				+coverdiv
 				z-index: 1
-				+tr(background-color .3s)
+				
+				// opacity: 0
 				+vertical
 				&-wrap
 					opacity: 0
 					+rem(margin-top,6px)
-					transition: opacity .3s, transform .3s
+					transition: transform .3s,opacity .3s
 					transition-timing-function: $t1
-					transform: translateY(20px)
+					transform: translateY(30px)
 					text-align: center
 					display: inline-block
 					vertical-align: middle
+					backface-visibility: hidden
+					will-change: opacity
 					.btn 
 						vertical-align: middle
 						color: $white
 						+rem(min-width,160px)
+						+gpu
+						pointer-events: none
+						// will-change: opacity
+						// backface-visibility: hidden
 		&-name
 			width: 62%
 			+rem(padding-bottom,40px)
@@ -2206,6 +2226,10 @@ a:hover .line-cont,a:hover ~ .line-cont
 	opacity: 0.85;
 
 .content
+	&-date 
+		text-align: center
+		+rem(margin-top,-30px)
+		+rem(padding-bottom,35px)
 	&-wrapper
 		+rem(padding-top,105px)
 		+rem(padding-bottom,85px)
@@ -2215,6 +2239,44 @@ a:hover .line-cont,a:hover ~ .line-cont
 		+r(740)
 			+rem(padding-top,45px)
 			+rem(padding-bottom,35px)
+		img 
+			max-width: 100%
+			display: block
+			+rem(margin,50px auto)
+		h2,h3,h4,.title
+			font-family: $f
+			color: $blk
+			text-transform: uppercase;
+			font-weight: 400
+			text-align: center
+			display: block
+			+rem(max-width,850px)
+			+rem(margin,45px auto)
+			&:first-child
+				margin-top: 0
+			&.gold 
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-image: url(../img/gold.jpg)
+				filter: brightness(120%)
+
+				-webkit-font-smoothing: antialiased;
+		h2,.title.h2
+			line-height: 1.45;
+			+rem(font-size,42px)
+			+rem(letter-spacing,2px)
+			font-weight: 500
+		h3,.title.h3
+			+rem(font-size,28px)
+			line-height: 1.214;
+			font-weight: 500
+			+rem(letter-spacing,1.4px)
+			+r(400)
+				+rem(font-size,17px)
+		h4,.title.h4
+			+rem(font-size,24px)
+			line-height: 1.417;
+			+rem(letter-spacing,1.7px)
 		.section-head-wrap
 			+rem(padding-top,35px)
 			+rem(margin-bottom,60px)
@@ -2303,6 +2365,15 @@ a:hover .line-cont,a:hover ~ .line-cont
 		margin: 0 auto
 		+r(600)
 			max-width: 75vw
+.img-right
+	.rows
+		&-row 
+			+rm(951)
+				.rows-block	
+					&:first-child
+						order: 2
+					&:last-child
+						order: 1
 .rows
 	&-wrapper
 		font-size: 0
@@ -2312,14 +2383,14 @@ a:hover .line-cont,a:hover ~ .line-cont
 		justify-content: flex-start
 		align-itemms: stratch
 		font-size: 0
-		&:nth-child(even)
-			+rm(951)
-				.rows-block	
-					&:first-child
-						order: 2
-					&:last-child
-						order: 1
-						text-align: right
+		// &:nth-child(even)
+		// 	+rm(951)
+		// 		.rows-block	
+		// 			&:first-child
+		// 				order: 2
+		// 			&:last-child
+		// 				order: 1
+		// 				text-align: right
 		+r(950)
 			.rows-block	
 				&:first-child
@@ -2562,6 +2633,9 @@ a:hover .line-cont,a:hover ~ .line-cont
 				+rem(letter-spacing, .2px)
 				white-space: normal
 				+rem(margin-bottom,50px)
+				+tr(opacity .3s)
+				&:not(.active):hover
+					opacity: .5
 				+r(1024)
 					+rem(margin-bottom,25px)
 				&:before
@@ -2654,6 +2728,9 @@ a:hover .line-cont,a:hover ~ .line-cont
 		
 		position: relative
 		+rem(width,49px)
+		+tr(opacity .3s)
+		&:not(.active):hover
+			opacity: .5
 		+r(600)
 			+rem(width,36px)
 			svg 
@@ -2690,7 +2767,10 @@ a:hover .line-cont,a:hover ~ .line-cont
 				vertical-align: middle
 				
 
-
+.content 
+	&-section
+	&-content 
+	&-back
 
 
 
