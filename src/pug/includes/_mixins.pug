@@ -41,7 +41,49 @@ mixin news(img,name,text)
 					if text != ''
 						.text #{text}
 					+line
-
+mixin feedback(name,title,text1,text2,link, reply)
+	.feedback-elem
+		.feedback-elem-inner
+			.feedback-left
+				.feedback-left-cont
+					.text-bold #{name}
+					.star-wrapper
+						.star-item.active
+						.star-item.active
+						.star-item.active
+						.star-item.active
+						.star-item
+					.text-sm 12 апреля 2017
+			.feedback-right
+				.feedback-right-cont
+					.feeback-title
+						.title.h4 #{title}
+					.feedback-text
+						.text #{text1}
+						if text2 != ''
+							.text #{text2}
+					if link != ''
+						.feedback-link
+							.text-sm Источник: #{link}
+					if reply == 1
+						.feedback-reply
+							.text-bold Администрация отеля
+							.text Сергей, мы благодарим вас за ваш отзыв! Спасибо за замечания по поводу воды и утюга. Проблему утсранили. Ждем вас в нашем отеле снова!
+mixin blog(img,name)
+	.news-elem.blog-elem
+		a(href="#").news-elem-inner
+			.news-elem-cont
+				.news-elem-img
+					.news-elem-img-main
+						.news-elem-img-bg(style='background-image: url(img/index/'+img+')')
+						.news-elem-img-button
+							.news-elem-img-button-wrap
+								.btn.btn-blackcont
+									span Узнать больше
+				.news-elem-name
+					.text-sm 24 марта 2017
+					.title.h4 #{name}
+					+line
 mixin line
 	.line-cont
 		.line-cutter
