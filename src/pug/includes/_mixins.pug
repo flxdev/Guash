@@ -62,9 +62,10 @@ mixin feedback(name,title,text1,text2,link, reply)
 						.text #{text1}
 						if text2 != ''
 							.text #{text2}
-					if link != ''
+					if link == 1
 						.feedback-link
-							.text-sm Источник: #{link}
+							.text-sm Источник: 
+								a(href="#") https://www.booking.com/reviews/ru/hotel/akvarel/review/8a52af53
 					if reply == 1
 						.feedback-reply
 							.text-bold Администрация отеля

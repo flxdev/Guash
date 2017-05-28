@@ -1,0 +1,72 @@
+extends _layout
+
+block title
+	title  что рядом
+block config
+	- var main = ''
+block content
+	.wrapper
+		.box.page-head
+			.page-head-inner
+				.bread-cont
+					a(href="#").bread-item 
+						span Главная
+				.title.h1.white.animate-up что рядом
+		.page-cover
+			.page-cover-inner.animate-bg(style='background-image: url(img/pagehead/h1.jpg)')
+	.wrapper.white
+		.map-container
+			//.map-elem-near
+			#map.map-elem.map-elem-near(data-lat='55.762515',data-lon='37.614681',data-icon='img/icons/pin.png')
+	.wrapper.white
+		.box
+			.specials-wrapper.room-inner
+				.specials-head
+					.title.h3 легенда карты:
+				.specials-content
+					.legeng-elem
+						.legeng-elem-img
+							.legeng-elem-img-inner(style='background-image: url(img/icons/bar.png)')
+						.legeng-elem-text
+							.text Бар
+					.legeng-elem
+						.legeng-elem-img
+							.legeng-elem-img-inner(style='background-image: url(img/icons/eat.png)')
+						.legeng-elem-text
+							.text Ресторан
+					.legeng-elem
+						.legeng-elem-img
+							.legeng-elem-img-inner(style='background-image: url(img/icons/theater.png)')
+						.legeng-elem-text
+							.text Театры/кинотеатры
+					.legeng-elem
+						.legeng-elem-img
+							.legeng-elem-img-inner(style='background-image: url(img/icons/point.png)')
+						.legeng-elem-text
+							.text Музеи / достопримечательности
+					.legeng-elem
+						.legeng-elem-img
+							.legeng-elem-img-inner(style='background-image: url(img/icons/bank.png)')
+						.legeng-elem-text
+							.text Банки
+					.legeng-elem
+						.legeng-elem-img
+							.legeng-elem-img-inner(style='background-image: url(img/icons/magazine.png)')
+						.legeng-elem-text
+							.text Магазины
+					.legeng-elem
+						.legeng-elem-img
+							.legeng-elem-img-inner(style='background-image: url(img/icons/med.png)')
+						.legeng-elem-text
+							.text Аптеки
+					.legeng-elem
+						.legeng-elem-img
+							.legeng-elem-img-inner(style='background-image: url(img/icons/salon.png)')
+						.legeng-elem-text
+							.text Салоны
+	.wrapper.blk
+		+next('что рядом')
+
+
+
+				

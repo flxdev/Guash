@@ -1,0 +1,98 @@
+[
+{
+    "type": "bar",
+    "title": "Bar Denis Simachev",
+    "lat": 55.762761,
+    "lng": 37.614554,
+    "img": "../img/index/hotel.jpg",
+    "address": "Столешников пер. 12/2",
+    "tel": "+7 495 629-80-85",
+    "time":"Ср - Пн: 00:00 – 23:59",
+    "site":"www.denissimachev.ru",
+    "description": "Бар известного российского дизайнера Дениса Симачева. Средний счет 1500-2500 р."
+},
+{
+    "type": "bank",
+    "title": "Bar Denis Simachev2",
+    "lat": 55.762834,
+    "lng": 37.615356,
+    "img": "../img/index/row2.jpg",
+    "address": "Столешников пер. 12/2",
+    "tel": "+7 495 629-80-85",
+    "time":"Ср - Пн: 00:00 – 23:59",
+    "site":"www.denissimachev.ru",
+    "description": "Бар известного российского дизайнера Дениса Симачева. Средний счет 1500-2500 р."
+},
+{
+    "type": "med",
+    "title": "Bar Denis Simachev3",
+    "lat": 55.757488,
+    "lng": 37.619355,
+    "img": "../img/index/hotel.jpg",
+    "address": "Столешников пер. 12/2",
+    "tel": "+7 495 629-80-85",
+    "time":"Ср - Пн: 00:00 – 23:59",
+    "site":"www.denissimachev.ru",
+    "description": "Бар известного российского дизайнера Дениса Симачева. Средний счет 1500-2500 р."
+},
+{
+    "type": "theater",
+    "title": "Bar Denis Simachev4",
+    "lat": 55.762131,
+    "lng": 37.613210,
+    "img": "../img/index/hotel.jpg",
+    "address": "Столешников пер. 12/2",
+    "tel": "+7 495 629-80-85",
+    "time":"Ср - Пн: 00:00 – 23:59",
+    "site":"www.denissimachev.ru",
+    "description": "Бар известного российского дизайнера Дениса Симачева. Средний счет 1500-2500 р."
+},
+{
+    "type": "restaraunt",
+    "title": "Bar Denis Simachev5",
+    "lat": 55.762946,
+    "lng": 37.613011,
+    "img": "../img/index/hotel.jpg",
+    "address": "Столешников пер. 12/2",
+    "tel": "+7 495 629-80-85",
+    "time":"Ср - Пн: 00:00 – 23:59",
+    "site":"www.denissimachev.ru",
+    "description": "Бар известного российского дизайнера Дениса Симачева. Средний счет 1500-2500 р."
+},
+{
+    "type": "magazine",
+    "title": "Bar Denis Simachev6",
+    "lat": 55.762426,
+    "lng": 37.613773,
+    "img": "../img/index/hotel.jpg",
+    "address": "Столешников пер. 12/2",
+    "tel": "+7 495 629-80-85",
+    "time":"Ср - Пн: 00:00 – 23:59",
+    "site":"www.denissimachev.ru",
+    "description": "Бар известного российского дизайнера Дениса Симачева. Средний счет 1500-2500 р."
+},
+{
+    "type": "salon",
+    "title": "Bar Denis Simachev0",
+    "lat": 55.762731,
+    "lng": 37.612792,
+    "img": "../img/index/hotel.jpg",
+    "address": "Столешников пер. 12/2",
+    "tel": "+7 495 629-80-85",
+    "time":"Ср - Пн: 00:00 – 23:59",
+    "site":"www.denissimachev.ru",
+    "description": "Бар известного российского дизайнера Дениса Симачева. Средний счет 1500-2500 р."
+},
+{
+    "type": "interest",
+    "title": "Памятник В. И. Ленину",
+    "lat": 55.762191,
+    "lng": 37.611434,
+    "img": "../img/index/hotel.jpg",
+    "address": "Столешников пер. 12/2",
+    "tel": "+7 495 629-80-85",
+    "time":"Ср - Пн: 00:00 – 23:59",
+    "site":"www.denissimachev.ru",
+    "description": "Бар известного российского дизайнера Дениса Симачева. Средний счет 1500-2500 р."
+}
+]

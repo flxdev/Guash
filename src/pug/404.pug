@@ -1,0 +1,23 @@
+extends _layout
+
+block title
+	title  404
+block config
+	- var main = ''
+block content
+	.wrapper.page-404
+		.box.page-head.full
+			.page-head-inner
+				.bread-cont
+					a(href="#").bread-item 
+						span Главная
+				.title.h1.white.animate-up Данной страницы не существует
+				.page-inner-image.animate-up(style='background-image: url(img/404.png)')
+		.page-cover
+			.page-cover-inner
+	.wrapper.blk
+		+next('главная')
+
+
+
+				

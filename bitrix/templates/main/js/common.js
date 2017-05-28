@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", function() {
 		blk: 'blk',
 		white: 'white',
 		gray: 'gray',
-		hidden: 'is-hidden'
+		hidden: 'is-hidden',
+		wrpr: $('.wrapper')
 	};
 	(function() {
 		var mainHeader = document.querySelector('.cd-auto-hide-header');
@@ -25,14 +26,30 @@ document.addEventListener("DOMContentLoaded", function() {
 		}
 
 		function checkSimpleNavigation(currentTop) {
-			if (currentTop <= 20) {
-				mainHeader.classList.remove('is-hidden');
+			if (currentTop <= 100) {
+				mainHeader.classList.remove(conf.hidden);
 			} else {
-				mainHeader.classList.add('is-hidden');
+				mainHeader.classList.add(conf.hidden);
 			}
 		}
 	})();
-
+	function ChangeHeaderColor(){
+		if(!conf.html.hasClass('fp-enabled')){
+			$(window).on('scroll',function(){
+				var wScroll = $(window).scrollTop();
+				conf.wrpr.each(function(){
+					var _ = $(this),
+						offset = _.offset().top;
+					if(wScroll > offset){
+						if(_.hasClass(conf.blk)) conf.header.addClass(conf.blk).removeClass(conf.white).removeClass(conf.gray);
+						if(_.hasClass(conf.white)) conf.header.addClass(conf.white).removeClass(conf.blk).removeClass(conf.gray);
+						if(_.hasClass(conf.gray)) conf.header.addClass(conf.gray).removeClass(conf.white).removeClass(conf.blk);
+						if(!_.hasClass(conf.gray) && !_.hasClass(conf.white) && !_.hasClass(conf.blk)) conf.header.removeClass(conf.gray).removeClass(conf.white).removeClass(conf.blk);
+					}
+				});
+			});
+		}
+	}ChangeHeaderColor();
 	function Menu() {
 		var trigger = $('.js-menu'),
 			target = $('.header-menu-wrap'),
@@ -87,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	$(".js-scroll-to").on('click', function(e) {
 		e.preventDefault();
 		var elementClick = $(this).data("href");
-		var target = $('body').find('[data-id="' + elementClick + '"]');
+		var target = conf.body.find('[data-id="' + elementClick + '"]');
 		$(".aside-stick").trigger("sticky_kit:recalc");
 		if (target.length) {
 			var destination = $(target).offset().top,
@@ -170,9 +187,9 @@ document.addEventListener("DOMContentLoaded", function() {
 			});
 
 			function Movehead(area,elem,elemh,range){
-			  var scrollTop = window.pageYOffset || window.scrollTop;
-			  var scrollPercent = scrollTop/area || 0;
-			  var offset = elem.offset().top;
+				var scrollTop = window.pageYOffset || window.scrollTop;
+				var scrollPercent = scrollTop/area || 0;
+				var offset = elem.offset().top;
 				offset = offset + elemh / 2;
 				var calc = 1 - (scrollTop - offset + range) / range;
 				if(scrollTop < windowHeight * 1.5){
@@ -195,10 +212,9 @@ document.addEventListener("DOMContentLoaded", function() {
 				}
 
 				square1.css({ 'opacity': calc });
-				console.log(calc,range)
-				if ( calc > '1' ) {
+				if ( calc > '1' || calc == NaN) {
 					square1.css({ 'opacity': 1 });
-				} else if ( calc < '0' || calc == NaN ) {
+				} else if ( calc < '0' ) {
 					square1.css({ 'opacity': 0 });
 				}
 			}
@@ -338,11 +354,14 @@ document.addEventListener("DOMContentLoaded", function() {
 		});
 	}datepick()
 	Slider();
-	initMap();
+	// initMap();
+	conf.body.trigger("scroll");
 //end of document.ready
 });
 //end of document.ready
+
 function initMap() {
+
 	var element = document.getElementById('map');
 	var latcord = parseFloat(element.getAttribute('data-lat'));
 	var loncord = parseFloat(element.getAttribute('data-lon'));
@@ -357,7 +376,7 @@ function initMap() {
 		scaleControl: false,
 		streetViewControl: false,
 		zoomControlOptions: {
-			  position: google.maps.ControlPosition.RIGHT_CENTER
+			position: google.maps.ControlPosition.RIGHT_CENTER
 		},
 		 styles:[
 			{
@@ -565,8 +584,115 @@ function initMap() {
 		position: centercords,
 		map: map,
 		icon: img,
-
 	});
+
+	var trel = $('#map');
+	if(trel.hasClass('map-elem-near')){
+		$.ajax({
+			url: 'js/elems.json',
+			dataType: 'json',
+			method : 'GET',
+			error : function(request, status, error) {
+				alert(error);
+			},
+		}).done(function(result) {
+			onMarkerLoad (result)
+		});
+		function onMarkerLoad (json) {
+			for(var i = 0; i < json.length; i++) {
+
+				// Current object
+				var obj = json[i];
+				var imgType = {
+					url: checkType(obj.type),
+					// This marker is 20 pixels wide by 32 pixels high.
+					size: new google.maps.Size(100, 124),
+					// The origin for this image is (0, 0).
+					origin: new google.maps.Point(0, 0),
+					// The anchor for this image is the base of the flagpole at (0, 32).
+					anchor: new google.maps.Point(50, 31),
+					scaledSize: new google.maps.Size(50, 62)
+				};
+				// Adding a new marker for the object
+				var marker = new google.maps.Marker({
+					position: new google.maps.LatLng(obj.lat,obj.lng),
+					title: obj.title,
+					site: obj.site,
+					time: obj.time,
+					tel: obj.tel,
+					desc: obj.description,
+					img: obj.img,
+					map: map,
+					addr: obj.address,
+					icon: imgType,
+				});
+				var infowindow = new google.maps.InfoWindow({
+					content: " ",
+					pixelOffset: new google.maps.Size(-25, 62)
+				});
+				google.maps.event.addListener(marker, 'click', function() {
+					infowindow.setContent('<div id="content">'+
+							'<div class="siteNotice">'+
+									'<div class="title h4">' +this.title+
+									'</div>'+
+							'</div>'+
+							'<div class="maindesc">' +
+								'<div class="maindesc-img">'+
+									'<img src="'+this.img+'" alt="'+this.title+'">' +
+								'</div>'+
+								'<div class="maindesc-text">'+
+									'<div class="maindesc-elem place">' +this.addr+
+									'</div>'+
+									'<a href="tel:'+this.tel+'"class="maindesc-elem tel">' +this.tel+
+									'</a>'+
+									'<div class="maindesc-elem time">' +this.time+
+									'</div>'+
+									'<a href="'+this.site+'"class="maindesc-elem site">' +this.site+
+									'</a>'+
+							'</div>'+
+							'<div class="elem-describe text">' +this.desc+
+							'</div>'+
+						'</div>');
+					infowindow.open(map, this);
+				});
+				var closeInfoWindow = function() {
+				    infowindow.close();
+				};
+
+				google.maps.event.addListener(map, 'click', closeInfoWindow);
+			} // end loop
+		}
+		//вот тут надо будет пути поменять на актуальные
+		function checkType(type){
+			var _ = type;
+			var resultPath;
+			if(type == "bar"){
+				resultPath = 'img/markers/bar.png'
+			}
+			if(type == "bank"){
+				resultPath = 'img/markers/bank.png'
+			}
+			if(type == "med"){
+				resultPath = 'img/markers/medicine.png'
+			}
+			if(type == "theater"){
+				resultPath = 'img/markers/theater.png'
+			}
+			if(type == "restaraunt"){
+				resultPath = 'img/markers/restaurant.png'
+			}
+			if(type == "magazine"){
+				resultPath = 'img/markers/magazine.png'
+			}
+			if(type == "salon"){
+				resultPath = 'img/markers/salon.png'
+			}
+			if(type == "interest"){
+				resultPath = 'img/markers/interest.png'
+			}
+			return resultPath
+		}
+	}
 }
 function Slider(){
 	var trg = $('.js-slider');
@@ -586,19 +712,19 @@ function Slider(){
 			// get transform property
 			var docStyle = document.documentElement.style;
 			var transformProp = typeof docStyle.transform == 'string' ?
-			  'transform' : 'WebkitTransform';
+				'transform' : 'WebkitTransform';
 			// get Flickity instance
 			var flkty = _.data('flickity');
 
 			_.on( 'scroll.flickity', function() {
-			  flkty.slides.forEach( function( slide, i ) {
-				var img = imgs[i];
-				var x = ( slide.target + flkty.x ) * -1/3;
-				TweenLite.set(img, {
-					x: x,
-				});
+				flkty.slides.forEach( function( slide, i ) {
+					var img = imgs[i];
+					var x = ( slide.target + flkty.x ) * -1/3;
+					TweenLite.set(img, {
+						x: x,
+					});
 				// img.style[ transformProp ] = 'translateX(' + x  + 'px)';
-			  });
+				});
 			});
 			var btns = _.find('.flickity-prev-next-button');
 			btns.find('svg').remove();
@@ -674,7 +800,6 @@ function popUpsInit() {
 		var _res = Math.abs(_h),
 			_cont = _popup.find('.modal-container-content:not(.response)')
 		_response = _popup.find('.response');
-		console.log(conf.html,conf.body)
 		if($('html').hasClass('fp-enabled')){
 			$('body').hasClass('fp-viewing-0') ? _this.c.header.removeClass(_this.conf.header_class) : false;
 		}else{
@@ -754,5 +879,5 @@ function formResponse(form) {
 }
 function isMobile()
 {
-	return (/Android|webOS|iPhone|iPod|BlackBerry|Windows Phone|iemobile/i.test(navigator.userAgent) );
+	 return (/Android|webOS|iPhone|iPod|BlackBerry|Windows Phone|iemobile/i.test(navigator.userAgent) );
 }

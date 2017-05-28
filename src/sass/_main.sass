@@ -967,8 +967,15 @@ html:not(.fp-enabled)
 	.hotel-about-img
 		+screen(801,1400)
 			width: 48%	
-		
-				
+.page-404
+		background-color: $blk		
+		.page-head-inner
+			max-width: 100%	
+		.page-inner-image 
+			+rem(margin-top,25px)
+			+contain
+			padding-bottom: 20%
+			filter: brightness(120%)
 .bread
 	&-cont
 		+rem(padding-bottom,20px)
@@ -1862,6 +1869,7 @@ a:hover .line-cont,a:hover ~ .line-cont
 		transition-timing-function: ease-in-out
 		contain: paint 
 		transition-delay: .5s
+		backface-visibility: hidden
 		+clr
 		&.active
 			visibility: visible
@@ -3064,16 +3072,29 @@ div:not(#fp-nav)
 	&-elem
 		display: block
 		+rem(margin-bottom,40px)
+		
+		+rem(padding-bottom,40px)
+		&:not(:last-child)
+			border-bottom: 1px solid #efefef
 		&-inner
 			width: 100%
 			display: flex
 			flex-flow: row nowrap
 			justify-content: flex-start
+			+r(740)
+				flex-flow: row wrap
 	&-left
 		+rem(flex-basis,206px)
 		flex-grow: 0
 		flex-shrink: 0
 		+rem(padding-right,45px)
+		+r(740)
+			width: 100%
+			flex-grow: 1
+			flex-shrink: 1
+			+rem(flex-basis, auto)
+			position: relative
+			+rem(padding-right,150px)
 		&-cont
 			display: block
 			.star-wrapper
@@ -3082,9 +3103,17 @@ div:not(#fp-nav)
 				&:not(.active)
 					opacity: .5
 				pointer-events: none
+			.text-sm
+				+r(740)
+					position: absolute
+					right: 0
+					+rem(top,2px)
+					display: inline-block
 			
 	&-right
 		flex-grow: 1
+		+r(740)
+			width: 100%
 		&-cont
 			display: block
 			.title
@@ -3116,11 +3145,141 @@ div:not(#fp-nav)
 				
 	&-reply 
 		background-color: #efefef
+		position: relative
+		+rem(padding-left,90px)
+		+rem(padding-top,20px)
+		+rem(padding-right,20px)
+		+rem(padding-bottom,30px)
+		&:before
+			content: ''
+			+contain
+			position: absolute
+			+rem(left,20px)
+			+rem(top,20px)
+			background-image: url(../img/icons/arr.png)
+			+rem(width,50px)
+			+rem(height,25px)
+		.text-bold
+			+rem(letter-spacing, 1px)
+			+rem(margin-bottom,10px)
+	&-link
+		// &:not(:last-child)
+		+rem(margin,35px 0 40px)
+		&:last-child
+			margin-bottom: 0
+		.text-sm 
+			white-space: nowrap
+			width: 100%
+			text-overflow: ellipsis
+			overflow: hidden
 			
+			a:not(:hover)
+				color: inherit
+			a:hover
+				color: $active
 
+.legeng
+	&-elem
+		width: 25%
+		font-size: 0
+		white-space: nowrap
+		+rem(margin,50px 0 15px)
+		+r(880)
+			width: 33.33%
+		+r(740)
+			width: 50%
+			+rem(margin,40px 0 15px)
+		+r(400)
+			width: 100%
+			+rem(margin,30px 0 15px)
+		+rm(881)
+			&:nth-child(n + 5)
+				+rem(margin-top,15px)
+				+rem(margin-bottom,70px)
+		&-img,&-text
+			display: inline-block
+			vertical-align: top
+		&-text
+			white-space: normal
+			+padlr(20px)
 
+			.text
+				line-height: 1.4
+		&-img 
+			&-inner
+				+contain
+				+rem(width,25px)
+				+rem(height,20px)
 
+.siteNotice
+	.title
+		+rem(font-size,18px)
+		font-weight: 500
+		+rem(letter-spacing, 1px)
+#content
+	+rem(max-width,295px)
+	+rem(padding-left,5px)
+	+rem(padding-top,15px)
+	.elem-describe.text
+		+rem(font-size,12.5px)
+		+rem(padding-top,25px)
+		+rem(padding-bottom,35px)
+.maindesc
+	font-size: 0
+	width: 100%
+	+rem(padding-top,15px)
+	&-img,&-text
+		display: inline-block
+		vertical-align: top
+	&-img	
+		width: 40%
+		img 
+			width: 100%
+	&-text
+		width: 60%
+		+rem(margin-top,-4px)
+	&-elem 
+		+rem(font-size,14px)
+		+rem(margin-bottom,6px)
+		+rem(padding-left,30px)
+		position: relative
+		display: block
+		font-family: $f
+		&:before
+			content: ''
+			+contain
+			+rem(width,9px)
+			+rem(height,10px)
+			position: absolute
+			display: inline-block
+			+rem(top,3px)
+			+rem(left,13px)
+		&.place
+			&:before
+				background-image: url(../img/icons/marker.png)
+		&.tel
+			&:before
+				background-image: url(../img/icons/tel.png)
+		&.time
+			&:before
+				background-image: url(../img/icons/clock.png)
+		&.site
+			&:before
+				background-image: url(../img/icons/web.png)
+		&.place,&.tel 
+			font-weight: 500
+			color: $blk
+		&.tel
+			&:hover
+				color: $active
 
-
-
-
+.gm-style-iw
+	& ~ div
+		width: 20px !important	
+		height: 20px !important	
+		right: 15px !important
+		top: 15px !important
+		+contain
+		background-image: url(../img/icons/close.png)
+		img 
+			opacity: 0 !important
