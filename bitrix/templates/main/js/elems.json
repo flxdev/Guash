@@ -1,6 +1,6 @@
 [
 {
-    "type": "bar",
+    "type": "img/markers/bar.png",
     "title": "Bar Denis Simachev",
     "lat": 55.762761,
     "lng": 37.614554,
@@ -12,7 +12,7 @@
     "description": "Бар известного российского дизайнера Дениса Симачева. Средний счет 1500-2500 р."
 },
 {
-    "type": "bank",
+    "type": "img/markers/bank.png",
     "title": "Bar Denis Simachev2",
     "lat": 55.762834,
     "lng": 37.615356,
@@ -24,7 +24,7 @@
     "description": "Бар известного российского дизайнера Дениса Симачева. Средний счет 1500-2500 р."
 },
 {
-    "type": "med",
+    "type": "img/markers/medicine.png",
     "title": "Bar Denis Simachev3",
     "lat": 55.757488,
     "lng": 37.619355,
@@ -36,7 +36,7 @@
     "description": "Бар известного российского дизайнера Дениса Симачева. Средний счет 1500-2500 р."
 },
 {
-    "type": "theater",
+    "type": "img/markers/theater.png",
     "title": "Bar Denis Simachev4",
     "lat": 55.762131,
     "lng": 37.613210,
@@ -48,7 +48,7 @@
     "description": "Бар известного российского дизайнера Дениса Симачева. Средний счет 1500-2500 р."
 },
 {
-    "type": "restaraunt",
+    "type": "img/markers/restaurant.png",
     "title": "Bar Denis Simachev5",
     "lat": 55.762946,
     "lng": 37.613011,
@@ -60,7 +60,7 @@
     "description": "Бар известного российского дизайнера Дениса Симачева. Средний счет 1500-2500 р."
 },
 {
-    "type": "magazine",
+    "type": "img/markers/magazine.png",
     "title": "Bar Denis Simachev6",
     "lat": 55.762426,
     "lng": 37.613773,
@@ -72,7 +72,7 @@
     "description": "Бар известного российского дизайнера Дениса Симачева. Средний счет 1500-2500 р."
 },
 {
-    "type": "salon",
+    "type": "img/markers/salon.png",
     "title": "Bar Denis Simachev0",
     "lat": 55.762731,
     "lng": 37.612792,
@@ -84,7 +84,7 @@
     "description": "Бар известного российского дизайнера Дениса Симачева. Средний счет 1500-2500 р."
 },
 {
-    "type": "interest",
+    "type": "img/markers/interest.png",
     "title": "Памятник В. И. Ленину",
     "lat": 55.762191,
     "lng": 37.611434,

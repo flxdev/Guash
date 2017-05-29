@@ -361,336 +361,339 @@ document.addEventListener("DOMContentLoaded", function() {
 //end of document.ready
 
 function initMap() {
-
-	var element = document.getElementById('map');
-	var latcord = parseFloat(element.getAttribute('data-lat'));
-	var loncord = parseFloat(element.getAttribute('data-lon'));
-	var imgpath = element.getAttribute('data-icon');
-	var centercords = {lat: latcord, lng: loncord};
-	var map = new google.maps.Map(element, {
-		zoom: 18,
-		center: centercords,
-		fullscreenControl: true,
-		scrollwheel: false,
-		mapTypeControl: false,
-		scaleControl: false,
-		streetViewControl: false,
-		zoomControlOptions: {
-			position: google.maps.ControlPosition.RIGHT_CENTER
-		},
-		 styles:[
-			{
-				"featureType": "all",
-				"elementType": "labels.text.fill",
-				"stylers": [
-					{
-						"saturation": 36
-					},
-					{
-						"color": "#333333"
-					},
-					{
-						"lightness": 40
-					}
-				]
-			},
-			{
-				"featureType": "all",
-				"elementType": "labels.text.stroke",
-				"stylers": [
-					{
-						"visibility": "on"
-					},
-					{
-						"color": "#ffffff"
-					},
-					{
-						"lightness": 16
-					}
-				]
-			},
-			{
-				"featureType": "all",
-				"elementType": "labels.icon",
-				"stylers": [
-					{
-						"visibility": "off"
-					}
-				]
-			},
-			{
-				"featureType": "administrative",
-				"elementType": "geometry.fill",
-				"stylers": [
-					{
-						"color": "#fefefe"
-					},
-					{
-						"lightness": 20
-					}
-				]
-			},
-			{
-				"featureType": "administrative",
-				"elementType": "geometry.stroke",
-				"stylers": [
-					{
-						"color": "#fefefe"
-					},
-					{
-						"lightness": 17
-					},
-					{
-						"weight": 1.2
-					}
-				]
-			},
-			{
-				"featureType": "landscape",
-				"elementType": "geometry",
-				"stylers": [
-					{
-						"color": "#f5f5f5"
-					},
-					{
-						"lightness": 20
-					}
-				]
-			},
-			{
-				"featureType": "landscape.man_made",
-				"elementType": "geometry.stroke",
-				"stylers": [
-					{
-						"color": "#bebebe"
-					}
-				]
-			},
-			{
-				"featureType": "poi",
-				"elementType": "geometry",
-				"stylers": [
-					{
-						"visibility": "on"
-					},
-					{
-						"color": "#f5f5f5"
-					},
-					{
-						"lightness": 21
-					}
-				]
-			},
-			{
-				"featureType": "poi.park",
-				"elementType": "geometry",
-				"stylers": [
-					{
-						"color": "#dedede"
-					},
-					{
-						"lightness": 21
-					}
-				]
-			},
-			{
-				"featureType": "road.highway",
-				"elementType": "geometry.fill",
-				"stylers": [
-					{
-						"color": "#ffffff"
-					},
-					{
-						"lightness": 17
-					}
-				]
-			},
-			{
-				"featureType": "road.highway",
-				"elementType": "geometry.stroke",
-				"stylers": [
-					{
-						"color": "#ffffff"
-					},
-					{
-						"lightness": 29
-					},
-					{
-						"weight": 0.2
-					}
-				]
-			},
-			{
-				"featureType": "road.arterial",
-				"elementType": "geometry",
-				"stylers": [
-					{
-						"color": "#ffffff"
-					},
-					{
-						"lightness": 18
-					}
-				]
-			},
-			{
-				"featureType": "road.local",
-				"elementType": "geometry",
-				"stylers": [
-					{
-						"color": "#ffffff"
-					},
-					{
-						"lightness": 16
-					}
-				]
-			},
-			{
-				"featureType": "transit",
-				"elementType": "geometry",
-				"stylers": [
-					{
-						"color": "#f2f2f2"
-					},
-					{
-						"lightness": 19
-					}
-				]
-			},
-			{
-				"featureType": "water",
-				"elementType": "geometry",
-				"stylers": [
-					{
-						"color": "#e9e9e9"
-					},
-					{
-						"lightness": 17
-					}
-				]
-			}
-		]
-	});
-	var img = {
-		url: imgpath,
-		// This marker is 20 pixels wide by 32 pixels high.
-		size: new google.maps.Size(100, 124),
-		// The origin for this image is (0, 0).
-		origin: new google.maps.Point(0, 0),
-		// The anchor for this image is the base of the flagpole at (0, 32).
-		anchor: new google.maps.Point(50, 0),
-		scaledSize: new google.maps.Size(50, 62)
-	};
-	var marker = new google.maps.Marker({
-		position: centercords,
-		map: map,
-		icon: img,
-	});
-
 	var trel = $('#map');
-	if(trel.hasClass('map-elem-near')){
-		$.ajax({
-			url: 'js/elems.json',
-			dataType: 'json',
-			method : 'GET',
-			error : function(request, status, error) {
-				alert(error);
+	if(trel.length){
+		var element = document.getElementById('map');
+		var latcord = parseFloat(element.getAttribute('data-lat'));
+		var loncord = parseFloat(element.getAttribute('data-lon'));
+		var imgpath = element.getAttribute('data-icon');
+		var centercords = {lat: latcord, lng: loncord};
+		var map = new google.maps.Map(element, {
+			zoom: 18,
+			center: centercords,
+			fullscreenControl: true,
+			scrollwheel: false,
+			mapTypeControl: false,
+			scaleControl: false,
+			streetViewControl: false,
+			zoomControlOptions: {
+				position: google.maps.ControlPosition.RIGHT_CENTER
 			},
-		}).done(function(result) {
-			onMarkerLoad (result)
+			 styles:[
+				{
+					"featureType": "all",
+					"elementType": "labels.text.fill",
+					"stylers": [
+						{
+							"saturation": 36
+						},
+						{
+							"color": "#333333"
+						},
+						{
+							"lightness": 40
+						}
+					]
+				},
+				{
+					"featureType": "all",
+					"elementType": "labels.text.stroke",
+					"stylers": [
+						{
+							"visibility": "on"
+						},
+						{
+							"color": "#ffffff"
+						},
+						{
+							"lightness": 16
+						}
+					]
+				},
+				{
+					"featureType": "all",
+					"elementType": "labels.icon",
+					"stylers": [
+						{
+							"visibility": "off"
+						}
+					]
+				},
+				{
+					"featureType": "administrative",
+					"elementType": "geometry.fill",
+					"stylers": [
+						{
+							"color": "#fefefe"
+						},
+						{
+							"lightness": 20
+						}
+					]
+				},
+				{
+					"featureType": "administrative",
+					"elementType": "geometry.stroke",
+					"stylers": [
+						{
+							"color": "#fefefe"
+						},
+						{
+							"lightness": 17
+						},
+						{
+							"weight": 1.2
+						}
+					]
+				},
+				{
+					"featureType": "landscape",
+					"elementType": "geometry",
+					"stylers": [
+						{
+							"color": "#f5f5f5"
+						},
+						{
+							"lightness": 20
+						}
+					]
+				},
+				{
+					"featureType": "landscape.man_made",
+					"elementType": "geometry.stroke",
+					"stylers": [
+						{
+							"color": "#bebebe"
+						}
+					]
+				},
+				{
+					"featureType": "poi",
+					"elementType": "geometry",
+					"stylers": [
+						{
+							"visibility": "on"
+						},
+						{
+							"color": "#f5f5f5"
+						},
+						{
+							"lightness": 21
+						}
+					]
+				},
+				{
+					"featureType": "poi.park",
+					"elementType": "geometry",
+					"stylers": [
+						{
+							"color": "#dedede"
+						},
+						{
+							"lightness": 21
+						}
+					]
+				},
+				{
+					"featureType": "road.highway",
+					"elementType": "geometry.fill",
+					"stylers": [
+						{
+							"color": "#ffffff"
+						},
+						{
+							"lightness": 17
+						}
+					]
+				},
+				{
+					"featureType": "road.highway",
+					"elementType": "geometry.stroke",
+					"stylers": [
+						{
+							"color": "#ffffff"
+						},
+						{
+							"lightness": 29
+						},
+						{
+							"weight": 0.2
+						}
+					]
+				},
+				{
+					"featureType": "road.arterial",
+					"elementType": "geometry",
+					"stylers": [
+						{
+							"color": "#ffffff"
+						},
+						{
+							"lightness": 18
+						}
+					]
+				},
+				{
+					"featureType": "road.local",
+					"elementType": "geometry",
+					"stylers": [
+						{
+							"color": "#ffffff"
+						},
+						{
+							"lightness": 16
+						}
+					]
+				},
+				{
+					"featureType": "transit",
+					"elementType": "geometry",
+					"stylers": [
+						{
+							"color": "#f2f2f2"
+						},
+						{
+							"lightness": 19
+						}
+					]
+				},
+				{
+					"featureType": "water",
+					"elementType": "geometry",
+					"stylers": [
+						{
+							"color": "#e9e9e9"
+						},
+						{
+							"lightness": 17
+						}
+					]
+				}
+			]
 		});
-		function onMarkerLoad (json) {
-			for(var i = 0; i < json.length; i++) {
+		var img = {
+			url: imgpath,
+			// This marker is 20 pixels wide by 32 pixels high.
+			size: new google.maps.Size(100, 124),
+			// The origin for this image is (0, 0).
+			origin: new google.maps.Point(0, 0),
+			// The anchor for this image is the base of the flagpole at (0, 32).
+			anchor: new google.maps.Point(50, 0),
+			scaledSize: new google.maps.Size(50, 62)
+		};
+		var marker = new google.maps.Marker({
+			position: centercords,
+			map: map,
+			icon: img,
+		});
 
-				// Current object
-				var obj = json[i];
-				var imgType = {
-					url: checkType(obj.type),
-					// This marker is 20 pixels wide by 32 pixels high.
-					size: new google.maps.Size(100, 124),
-					// The origin for this image is (0, 0).
-					origin: new google.maps.Point(0, 0),
-					// The anchor for this image is the base of the flagpole at (0, 32).
-					anchor: new google.maps.Point(50, 31),
-					scaledSize: new google.maps.Size(50, 62)
-				};
-				// Adding a new marker for the object
-				var marker = new google.maps.Marker({
-					position: new google.maps.LatLng(obj.lat,obj.lng),
-					title: obj.title,
-					site: obj.site,
-					time: obj.time,
-					tel: obj.tel,
-					desc: obj.description,
-					img: obj.img,
-					map: map,
-					addr: obj.address,
-					icon: imgType,
-				});
-				var infowindow = new google.maps.InfoWindow({
-					content: " ",
-					pixelOffset: new google.maps.Size(-25, 62)
-				});
-				google.maps.event.addListener(marker, 'click', function() {
-					infowindow.setContent('<div id="content">'+
-							'<div class="siteNotice">'+
-									'<div class="title h4">' +this.title+
-									'</div>'+
-							'</div>'+
-							'<div class="maindesc">' +
-								'<div class="maindesc-img">'+
-									'<img src="'+this.img+'" alt="'+this.title+'">' +
+
+		if(trel.hasClass('map-elem-near')){
+			// $.ajax({
+			// 	url: 'js/elems.json',
+			// 	dataType: 'json',
+			// 	method : 'GET',
+			// 	error : function(request, status, error) {
+			// 			alert(error);
+			// 	},
+			// }).done(function(result) {
+			// 	onMarkerLoad (result)
+			// });
+			onMarkerLoad(elems.points);
+			function onMarkerLoad (json) {
+				for(var i = 0; i < json.length; i++) {
+
+					// Current object
+					var obj = json[i];
+					var imgType = {
+						url: obj.type,
+						// This marker is 20 pixels wide by 32 pixels high.
+						size: new google.maps.Size(100, 124),
+						// The origin for this image is (0, 0).
+						origin: new google.maps.Point(0, 0),
+						// The anchor for this image is the base of the flagpole at (0, 32).
+						anchor: new google.maps.Point(50, 31),
+						scaledSize: new google.maps.Size(50, 62)
+					};
+					// Adding a new marker for the object
+					var marker = new google.maps.Marker({
+						position: new google.maps.LatLng(obj.lat,obj.lng),
+						title: obj.title,
+						site: obj.site,
+						time: obj.time,
+						tel: obj.tel,
+						desc: obj.description,
+						img: obj.img,
+						map: map,
+						addr: obj.address,
+						icon: imgType,
+					});
+					var infowindow = new google.maps.InfoWindow({
+						content: " ",
+						pixelOffset: new google.maps.Size(-25, 62)
+					});
+					google.maps.event.addListener(marker, 'click', function() {
+						infowindow.setContent('<div id="content">'+
+								'<div class="siteNotice">'+
+										'<div class="title h4">' +this.title+
+										'</div>'+
 								'</div>'+
-								'<div class="maindesc-text">'+
-									'<div class="maindesc-elem place">' +this.addr+
+								'<div class="maindesc">' +
+									'<div class="maindesc-img">'+
+										'<img src="'+this.img+'" alt="'+this.title+'">' +
 									'</div>'+
-									'<a href="tel:'+this.tel+'"class="maindesc-elem tel">' +this.tel+
-									'</a>'+
-									'<div class="maindesc-elem time">' +this.time+
-									'</div>'+
-									'<a href="'+this.site+'"class="maindesc-elem site">' +this.site+
-									'</a>'+
-							'</div>'+
-							'<div class="elem-describe text">' +this.desc+
-							'</div>'+
-						'</div>');
-					infowindow.open(map, this);
-				});
-				var closeInfoWindow = function() {
-				    infowindow.close();
-				};
+									'<div class="maindesc-text">'+
+										'<div class="maindesc-elem place">' +this.addr+
+										'</div>'+
+										'<a href="tel:'+this.tel+'"class="maindesc-elem tel">' +this.tel+
+										'</a>'+
+										'<div class="maindesc-elem time">' +this.time+
+										'</div>'+
+										'<a target="_blank" rel="nofollow" href="'+this.site+'"class="maindesc-elem site">' +this.site+
+										'</a>'+
+								'</div>'+
+								'<div class="elem-describe text">' +this.desc+
+								'</div>'+
+							'</div>');
+						infowindow.open(map, this);
+					});
+					var closeInfoWindow = function() {
+					    infowindow.close();
+					};
 
-				google.maps.event.addListener(map, 'click', closeInfoWindow);
-			} // end loop
-		}
-		//вот тут надо будет пути поменять на актуальные
-		function checkType(type){
-			var _ = type;
-			var resultPath;
-			if(type == "bar"){
-				resultPath = 'img/markers/bar.png'
+					google.maps.event.addListener(map, 'click', closeInfoWindow);
+				} // end loop
 			}
-			if(type == "bank"){
-				resultPath = 'img/markers/bank.png'
-			}
-			if(type == "med"){
-				resultPath = 'img/markers/medicine.png'
-			}
-			if(type == "theater"){
-				resultPath = 'img/markers/theater.png'
-			}
-			if(type == "restaraunt"){
-				resultPath = 'img/markers/restaurant.png'
-			}
-			if(type == "magazine"){
-				resultPath = 'img/markers/magazine.png'
-			}
-			if(type == "salon"){
-				resultPath = 'img/markers/salon.png'
-			}
-			if(type == "interest"){
-				resultPath = 'img/markers/interest.png'
-			}
-			return resultPath
+			//вот тут надо будет пути поменять на актуальные
+			// function checkType(type){
+			// 	var _ = type;
+			// 	var resultPath;
+			// 	if(type == "bar"){
+			// 		resultPath = 'img/markers/bar.png'
+			// 	}
+			// 	if(type == "bank"){
+			// 		resultPath = 'img/markers/bank.png'
+			// 	}
+			// 	if(type == "med"){
+			// 		resultPath = 'img/markers/medicine.png'
+			// 	}
+			// 	if(type == "theater"){
+			// 		resultPath = 'img/markers/theater.png'
+			// 	}
+			// 	if(type == "restaraunt"){
+			// 		resultPath = 'img/markers/restaurant.png'
+			// 	}
+			// 	if(type == "magazine"){
+			// 		resultPath = 'img/markers/magazine.png'
+			// 	}
+			// 	if(type == "salon"){
+			// 		resultPath = 'img/markers/salon.png'
+			// 	}
+			// 	if(type == "interest"){
+			// 		resultPath = 'img/markers/interest.png'
+			// 	}
+			// 	return resultPath
+			// }
 		}
 	}
 }
