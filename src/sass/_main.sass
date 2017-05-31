@@ -343,7 +343,7 @@ body, .out
 		font-weight: 500
 		text-transform: uppercase;
 		line-height: 1.4;
-		+rem(max-width,100px)
+		max-width: 125px !important
 		+rem(margin-left,16px)
 		+rem(letter-spacing,0.4px)
 		color: $gray2
@@ -990,8 +990,8 @@ html:not(.fp-enabled)
 			&:after
 				display: inline-block
 				content: '/'
-				+rem(padding-left,6px)
-				+rem(padding-right,3px)
+				+rem(padding-left,5px)
+				+rem(padding-right,7px)
 				color: $gray1 !important
 		+tr(color .3s)
 		&:hover
@@ -1087,10 +1087,12 @@ html:not(.fp-enabled)
 					+rem(margin-top,-87px)
 						
 	&-content
-		flex-grow: 1
+		// flex-grow: 1
 		position: relative
 		+vertical
-		height: calc(100% - 8.125rem)
+		// height: calc(100% - 8.125rem)
+		display: block
+		height: 100% !important
 		+r(768)
 			+rem(margin-top,145px)
 		+r(740)
@@ -2529,6 +2531,8 @@ a:hover .line-cont,a:hover ~ .line-cont
 	&-wrap
 		padding-bottom: 47%
 		position: relative
+		.flickity-viewport
+			width: 100%
 		+r(1024)
 			padding-bottom: 64.25%
 		.flickity-prev-next-button
@@ -2587,12 +2591,16 @@ a:hover .line-cont,a:hover ~ .line-cont
 .rows
 	&-wrapper
 		font-size: 0
+		
 	&-row 
 		display: flex
 		flex-flow: row wrap
 		justify-content: flex-start
-		align-itemms: stratch
+		// align-items: stretch
+		height: 66.8vh
 		font-size: 0
+		+r(951)
+			height: auto
 		// &:nth-child(even)
 		// 	+rm(951)
 		// 		.rows-block	
@@ -2614,6 +2622,7 @@ a:hover .line-cont,a:hover ~ .line-cont
 		overflow: hidden
 		text-align: left
 		font-size: 0
+		height: 100%
 		+r(950)
 			width: 100%
 		&-img
@@ -2622,7 +2631,7 @@ a:hover .line-cont,a:hover ~ .line-cont
 			+cover
 			display: inline-block
 			vertical-align: middle
-			min-height: 66.8vh
+			
 			font-size: 0
 			contain: paint
 			+r(951)
@@ -3232,6 +3241,7 @@ div:not(#fp-nav)
 		+rem(padding-top,25px)
 		+rem(padding-bottom,35px)
 		+rem(max-width,300px)
+		font-style: italic
 .maindesc
 	font-size: 0
 	width: 100%

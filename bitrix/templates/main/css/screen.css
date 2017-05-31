@@ -2126,7 +2126,7 @@ body, .out {
   font-weight: 500;
   text-transform: uppercase;
   line-height: 1.4;
-  max-width: 6.25rem;
+  max-width: 125px !important;
   margin-left: 1rem;
   letter-spacing: 0.025rem;
   color: #888b8c;
@@ -2761,8 +2761,8 @@ html:not(.fp-enabled) .hotel-about-text .text-bold {
   .bread-item:not(:last-of-type):after {
     display: inline-block;
     content: '/';
-    padding-left: 0.375rem;
-    padding-right: 0.1875rem;
+    padding-left: 0.3125rem;
+    padding-right: 0.4375rem;
     color: #a3a3a3 !important; }
   .bread-item:hover {
     color: #fff; }
@@ -2817,15 +2817,11 @@ html:not(.fp-enabled) .hotel-about-text .text-bold {
         margin-top: -5.4375rem; }
 
 .section-content {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
   position: relative;
   text-align: center;
   font-size: 0;
-  height: -webkit-calc(100% - 8.125rem);
-  height: calc(100% - 8.125rem); }
+  display: block;
+  height: 100% !important; }
   .section-content:before {
     content: "";
     display: inline-block;
@@ -4084,6 +4080,8 @@ html:not(.fp-enabled) .hotel-about-text .text-bold {
 .slider-wrap {
   padding-bottom: 47%;
   position: relative; }
+  .slider-wrap .flickity-viewport {
+    width: 100%; }
   .slider-wrap .flickity-prev-next-button {
     -webkit-filter: brightness(120%);
     filter: brightness(120%); }
@@ -4148,7 +4146,7 @@ html:not(.fp-enabled) .hotel-about-text .text-bold {
   -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
   justify-content: flex-start;
-  align-itemms: stratch;
+  height: 66.8vh;
   font-size: 0; }
 
 .rows-block {
@@ -4157,7 +4155,8 @@ html:not(.fp-enabled) .hotel-about-text .text-bold {
   font-size: 0;
   overflow: hidden;
   text-align: left;
-  font-size: 0; }
+  font-size: 0;
+  height: 100%; }
   .rows-block:before {
     content: "";
     display: inline-block;
@@ -4172,7 +4171,6 @@ html:not(.fp-enabled) .hotel-about-text .text-bold {
     background-position: 50% 50%;
     display: inline-block;
     vertical-align: middle;
-    min-height: 66.8vh;
     font-size: 0;
     contain: paint;
     position: relative; }
@@ -4761,7 +4759,8 @@ div:not(#fp-nav) ul:not([class]) {
     font-size: 0.78125rem;
     padding-top: 1.5625rem;
     padding-bottom: 2.1875rem;
-    max-width: 18.75rem; }
+    max-width: 18.75rem;
+    font-style: italic; }
 
 .maindesc {
   font-size: 0;
@@ -5065,6 +5064,8 @@ div:not(#fp-nav) ul:not([class]) {
     text-align: right; } }
 
 @media only screen and (max-width: 951px){
+  .rows-row{
+    height: auto; }
   .rows-block-img{
     height: 0;
     min-height: 0;
