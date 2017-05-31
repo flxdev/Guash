@@ -309,7 +309,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		dtepick.each(function(){
 			var _ = $(this),
 				form = _.closest('.bronvo-form'),
-				frmTo = form.find('.datepicker[name=dto]')
+				frmTo = form.find('.datepicker[name=dtofake]')
 			_.datepicker({
 				inline: true,
 				dateFormat: "dd/mm/yy",
@@ -320,7 +320,7 @@ document.addEventListener("DOMContentLoaded", function() {
 				dayNamesShort: ["Пон", "Втр", "Срд", "Чет", "Пят", "Суб", "Вск"],
 				monthNames: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
 				onSelect: function( selectedDate ) {
-					if ($(this).attr('name') == 'dfrom') {
+					if ($(this).attr('name') == 'dfromfake') {
 						var dt = $(this).datepicker('getDate');
 						if (dt) {
 							dt.setDate(dt.getDate() + 1);
@@ -330,7 +330,20 @@ document.addEventListener("DOMContentLoaded", function() {
 					}
 				}
 			});
+			// SetDateReal(_,form);
 		});
+		// function SetDateReal(inp,form){
+		// 		var name = inp.attr('name');
+		// 		var s = name.indexOf('fake');
+		// 				name = name.substring(0, s != -1 ? s : name.length);
+		// 		inp.datepicker("setDate", '0');
+		// 		// console.log(date)
+		// 		var val = inp.val();
+
+		// 		form.find('input[name='+name+']').val(val);
+		// 		inp.val('');
+		// }
+
 		function make_url_params(elem) {
 			var form = elem.closest('.bronvo-form'),
 				lcode = form.find('input[name=lcode]').val(),
@@ -347,11 +360,11 @@ document.addEventListener("DOMContentLoaded", function() {
 			return url_params;
 		}
 
-		$('.bronvo-form button[type=submit]').click(function(e){
-			var wb_url = '';
-			window.open('https://wubook.net/wbkd/wbk/?'+ make_url_params($(this)), 'wubook', 'width=840, height=840, scrollbars=yes, toolbar=yes, location=1, resizable=1');
-			return false;
-		});
+		// $('.bronvo-form button[type=submit]').click(function(e){
+		// 	var wb_url = '';
+		// 	window.open('https://wubook.net/wbkd/wbk/?'+ make_url_params($(this)), 'wubook', 'width=840, height=840, scrollbars=yes, toolbar=yes, location=1, resizable=1');
+		// 	return false;
+		// });
 	}datepick()
 	Slider();
 	// initMap();
@@ -761,12 +774,19 @@ function validateForms() {
 				scrollToTopOnError: false,
 				onSuccess: function($form) {
 					formResponse(form_this);
+					resetForm(form_this);
+					return false
 				},
 			});
 		});
 	}
 }
-
+function resetForm(form){
+	setTimeout(function(){
+		form[0].reset();
+		$('.star-item').removeClass('active');
+	},300);
+}
 function popUpsInit() {
 	var _this = this;
 	_this.b = {

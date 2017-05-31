@@ -3349,8 +3349,8 @@ html:not(.fp-enabled) .hotel-about-text .text-bold {
       text-align: center;
       width: 33.33%; }
   .footer .page-cover-inner {
-    background-size: 90%;
-    background-position: bottom right 10%;
+    background-size: 90% !important;
+    background-position: bottom right 10% !important;
     opacity: .2; }
   .footer-main {
     -webkit-box-flex: 1;
@@ -3754,6 +3754,9 @@ html:not(.fp-enabled) .hotel-about-text .text-bold {
       overflow: hidden;
       text-overflow: ellipsis;
       text-align: left; }
+
+.star-wrapper .help-block {
+  text-align: center !important; }
 
 .bronvo-form {
   margin-right: -0.625rem; }
@@ -4394,7 +4397,12 @@ html:not(.fp-enabled) .hotel-about-text .text-bold {
         white-space: normal;
         margin-bottom: 3.125rem;
         -webkit-transition: opacity 0.3s;
-        transition: opacity 0.3s; }
+        transition: opacity 0.3s;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none; }
         .news-mainwrap-sort-cont .news-sort-elem:not(.active):hover {
           opacity: .5; }
         .news-mainwrap-sort-cont .news-sort-elem:before {
@@ -4414,7 +4422,8 @@ html:not(.fp-enabled) .hotel-about-text .text-bold {
           -webkit-transition: opacity 0.3s;
           transition: opacity 0.3s; }
         .news-mainwrap-sort-cont .news-sort-elem.active {
-          font-weight: 500; }
+          font-weight: 500;
+          pointer-events: none; }
           .news-mainwrap-sort-cont .news-sort-elem.active:before {
             opacity: 1; }
   .news-mainwrap .news-wrapper {
@@ -4529,6 +4538,11 @@ html:not(.fp-enabled) .hotel-about-text .text-bold {
     display: inline-block;
     vertical-align: middle;
     text-align: center;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     position: relative;
     width: 3.0625rem;
     -webkit-transition: opacity 0.3s;
@@ -4552,7 +4566,8 @@ html:not(.fp-enabled) .hotel-about-text .text-bold {
       -webkit-transition: opacity 0.3s;
       transition: opacity 0.3s; }
     .pagi-cont-elem.active {
-      font-weight: 500; }
+      font-weight: 500;
+      pointer-events: none; }
       .pagi-cont-elem.active:before {
         opacity: 1; }
     .pagi-cont-elem-image {
@@ -4745,7 +4760,8 @@ div:not(#fp-nav) ul:not([class]) {
   #content .elem-describe.text {
     font-size: 0.78125rem;
     padding-top: 1.5625rem;
-    padding-bottom: 2.1875rem; }
+    padding-bottom: 2.1875rem;
+    max-width: 18.75rem; }
 
 .maindesc {
   font-size: 0;
@@ -4767,7 +4783,9 @@ div:not(#fp-nav) ul:not([class]) {
     padding-left: 1.875rem;
     position: relative;
     display: block;
-    font-family: "Futura"; }
+    font-family: "Futura";
+    width: 100%;
+    word-break: break-word; }
     .maindesc-elem:before {
       content: '';
       background-repeat: no-repeat;
@@ -4785,8 +4803,12 @@ div:not(#fp-nav) ul:not([class]) {
       background-image: url(../img/icons/tel.png); }
     .maindesc-elem.time:before {
       background-image: url(../img/icons/clock.png); }
-    .maindesc-elem.site:before {
-      background-image: url(../img/icons/web.png); }
+    .maindesc-elem.site {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+      .maindesc-elem.site:before {
+        background-image: url(../img/icons/web.png); }
     .maindesc-elem.place, .maindesc-elem.tel {
       font-weight: 500;
       color: #000; }
@@ -4804,33 +4826,51 @@ div:not(#fp-nav) ul:not([class]) {
   background-image: url(../img/icons/close.png); }
   .gm-style-iw ~ div img {
     opacity: 0 !important; }
-  @media screen and (min-width: 801px) and (max-width: 1400px){
+
+#checkout_recap {
+  display: none !important; }
+
+.module-wrapper {
+  padding: 4.375rem 0; }
+
+.hidden_protection {
+  opacity: 0; }
+
+@media screen and (min-width: 801px) and (max-width: 1400px){
   html:not(.fp-enabled) .hotel-about-text{
     width: 52%; }
   html:not(.fp-enabled) .hotel-about-img{
     width: 48%; } }
-  @media screen and (min-width: 741px) and (max-width: 768px){
+
+@media screen and (min-width: 741px) and (max-width: 768px){
   .section-content .news-wrapper{
     padding-top: 15vw; } }
-  @media only screen and (min-device-width: 320px) and (max-device-width: 480px){
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px){
   *{
     -webkit-text-size-adjust: none; } }
-  @media only screen and (min-width: 1681px){
+
+@media only screen and (min-width: 1681px){
   .content-wrapper .section-head-wrap .section-head{
     width: 20.3vw; } }
-  @media only screen and (max-width: 1680px){
+
+@media only screen and (max-width: 1680px){
   .footer .site-navigation-item{
     font-size: 1.125rem; } }
-  @media only screen and (min-width: 1680px){
+
+@media only screen and (min-width: 1680px){
   .site-navigation-item.soc{
     padding-top: 0.9375rem; } }
-  @media only screen and (max-width: 1600px){
+
+@media only screen and (max-width: 1600px){
   .landing-elem:not(:nth-child(2)) .wrapper:not(.blk):not(.gray) .section-head{
     padding-top: 0; } }
-  @media only screen and (min-width: 1451px){
+
+@media only screen and (min-width: 1451px){
   .landing-elem:not(:nth-child(2)) .wrapper:not(.blk):not(.gray) .section-head{
     max-width: 12vw; } }
-  @media only screen and (max-width: 1450px){
+
+@media only screen and (max-width: 1450px){
   .landing-elem:not(:nth-child(2)) .wrapper:not(.blk):not(.gray) .section-head{
     max-width: 15vw; }
   .news-wrapper{
@@ -4841,7 +4881,8 @@ div:not(#fp-nav) ul:not([class]) {
     min-height: 10.3125rem; }
   .news-wrapper .news-elem-name .title{
     font-size: 1.375rem; } }
-  @media only screen and (max-width: 1400px){
+
+@media only screen and (max-width: 1400px){
   .page-head{
     padding-top: 15.625rem; }
   .hotel-about .hotel-about-text{
@@ -4861,24 +4902,29 @@ div:not(#fp-nav) ul:not([class]) {
   .content-wrapper{
     padding-top: 5.3125rem;
     padding-bottom: 4.0625rem; } }
-  @media only screen and (min-width: 1281px){
+
+@media only screen and (min-width: 1281px){
   .content-wrapper .section-head-wrap.room-inner .section-head{
     width: 33.3vw; }
   .content-wrapper .section-head-wrap .section-head{
     width: 25.3vw; } }
-  @media only screen and (max-width: 1280px){
+
+@media only screen and (max-width: 1280px){
   .section-head{
     width: 28.3vw; }
   .content-wrapper .section-head-wrap.room-inner .section-head{
     width: 43.3vw; } }
-  @media only screen and (max-width: 1150px){
+
+@media only screen and (max-width: 1150px){
   html{
     font-size: 15px; } }
-  @media only screen and (max-width: 1100px){
+
+@media only screen and (max-width: 1100px){
   .rows-block-content{
     padding-left: 2.8125rem;
     padding-right: 2.8125rem; } }
-  @media only screen and (min-width: 1025px){
+
+@media only screen and (min-width: 1025px){
   .header-btn-wrap:hover i:first-child{
     -webkit-transform: translateY(-2px);
     -ms-transform: translateY(-2px);
@@ -4945,7 +4991,8 @@ div:not(#fp-nav) ul:not([class]) {
   .specials-wrapper.room-inner .specials-content{
     margin-right: -2.8125rem;
     margin-left: -2.8125rem; } }
-  @media only screen and (max-width: 1024px){
+
+@media only screen and (max-width: 1024px){
   .header-tel-wrapper{
     display: none; }
   .section-container{
@@ -4999,10 +5046,12 @@ div:not(#fp-nav) ul:not([class]) {
     margin: 0; }
   .news-mainwrap-sort-cont .news-sort-elem{
     margin-bottom: 1.5625rem; } }
-  @media only screen and (max-width: 985px){
+
+@media only screen and (max-width: 985px){
   .hotel-about-wrap.img-left .hotel-about-text{
     padding-left: 7.5%; } }
-  @media only screen and (min-width: 951px){
+
+@media only screen and (min-width: 951px){
   .img-right .rows-row .rows-block:first-child{
     -webkit-box-ordinal-group: 3;
     -webkit-order: 2;
@@ -5014,12 +5063,14 @@ div:not(#fp-nav) ul:not([class]) {
     -ms-flex-order: 1;
     order: 1;
     text-align: right; } }
-  @media only screen and (max-width: 951px){
+
+@media only screen and (max-width: 951px){
   .rows-block-img{
     height: 0;
     min-height: 0;
     padding-bottom: 65.25%; } }
-  @media only screen and (max-width: 950px){
+
+@media only screen and (max-width: 950px){
   .footer-footer-dev, .footer-footer-copy{
     min-width: 16.25rem; }
   .footer-footer-inner .text-sm:not(:first-child){
@@ -5039,11 +5090,13 @@ div:not(#fp-nav) ul:not([class]) {
   .rows-block-content{
     padding-top: 3.4375rem;
     padding-bottom: 3.4375rem; } }
-  @media only screen and (min-width: 881px){
+
+@media only screen and (min-width: 881px){
   .legeng-elem:nth-child(n + 5){
     margin-top: 0.9375rem;
     margin-bottom: 4.375rem; } }
-  @media only screen and (max-width: 880px){
+
+@media only screen and (max-width: 880px){
   .footer-main{
     height: -webkit-calc(100% - 8.5125rem);
     height: calc(100% - 8.5125rem); }
@@ -5070,12 +5123,14 @@ div:not(#fp-nav) ul:not([class]) {
     flex-flow: row wrap; }
   .legeng-elem{
     width: 33.33%; } }
-  @media only screen and (min-width: 801px){
+
+@media only screen and (min-width: 801px){
   .hotel-about-wrap.hotel-about-room .hotel-about-text{
     padding-right: 2.5rem; }
   .hotel-about-text{
     margin-top: -0.3125rem; } }
-  @media only screen and (max-width: 800px){
+
+@media only screen and (max-width: 800px){
   .hotel-about-wrap.img-left .hotel-about-text{
     padding-left: 0;
     padding-right: 0; }
@@ -5117,14 +5172,16 @@ div:not(#fp-nav) ul:not([class]) {
     top: 0; }
   .hotel-about-img, .hotel-about-text{
     width: 100%; } }
-  @media only screen and (min-width: 769px){
+
+@media only screen and (min-width: 769px){
   .content-inner .img-cont.img-right .img-img{
     float: right; }
   .content-inner .img-cont.img-right .img-text{
     padding-left: 0; }
   .rows-block-content ul{
     padding-right: 3.125rem; } }
-  @media only screen and (max-width: 768px){
+
+@media only screen and (max-width: 768px){
   .page__header > .header-row .header-lang{
     display: none; }
   .page__header > .header-row .bron-text{
@@ -5195,7 +5252,8 @@ div:not(#fp-nav) ul:not([class]) {
     padding-bottom: 2.5rem; }
   .map-container{
     height: 70vh; } }
-  @media only screen and (min-width: 768px){
+
+@media only screen and (min-width: 768px){
   .page__content::-webkit-scrollbar{
     width: 0.25rem; }
   .page__content ::-webkit-scrollbar-thumb{
@@ -5205,7 +5263,8 @@ div:not(#fp-nav) ul:not([class]) {
     cursor: pointer; }
   .content-inner ul li{
     width: 90%; } }
-  @media only screen and (min-width: 741px){
+
+@media only screen and (min-width: 741px){
   .landing-elem .wrapper.blk .section-container{
     padding-top: 8.125rem; }
   .hotel-about-wrap.contact{
@@ -5218,7 +5277,8 @@ div:not(#fp-nav) ul:not([class]) {
     -webkit-box-orient: vertical;
     display: -webkit-box;
     overflow: hidden; } }
-  @media only screen and (max-width: 740px){
+
+@media only screen and (max-width: 740px){
   .page__footer .wrapper{
     height: auto; }
   .title i{
@@ -5318,16 +5378,19 @@ div:not(#fp-nav) ul:not([class]) {
   .legeng-elem{
     width: 50%;
     margin: 2.5rem 0 0.9375rem; } }
-  @media only screen and (min-width: 740px){
+
+@media only screen and (min-width: 740px){
   .modal-container-content-inner .widget-wrapper{
     padding-right: 0.3125rem; }
   .news-mainwrap .news-wrapper.blog-wrapper .blog-elem{
     margin-bottom: 2.5rem; } }
-  @media only screen and (max-width: 700px){
+
+@media only screen and (max-width: 700px){
   .content-wrapper .columns p{
     width: 100%;
     text-align: justify; } }
-  @media only screen and (max-width: 608px){
+
+@media only screen and (max-width: 608px){
   .page__header > .header-row{
     padding-top: 1.25rem;
     padding-left: 0.9375rem;
@@ -5335,7 +5398,8 @@ div:not(#fp-nav) ul:not([class]) {
   .page__header > .header-row .header-btn-wrap{
     margin-left: -0.9375rem;
     padding-left: 0.9375rem; } }
-  @media only screen and (min-width: 601px){
+
+@media only screen and (min-width: 601px){
   .f-link:not(:last-child):after{
     content: '';
     display: inline-block;
@@ -5345,7 +5409,8 @@ div:not(#fp-nav) ul:not([class]) {
     width: 1px;
     background-color: #888b8c;
     right: 1.25rem; } }
-  @media only screen and (max-width: 600px){
+
+@media only screen and (max-width: 600px){
   .text, .text-bold{
     font-size: 0.9375rem; }
   .bron-img{
@@ -5477,7 +5542,8 @@ div:not(#fp-nav) ul:not([class]) {
     right: -0.3125rem;
     bottom: -0.9375rem;
     background-size: 2.375rem auto; } }
-  @media only screen and (max-width: 500px){
+
+@media only screen and (max-width: 500px){
   .page-head:not(.full){
     padding-top: 11.25rem;
     padding-bottom: 2.1875rem; }
@@ -5513,7 +5579,8 @@ div:not(#fp-nav) ul:not([class]) {
     max-width: 8.4375rem; }
   .news-mainwrap .news-wrapper.blog-wrapper .blog-elem{
     width: 100%; } }
-  @media only screen and (max-width: 480px){
+
+@media only screen and (max-width: 480px){
   .section-head .section-svg:not(:only-child){
     max-height: 10vw;
     margin-top: 0; }
@@ -5524,7 +5591,8 @@ div:not(#fp-nav) ul:not([class]) {
     margin-top: -3vw; }
   .input-form .input-item.s50{
     width: 100%; } }
-  @media only screen and (max-width: 440px){
+
+@media only screen and (max-width: 440px){
   .feature-elem{
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -5542,7 +5610,8 @@ div:not(#fp-nav) ul:not([class]) {
     font-size: 1.0625rem; }
   .footer .site-tel-link{
     font-size: 1.625rem; } }
-  @media only screen and (max-width: 400px){
+
+@media only screen and (max-width: 400px){
   .title i{
     max-width: 1.1875rem; }
   .title.h1{
@@ -5560,21 +5629,25 @@ div:not(#fp-nav) ul:not([class]) {
   .legeng-elem{
     width: 100%;
     margin: 1.875rem 0 0.9375rem; } }
-  @media only screen and (max-width: 375px){
+
+@media only screen and (max-width: 375px){
   .header-menu-content-inner .site-address-text{
     max-width: 15.625rem;
     margin-left: auto;
     margin-right: auto; } }
-  @media only screen and (max-width: 360px){
+
+@media only screen and (max-width: 360px){
   .rows-block-content{
     padding-left: 0.9375rem;
     padding-right: 0.9375rem; } }
-  @media only screen and (max-width: 340px){
+
+@media only screen and (max-width: 340px){
   .bron-wrapper{
     margin-left: 0; }
   .page-head{
     padding-top: 9.6875rem; } }
-  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active){
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){
   .text-gold{
     color: #e6bd50; }
   .page__header:not(.is-hidden) > .header-row .bron-text{

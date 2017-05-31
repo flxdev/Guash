@@ -1,0 +1,40 @@
+extends _layout
+
+block title
+	title  Бронирование
+block config
+	- var main = ''
+block content
+	.wrapper
+		.box.page-head
+			.page-head-inner
+				.bread-cont
+					a(href="#").bread-item 
+						span Главная
+				.title.h1.white.animate-up Бронирование
+		.page-cover
+			.page-cover-inner.animate-bg(style='background-image: url(img/pagehead/hs1.jpg)')
+	.wrapper.blk
+		.box
+			.module-wrapper
+				script(src='https://wubook.net/js/wbbook.jgz')
+				#_wbord_
+					a(href='http://en.wubook.net/', style='display: block; margin-top: 5px; text-decoration:none;border:none')
+						img(src='https://wubook.net/imgs/default/booking_by_wu.gif', alt='Online Booking System', title='Hotel and tourism technologies', style='border:none;text-decoration:none')
+				script.
+					var WuBook= new _WuBook(1413618257);
+					var wbparams= {
+						lang: 'ru',
+						layout: 'default',
+						width: '100%',
+						height: 'auto',
+						mobile: 1,
+						mheight: 0
+					};
+					WuBook.design_iframe("_wbord_", wbparams);
+	.wrapper.blk
+		+next('контактная информация')
+
+
+
+				

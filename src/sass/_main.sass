@@ -1756,8 +1756,8 @@ a:hover .line-cont,a:hover ~ .line-cont
 						width: 100%
 	.page-cover
 		&-inner
-			background-size: 90%
-			background-position: bottom right 10%
+			background-size: 90% !important
+			background-position: bottom right 10% !important
 			opacity: .2
 	&-main 
 			flex-grow: 1
@@ -2099,6 +2099,10 @@ a:hover .line-cont,a:hover ~ .line-cont
 			overflow: hidden
 			text-overflow: ellipsis
 			text-align: left
+.star-wrapper
+	.help-block
+		text-align: center !important
+		
 .bronvo-form
 	+rem(margin-right,-10px)
 	.input-form
@@ -2871,6 +2875,7 @@ a:hover .line-cont,a:hover ~ .line-cont
 				white-space: normal
 				+rem(margin-bottom,50px)
 				+tr(opacity .3s)
+				+nosel
 				&:not(.active):hover
 					opacity: .5
 				+r(1024)
@@ -2890,6 +2895,7 @@ a:hover .line-cont,a:hover ~ .line-cont
 					+tr(opacity .3s)
 				&.active
 					font-weight: 500
+					pointer-events: none
 					&:before
 						opacity: 1	
 	.news-wrapper
@@ -2991,7 +2997,7 @@ a:hover .line-cont,a:hover ~ .line-cont
 		vertical-align: middle
 		// +padlr(14px)
 		text-align: center
-		
+		+nosel
 		position: relative
 		+rem(width,49px)
 		+tr(opacity .3s)
@@ -3022,6 +3028,7 @@ a:hover .line-cont,a:hover ~ .line-cont
 				+rem(background-size,38px auto)
 		&.active
 			font-weight: 500
+			pointer-events: none
 			&:before
 				opacity: 1	
 		&-image
@@ -3224,6 +3231,7 @@ div:not(#fp-nav)
 		+rem(font-size,12.5px)
 		+rem(padding-top,25px)
 		+rem(padding-bottom,35px)
+		+rem(max-width,300px)
 .maindesc
 	font-size: 0
 	width: 100%
@@ -3245,6 +3253,8 @@ div:not(#fp-nav)
 		position: relative
 		display: block
 		font-family: $f
+		width: 100%
+		word-break: break-word
 		&:before
 			content: ''
 			+contain
@@ -3264,8 +3274,12 @@ div:not(#fp-nav)
 			&:before
 				background-image: url(../img/icons/clock.png)
 		&.site
+			white-space: nowrap
+			overflow: hidden
+			text-overflow: ellipsis
 			&:before
 				background-image: url(../img/icons/web.png)
+
 		&.place,&.tel 
 			font-weight: 500
 			color: $blk
@@ -3283,3 +3297,9 @@ div:not(#fp-nav)
 		background-image: url(../img/icons/close.png)
 		img 
 			opacity: 0 !important
+#checkout_recap
+	display: none !important
+.module-wrapper
+	+rem(padding,70px 0)
+.hidden_protection
+	opacity: 0

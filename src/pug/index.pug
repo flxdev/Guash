@@ -17,7 +17,11 @@ block content
 										img(src="img/icons/heart.png", alt="") 
 									| сквы
 							.widget-wrapper.animate-up2
-								form(action="/").form.bronvo-form
+								// суть свождится к добавлению пути в action  формы, дальше все само летит
+								// логика работы как на веге, если хотя бы один инпут пустой , после редиректа мв модуле инпуты пустые, если кому-то не понравится то самый легкий вариант .js-validate на форму и data-validation на инпуты
+								// action="/8-0booking.html" заменить на страницу бронирования
+								// не забудь про такую же форму в модалке
+								form(action="/8-0booking.html").form.bronvo-form
 									.input-form
 										// инпут lcode 
 										input.input-main(type="hidden",name="lcode" value="1413618257")
