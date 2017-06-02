@@ -131,13 +131,15 @@ document.addEventListener("DOMContentLoaded", function() {
 			var elemN , elNIndex, elemC,setHide;
 			elem.fullpage({
 				navigation: true,
+				scrollingSpeed: 1300,
 				navigationPosition: 'right',
-				scrollingSpeed: 500,
+				// scrollingSpeed: 500,
 				easingcss3: 'cubic-bezier(0.77, 0, 0.175, 1)',
 				sectionSelector: '.landing-elem',
 				responsiveWidth: 740,
 				keyboardScrolling: true,
 				verticalCentered: false,
+
 				afterRender: function(){
 					elemN = conf.landEl.filter('.active')
 					elNIndex = elemN.index();
