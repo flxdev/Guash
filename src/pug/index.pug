@@ -42,7 +42,17 @@ block content
 
 												
 					.page-cover
-						.page-cover-inner.animate-bg(style='background-image: url(img/pagehead/h1.jpg)')
+						.page-cover-inner.animate-bg
+							.slider-wrap
+								.slider-inner.pagehead-slider.js-slider
+									.slider-element
+										.slider-element-inner(style="background-image: url(img/pagehead/h1.jpg)")
+									.slider-element
+										.slider-element-inner(style="background-image: url(img/pagehead/h2.jpg)")
+									.slider-element
+										.slider-element-inner(style="background-image: url(img/pagehead/sli1.jpg)")
+									.slider-element
+										.slider-element-inner(style="background-image: url(img/pagehead/sli2.jpg)")
 
 			.landing-elem.fp-auto-height
 				.wrapper.white

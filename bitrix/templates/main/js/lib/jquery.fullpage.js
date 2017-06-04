@@ -1241,13 +1241,13 @@
          */
         // var prevTime = new Date().getTime();
         var prevTime = new Date().getTime();
-        var scrolls = 0;
+        // var scrolls = 0;
         function MouseWheelHandler(e) {
             var curTime = new Date().getTime();
             var isNormalScroll = $(COMPLETELY_SEL).hasClass(NORMAL_SCROLL);
 
             //autoscrolling and not zooming?
-                if(options.autoScrolling && !controlPressed && !isNormalScroll && scrolls > 10){
+                if(options.autoScrolling && !controlPressed && !isNormalScroll ){
                     // cross-browser wheel delta
                     e = e || window.event;
                     var value = e.wheelDelta || -e.deltaY || -e.detail;
@@ -1300,11 +1300,12 @@
                             }
                         }
                     }
-                    scrolls = 0;
+                    // scrolls = 0;
                     return false;
-                } else {
-                     scrolls++;
-                };
+                }
+                // } else {
+                //      scrolls++;
+                // };
 
                 if(options.fitToSection){
                     //stopping the auto scroll to adjust to a section

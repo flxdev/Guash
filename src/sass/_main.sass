@@ -871,6 +871,14 @@ body, .out
 				content: ''
 				+coverdiv
 				background-color: rgba(0,0,0,.5)
+			.slider-wrap
+				height: 100%
+				padding-bottom: 0
+				z-index: -1
+				pointer-events: none
+				.flickity-prev-next-button 
+					display: none
+					
 		img
 			width: 100%
 			height: 100%
@@ -878,7 +886,19 @@ body, .out
 	&>div:not(.page-cover)
 		position: relative
 
-
+.pagehead-slider
+	.flickity-slider 
+		transform: none !important;
+	.slider-element
+		left: 0 !important;
+		opacity: 0;
+		transition: opacity 0.3s ease-in-out;
+		z-index: -1;
+	.slider-element:not(.is-selected)
+		transition-delay: .25s
+	.slider-element.is-selected
+		opacity: 1;
+		z-index: 0
 .box
 	display: block
 	margin: 0 auto
@@ -1223,6 +1243,19 @@ html:not(.fp-enabled)
 			.hotel-about-text
 				padding-right: 0
 				padding-left: 10.5%
+				+rm(801)
+					position: relative
+				&:after
+					content: ''
+					position: absolute
+					+rem(width,160px)
+					opacity: .15
+					z-index: -1
+					+rem(height,160px)
+					+contain
+					+rem(right,-20px)
+					bottom: 30px
+					background-image: url(../img/icons/love.png)
 				+r(985)
 					padding-left: 7.5%
 				+r(800)
@@ -2113,10 +2146,35 @@ a:hover .line-cont,a:hover ~ .line-cont
 		margin-right: 0
 		.input-item
 			+rem(padding-right,10px)
+
 		.input-main
 			background: transparent !important
+
 			+placeholder 
 				font-style: normal
+.page-head-inner
+	.input-item
+		contain: none
+		&.s33
+			width: 33.3%
+			// padding-right: 0
+			.input-wrapper
+				display: block
+				width: 100%
+				visibility: visible
+
+			.input-main
+				z-index: 2
+				position: relative
+				padding-right: 0
+				border-width: 1.5px 
+				// border-width: 1.5px
+				// margin-right: .625rem;
+				// width: calc(100% - .625rem)
+
+				// &:not(:focus),&:not(.hasDetepicker)
+
+				// 	border-right: 1.5px solid #fff !important
 .star
 	&-wrapper
 		white-space: nowrap
