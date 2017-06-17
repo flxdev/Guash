@@ -162,16 +162,14 @@ document.addEventListener("DOMContentLoaded", function() {
 			});
 			conf.body.css('height','100$');
 			$.fn.fullpage.setAllowScrolling(false);
-			$.fn.fullpage.setKeyboardScrolling(false);
-			var shortWaitTime = 500;
-			var longWaitTime = 1100;
+			var shortWaitTime = 570;
+			var longWaitTime = 1350;
 			var mouseScrolling = false;
 			var shortTimeout;
 			var longTimeout;
 
 			var mouseScroll = function(e) {
 			    var delta = Math.max(-1, Math.min(1, e.originalEvent.wheelDelta || -e.originalEvent.detail));
-			    console.log(delta)
 			    e.preventDefault();
 			    e.stopPropagation();
 
@@ -201,7 +199,10 @@ document.addEventListener("DOMContentLoaded", function() {
 			        }
 			    }
 			};
-
+			if(/Windows Phone|iemobile/i.test(navigator.userAgent)){
+				$.fn.fullpage.setAllowScrolling(true);
+				$.fn.fullpage.scrollBar(true);
+			}
 			$(document).on("mousewheel DOMMouseScroll", mouseScroll);
 		}
 	}LandingFullPage();
@@ -355,7 +356,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		dtepick.each(function(){
 			var _ = $(this),
 				form = _.closest('.bronvo-form'),
-				frmTo = form.find('.datepicker[name=dtofake]')
+				frmTo = form.find('.datepicker[name=dto]')
 			_.datepicker({
 				inline: true,
 				dateFormat: "dd/mm/yy",
@@ -366,7 +367,7 @@ document.addEventListener("DOMContentLoaded", function() {
 				dayNamesShort: ["Пон", "Втр", "Срд", "Чет", "Пят", "Суб", "Вск"],
 				monthNames: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
 				onSelect: function( selectedDate ) {
-					if ($(this).attr('name') == 'dfromfake') {
+					if ($(this).attr('name') == 'dfrom') {
 						var dt = $(this).datepicker('getDate');
 						if (dt) {
 							dt.setDate(dt.getDate() + 1);
@@ -616,6 +617,15 @@ function initMap() {
 						}
 					]
 				},
+				 {
+					"featureType": "transit.station.rail",
+					"elementType": "labels",
+					"stylers": [
+						{
+							"visibility": "on"
+		            }
+		        ]
+		    },
 				{
 					"featureType": "water",
 					"elementType": "geometry",
@@ -771,7 +781,7 @@ function Slider(){
 					pageDots: false,
 					setGallerySize: false,
 					initialIndex: 0,
-					autoPlay: 5000,
+					autoPlay: 6500,
 					pauseAutoPlayOnHover: false
 				});
 				_.flickity('stopPlayer');

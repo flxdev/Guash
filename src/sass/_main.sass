@@ -70,6 +70,9 @@ html
 							+rem(height,65px)
 							+rem(margin-top,28px)
 							+tr(margin-top .3s)
+	// +r(320)
+	// 	&.fp-enabled
+	// 		overflow: visible !important
 body
 	background-color: #fff
 	background-attachment: fixed
@@ -87,6 +90,9 @@ body
 		color: $white
 	&.menu-open
 		position: fixed
+	// +r(320)
+	// 	&:not(.menu-open),&:not(.modal_open)
+	// 		overflow: visible !important
 		
 
 body, .out
@@ -161,6 +167,8 @@ body, .out
 			height: 100vh
 			+r(740)
 				height: auto
+				.footer-main
+					height: auto
 	&__content
 		flex: 1 0 auto
 		width: 100%
@@ -394,9 +402,9 @@ body, .out
 			left: calc(50% - (8.875rem / 2))
 			+rem(top,50px)
 			+r(740)
-				+rem(max-width,85px)
-				left: calc(50% - (5.3125rem / 2))
-				+rem(top,00px)
+				+rem(max-width,100px)
+				left: calc(50% - (6.25rem / 2))
+				+rem(top,10px)
 		&.small
 			+rem(max-width,47px)
 			left: calc(50% - (2.995rem / 2))
@@ -905,16 +913,23 @@ body, .out
 	+rem(max-width, 1014px)
 	+padlr(15px)
 .landing-elem
+	+r(320)
+		display: block !important
+		position: static !important
 	.wrapper
 		width: 100%
 		height: 100%
 		overflow: hidden
 		position: relative
+		// &>.box:not(.footer-main)
+		// 	+r(414)
+		// 		min-height: 100vh
 		.page-head
 			&.full
 				height: 100%
 				+r(600)
 					min-height: 100vh
+
 @keyframes Fade
 	0%
 		opacity: 1
@@ -1055,6 +1070,7 @@ html:not(.fp-enabled)
 			max-width: 100%
 			+rem(padding-top,50px)	
 			+rem(padding-bottom,50px)
+			display: block !important
 	&-head
 		// +rem(width,410px)
 		text-align: center
@@ -1141,8 +1157,15 @@ html:not(.fp-enabled)
 	text-align: center
 	+r(740)
 		+rem(margin-top,35px)
+// .fullpage-wrapper
+// 	+r(500)
+// 		min-height: 200vh !important
+// 		overflow: visible !important
+// 		touch-action: inherit !important
 .landing-elem
 	contain: paint
+	display: block
+	
 	.wrapper.blk		
 		.section-container
 			+rm(741)
@@ -1238,6 +1261,8 @@ html:not(.fp-enabled)
 	flex-flow: row wrap
 	align-items:stretch
 	text-align: left
+	+r(600)
+		+rem(margin-bottom,15px)
 	&-wrap
 		&.img-left
 			.hotel-about-text
@@ -1393,9 +1418,9 @@ html:not(.fp-enabled)
 		flex-flow: row wrap	
 		.feature-elem-num,.feature-elem-text
 			width: 100%	
-			max-width: 100%	
+			+rem(max-width,110px)
 			padding-left: 0	
-			+rem(padding-right,35px)
+			// +rem(padding-right,35px)
 		.feature-elem-text
 			+rem(margin-top,10px)
 	&-num
@@ -1412,9 +1437,11 @@ html:not(.fp-enabled)
 			use 
 				width: 100%
 	&-text
-		+rem(max-width,134px)
+		+rem(max-width,147px)
 		+rem(padding-left,20px)
 		text-align: left
+		+screen(441,1200)
+			+rem(max-width,170px)
 .chose
 	&-wrapper
 		+r(1400)
@@ -1781,7 +1808,9 @@ a:hover .line-cont,a:hover ~ .line-cont
 					+rem(font-size,18px)
 				+r(600)
 					width: 50%
+					text-align: left
 					&.soc
+						text-align: center
 						position: absolute
 						left: 0
 						right: 0
@@ -1803,6 +1832,7 @@ a:hover .line-cont,a:hover ~ .line-cont
 			+r(740)
 				+rem(padding-top,55px)
 				+rem(padding-bottom,45px)
+				height: auto
 				.site-tel
 					+rem(padding-bottom,40px)
 			&-inner
@@ -1810,6 +1840,8 @@ a:hover .line-cont,a:hover ~ .line-cont
 				width: 100%	
 				vertical-align: middle
 				height: 70%
+				+r(320)
+					height: auto
 			&-content
 				height: 100%
 				display: flex
@@ -2003,7 +2035,8 @@ a:hover .line-cont,a:hover ~ .line-cont
 						+rem(padding-right,5px)
 				.bronvo-form
 					.form-submit
-						+rem(padding-right,12px)
+						+rem(padding-right,10px)
+						+rem(max-width,325px)
 					.input-form
 						+rem(max-width,325px)
 						min-width: 0
@@ -2410,12 +2443,15 @@ a:hover .line-cont,a:hover ~ .line-cont
 				+rem(padding-right,42px)
 				+r(700)
 					width: 100%
-					text-align: justify
 				+r(500)
 					+rem(font-size,16px)
 					
 	&-back 
 		+rem(padding-bottom,35px)
+		img 
+			margin: 0 !important
+			max-width: inherit !important
+
 		a 
 			text-align: center
 			display: block
@@ -2778,6 +2814,8 @@ a:hover .line-cont,a:hover ~ .line-cont
 		background-attachment: fixed
 		transform: translateX(0)
 		contain: paint
+		+ie11
+			background-attachment: scroll
 		&:before
 			content: ''
 			+coverdiv
@@ -3292,6 +3330,7 @@ div:not(#fp-nav)
 		+rem(letter-spacing, 1px)
 #content
 	+rem(max-width,295px)
+	+rem(min-width,280px)
 	+rem(padding-left,5px)
 	+rem(padding-top,15px)
 	.elem-describe.text
@@ -3308,12 +3347,16 @@ div:not(#fp-nav)
 		display: inline-block
 		vertical-align: top
 	&-img	
-		width: 40%
+		max-width: 40%
 		img 
 			width: 100%
+			&[src=""]
+				display: none
+				
 	&-text
 		width: 60%
 		+rem(margin-top,-4px)
+		+rem(min-width, 150px)
 	&-elem 
 		+rem(font-size,14px)
 		+rem(margin-bottom,6px)
@@ -3323,30 +3366,36 @@ div:not(#fp-nav)
 		font-family: $f
 		width: 100%
 		word-break: break-word
-		&:before
-			content: ''
-			+contain
-			+rem(width,9px)
-			+rem(height,10px)
-			position: absolute
-			display: inline-block
-			+rem(top,3px)
-			+rem(left,13px)
-		&.place
+		// &:empty
+		// 	&:before
+		// 		display: none
+		&:not(:empty)
 			&:before
-				background-image: url(../img/icons/marker.png)
-		&.tel
-			&:before
-				background-image: url(../img/icons/tel.png)
-		&.time
-			&:before
-				background-image: url(../img/icons/clock.png)
-		&.site
-			white-space: nowrap
-			overflow: hidden
-			text-overflow: ellipsis
-			&:before
-				background-image: url(../img/icons/web.png)
+				content: ''
+				+contain
+				+rem(width,9px)
+				+rem(height,10px)
+				position: absolute
+				display: inline-block
+				+rem(top,3px)
+				+rem(left,13px)
+				// &:only-child,&:last-child
+				// 	display: none
+			&.place
+				&:before
+					background-image: url(../img/icons/marker.png)
+			&.tel
+				&:before
+					background-image: url(../img/icons/tel.png)
+			&.time
+				&:before
+					background-image: url(../img/icons/clock.png)
+			&.site
+				white-space: nowrap
+				overflow: hidden
+				text-overflow: ellipsis
+				&:before
+					background-image: url(../img/icons/web.png)
 
 		&.place,&.tel 
 			font-weight: 500
