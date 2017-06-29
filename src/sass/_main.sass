@@ -143,7 +143,7 @@ body, .out
 		flex-wrap: nowrap
 		flex-direction: column
 		min-height: 100%
-		overflow: hidden
+		// overflow: hidden
 	&__outer
 		width: 100%
 		display: block
@@ -245,6 +245,9 @@ body, .out
 		filter: brightness(120%)
 
 		-webkit-font-smoothing: antialiased;
+		+ie11
+			color: $active
+			background-image: none
 .text,.text-bold
 	+rem(font-size,18px)
 	color: $blk
@@ -270,6 +273,7 @@ body, .out
 	-webkit-font-smoothing: antialiased;
 	+ie11
 		color: $active
+		background-image: none
 
 
 
@@ -488,6 +492,11 @@ body, .out
 			.header-menu-inner
 				transform: translateX(0)
 				transition-delay: .2s
+		.bron-text
+			+ie11
+				color: $active
+				background-image: none !important
+				font-weight: 500
 	&-inner
 		height: 100%
 		width: 100%
@@ -895,6 +904,7 @@ body, .out
 		position: relative
 
 .pagehead-slider
+	pointer-events: none
 	.flickity-slider 
 		transform: none !important;
 	.slider-element
@@ -913,9 +923,9 @@ body, .out
 	+rem(max-width, 1014px)
 	+padlr(15px)
 .landing-elem
-	+r(320)
-		display: block !important
-		position: static !important
+	// +r(320)
+	// 	display: block !important
+	// 	position: static !important
 	.wrapper
 		width: 100%
 		height: 100%
@@ -965,7 +975,7 @@ body, .out
 		+rem(padding-top,175px)
 		&.full
 			min-height: 70vh
-			height: 70vh
+			// height: 70vh
 	+r(340)
 		+rem(padding-top,155px)
 	&-inner
@@ -1002,6 +1012,9 @@ html:not(.fp-enabled)
 	.hotel-about-img
 		+screen(801,1400)
 			width: 48%	
+		img 
+			+ie11
+				width: auto 
 .page-404
 		background-color: $blk		
 		.page-head-inner
@@ -1192,7 +1205,10 @@ html:not(.fp-enabled)
 						max-width: 15vw
 					+r(768)
 						max-width: 37vw
-
+	&:nth-child(4)
+		.section-head
+			+rm(1601)
+				padding-top: 15px !important
 
 
 .animate-up,.animate-bg,.animate-up2
@@ -1200,7 +1216,24 @@ html:not(.fp-enabled)
 	will-change: transform
 .fp-responsive .landing-wrapper,.fp-responsive .landing-wrapper .fp-slide,.fp-responsive .landing-wrapper .fp-tableCell,.fp-responsive .landing-wrapper .landing-elem
 		height: auto !important;
-		
+.landing-wrapper
+	&:not(.fullpage-wrapper)
+		+rm(340)
+			min-height: 100vh
+			.landing-elem .wrapper
+				min-height: 100vh
+				.page-head-inner
+					opacity: 0
+					min-height: 100vh
+		+ie11
+			+r(340)
+				.page-head-inner
+					transform: none!important
+					opacity: 1 !important
+
+
+
+
 #fp-nav
 	position: fixed;
 	z-index: 1;
@@ -1407,6 +1440,7 @@ html:not(.fp-enabled)
 			left: 0
 			bottom: 0
 			width: 100%
+
 			+r(740)
 				+rem(margin-top,20px)		
 .feature-elem
@@ -1440,8 +1474,8 @@ html:not(.fp-enabled)
 		+rem(max-width,147px)
 		+rem(padding-left,20px)
 		text-align: left
-		+screen(441,1200)
-			+rem(max-width,170px)
+		+screen(441,1310)
+			+rem(max-width,165px)
 .chose
 	&-wrapper
 		+r(1400)
@@ -1790,6 +1824,9 @@ a:hover .line-cont,a:hover ~ .line-cont
 	position: relative
 	display: flex
 	flex-flow: column nowrap
+	+r(370)
+
+			
 	.site
 		&-tel
 			&-link
@@ -1809,6 +1846,7 @@ a:hover .line-cont,a:hover ~ .line-cont
 				+r(600)
 					width: 50%
 					text-align: left
+					padding-left: 13%
 					&.soc
 						text-align: center
 						position: absolute
@@ -1818,6 +1856,8 @@ a:hover .line-cont,a:hover ~ .line-cont
 						line-height: 0
 						padding: 0
 						width: 100%
+				+r(360)
+					padding-left: 10%
 	.page-cover
 		&-inner
 			background-size: 90% !important
@@ -1827,6 +1867,9 @@ a:hover .line-cont,a:hover ~ .line-cont
 			flex-grow: 1
 			+vertical
 			height: calc(100% - 6.375rem)
+			+ie11
+				margin-left: 50vw !important
+				transform: translateX(-50%)
 			+r(880)
 				height: calc(100% - 8.5125rem)
 			+r(740)
@@ -1847,6 +1890,9 @@ a:hover .line-cont,a:hover ~ .line-cont
 				display: flex
 				flex-flow: column nowrap
 				justify-content: space-between
+				+r(370)
+					display: block
+					
 						
 	&-footer
 			flex-grow: 0
@@ -1883,6 +1929,7 @@ a:hover .line-cont,a:hover ~ .line-cont
 				align-items: center
 				+r(880)
 					flex-flow: row wrap
+				
 				.text-sm
 					display: inline-block
 					vertical-align: middle
@@ -2630,7 +2677,7 @@ a:hover .line-cont,a:hover ~ .line-cont
 		+r(1024)
 			padding-bottom: 64.25%
 		.flickity-prev-next-button
-			filter: brightness(120%)
+			filter: brightness(120%)	
 			+r(600)
 				+rem(width,45px)
 				+rem(height,45px)
@@ -2680,7 +2727,7 @@ a:hover .line-cont,a:hover ~ .line-cont
 						order: 2
 					&:last-child
 						order: 1
-						text-align: right
+						justify-content: flex-end
 						
 .rows
 	&-wrapper
@@ -2690,9 +2737,11 @@ a:hover .line-cont,a:hover ~ .line-cont
 		display: flex
 		flex-flow: row wrap
 		justify-content: flex-start
-		// align-items: stretch
-		height: 66.8vh
+		align-items: stretch
+		min-height: 66.8vh
 		font-size: 0
+		+ie11
+			height: 70vh
 		+r(951)
 			height: auto
 		// &:nth-child(even)
@@ -2716,28 +2765,39 @@ a:hover .line-cont,a:hover ~ .line-cont
 		overflow: hidden
 		text-align: left
 		font-size: 0
-		height: 100%
+		position: relative
+		// height: 100%
+		display: flex
+		align-items: center
 		+r(950)
 			width: 100%
+			display: block
+			&:before
+				display: none
+				
 		&-img
 			width: 100%
 			height: 100%
 			+cover
-			display: inline-block
-			vertical-align: middle
-			
+			// display: inline-block
+			// vertical-align: middle
+			// height: 66.8vh
 			font-size: 0
 			contain: paint
+			+coverdiv
 			+r(951)
 				height: 0
 				min-height: 0
 				padding-bottom: 65.25%
-			position: relative
+				position: relative !important
 
 			&-cover
-				+coverdiv
+				height: 100%
+				width: 100%
 				+vertical
 				background-color: rgba(0,0,0,.5)
+				+r(950)
+					+coverdiv
 				.key-elem
 					display: inline-block
 					width: 6%
@@ -3420,3 +3480,180 @@ div:not(#fp-nav)
 	+rem(padding,70px 0)
 .hidden_protection
 	opacity: 0
+//==============================================
+//стили заглушки, вставлены инлайново
+//==============================================
+
+// .main-wrapper
+// 	display: table
+// 	width: 100%
+// 	min-height: 100%
+// 	position: relative
+// 	background-repeat: no-repeat
+// 	background-size: cover
+// 	background-position: 50% 50%
+// 	z-index: -1
+// 	&:before
+// 		content: ''
+// 		position: absolute
+// 		left: 0
+// 		right: 0
+// 		bottom: 0
+// 		top: 0
+// 		background: #000
+// 		opacity: 0.4
+// 		min-height: 100%
+// 		z-index: 0
+// 	&-body
+// 		position: absolute
+// 		left: 0
+// 		right: 0
+// 		top: 0
+// 		width: 100%
+// 		min-height: 100%
+// 		z-index: -1
+
+// 	&-content
+// 		display: table-row
+// 		width: 100%
+// 		height: 100%
+// 		text-align: center
+// 		position: relative
+// 		z-index: 3
+// 		font-family: 'Futura', Arial, sans-serif;
+// 		*
+// 			font-family: 'Futura', Arial, sans-serif;
+// 	&-content-inner,&-footer-inner
+// 		position: relative
+// 		z-index: 3
+// 	&-footer
+// 		background-color: #000
+// 	&-logo
+// 		margin: 100px 0 0px
+// 		a 
+// 			display: inline-block
+// 			img
+// 				max-width: 145px
+// 	&-text
+// 		max-width: 850px
+// 		margin: 5px auto 50px
+// 		padding: 0 10px
+// 		font-family: 'Futura', Arial, sans-serif;
+// 		color: #fff
+// 		.h-title
+// 			max-width: 550px
+// 			margin: 0 auto 40px
+// 			font-size: 52px
+// 		.text1
+// 			font-size: 25px
+// 			margin: 10px 0
+// 			font-weight: 400
+// 	&-links
+// 		max-width: 900px
+// 		padding: 0 10px
+// 		width: 100%
+// 		margin: 50px auto 90px
+// 		&:hover
+// 			.main-wrapper-item:not(:hover)
+// 				opacity: 0.6
+// 	&-item
+// 		display: inline-block
+// 		vertical-align: top
+// 		width: 20%
+// 		text-align: center
+// 		transition: opacity .3s
+// 		.img-wrapp
+// 			display: inline-block
+// 			width: 50px
+// 			height: 50px
+// 			img 
+// 				max-width: 100%
+// 				max-height: 100%
+// 				display: block
+// 	.main-wrapper-item-text
+// 		width: 100%
+// 		display: block
+// 		color: #fff
+// 		margin-top: 20px
+// 	&-contact
+// 		margin: 90px auto 100px
+// 		p 
+// 			color: #fff 
+// 			font-size: 18px
+// 			margin-bottom: 10px
+// 		.dot-divider
+// 			display: inline-block
+// 			padding-left: 4px
+// 			padding-right: 7px
+// 			color: #e6bd50
+// 	&-footer
+// 		font-size: 0
+// 		padding-top: 5px
+// 		&-inner
+// 			font-size: 0
+// 			padding: 20px 0
+// 			.copyright,.social,.developer
+// 				display: inline-block
+// 				vertical-align: middle
+// 				width: 33%
+// 				text-align: center
+// 			.social
+// 				margin: 0
+// 				.soc-icon-wrapp
+// 					display: inline-block
+// 					vertical-align: middle
+// 					max-width: 30px
+// 					margin: 0 5px;
+// 				a,
+// 					&:after,&:before
+// 						display: none !important
+// 					img
+// 						display: block
+// 						max-width: 100%
+// 						max-height: 100%
+// 			.copyright
+// 				font-size: 1rem;
+// 				line-height: 1.4;
+// 				color: #888b8c;
+// 			.developer
+// 				.dev-text
+// 					text-align: left
+// 					display: inline-block
+// 					padding-left: 10px
+// 				.dev-text
+// 					color: gray 
+// 					font-size: 13px
+// 					div
+// 						display: inline-block
+// 						vertical-align: baseline
+// 					.u-bold
+// 						text-transform: uppercase
+// 						color: #fff
+// 						font-size: 16px
+// 						padding-left: 5px
+
+// @media only screen and (max-width: 460px)
+// 	.main-wrapper-text
+// 		margin: 0px auto 30px
+// 		.h-title
+// 			max-width: 650px
+// 			margin: 0 auto 30px
+// 			font-size: 32px
+// 		.text1
+// 			font-size: 20px
+// 	.main-wrapper-logo
+// 		margin: 30px 0 0px
+// 		a 
+// 			img
+// 				max-width: 120px
+// 	.main-wrapper-item
+// 		width: 50%
+// 		margin-top: 20px
+// 	.main-wrapper-links,.main-wrapper-contact
+// 		margin: 30px auto 
+// 	.main-wrapper-footer-inner
+// 		.copyright,.social
+// 			width: 49%
+// 		.developer
+// 			width: 99%
+// 			margin-top: 15px

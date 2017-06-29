@@ -122,6 +122,7 @@ var conf = {
 	validateForms();
 
 	function LandingFullPage(){
+		if(!/Windows Phone|iemobile/i.test(navigator.userAgent)){
 		var elem = $('.landing-wrapper');
 		if(elem.length){
 
@@ -135,7 +136,7 @@ var conf = {
 				scrollingSpeed: 500,
 				scrollDelay: 700,
 				navigationPosition: 'right',
-				touchSensitivity: 70,
+				touchSensitivity: 25,
 				easingcss3: 'cubic-bezier(0.77, 0, 0.175, 1)',
 				sectionSelector: '.landing-elem',
 				responsiveWidth: 740,
@@ -153,6 +154,9 @@ var conf = {
 					elNIndex = elemN.index();
 					ChangeHeader(elNIndex);
 				},
+				afterResponsive: function(isResponsive){
+					$.fn.fullpage.setAllowScrolling(true);
+				},
 				onLeave: function(index, nextIndex, direction){
 					elemC = conf.landEl.eq(index - 1);
 					elemN = conf.landEl.eq(nextIndex - 1);
@@ -160,8 +164,14 @@ var conf = {
 					UpFirst(elemN);
 				}
 			});
-			conf.body.css('height','100$');
-			$.fn.fullpage.setAllowScrolling(false);
+			// conf.body.css('height','100%');
+			// if(!(/iPad|iPhone/i.test(navigator.userAgent)) && window.matchMedia("(min-width: 735px)").matches){
+			// 	$.fn.fullpage.setAllowScrolling(false);
+			// }
+			// $('body').on('touchmove',function(){
+			// 	console.log($.fn.fullpage);
+			// })
+			
 			var shortWaitTime = 570;
 			var longWaitTime = 1350;
 			var mouseScrolling = false;
@@ -199,15 +209,19 @@ var conf = {
 			        }
 			    }
 			};
-				if(/Windows Phone|iemobile/i.test(navigator.userAgent)){
-					$.fn.fullpage.setAllowScrolling(true);
-					$.fn.fullpage.scrollBar(true);
-				}
-			$(document).on("mousewheel DOMMouseScroll", mouseScroll);
+			if(!(/iPad|iPhone/i.test(navigator.userAgent)) && window.matchMedia("(min-width: 735px)").matches){
+				$.fn.fullpage.setAllowScrolling(false);
+				$(document).on("mousewheel DOMMouseScroll touchmove", mouseScroll);
+			}
+			
+			}
+			// if(/Windows Phone|iemobile/i.test(navigator.userAgent)){
+			// 	conf.html.addClass('fp-enabled');
+			// }
 		}
 	}LandingFullPage();
 	function ScrollHead(){
-		if(!conf.html.hasClass('fp-enabled')){
+		if(!conf.html.hasClass('fp-enabled') && isMobile() == false){
 			var container = $('.page-head-inner');
 			var windowHeight = $(window).innerHeight();
 			var scrollArea = windowHeight;
@@ -422,13 +436,14 @@ var conf = {
 
 function initMap() {
 	var trel = $('#map');
+	var map;
 	if(trel.length){
 		var element = document.getElementById('map');
 		var latcord = parseFloat(element.getAttribute('data-lat'));
 		var loncord = parseFloat(element.getAttribute('data-lon'));
 		var imgpath = element.getAttribute('data-icon');
 		var centercords = {lat: latcord, lng: loncord};
-		var map = new google.maps.Map(element, {
+		map = new google.maps.Map(element, {
 			zoom: 18,
 			center: centercords,
 			fullscreenControl: true,
@@ -436,6 +451,7 @@ function initMap() {
 			mapTypeControl: false,
 			scaleControl: false,
 			streetViewControl: false,
+			gestureHandling: "greedy",
 			zoomControlOptions: {
 					position: google.maps.ControlPosition.RIGHT_CENTER
 			},
@@ -654,21 +670,13 @@ function initMap() {
 			position: centercords,
 			map: map,
 			icon: img,
+			zIndex: 99999
 		});
 
 		
 		if(trel.hasClass('map-elem-near')){
-			// $.ajax({
-			// 	url: 'js/elems.json',
-			// 	dataType: 'json',
-			// 	method : 'GET',
-			// 	error : function(request, status, error) {
-			// 			alert(error);
-			// 	},
-			// }).done(function(result) {
-			// 	onMarkerLoad (result)
-			// });
 			onMarkerLoad(elems.points);
+			map.set('zoom', 15);
 			function onMarkerLoad (json) {
 				for(var i = 0; i < json.length; i++) {
 					
@@ -789,7 +797,6 @@ function Slider(){
 
 				_.data('flickity').options.wrapAround = true;
 				_.flickity('reloadCells');
-				console.log(_.data('flickity').options)
 				_.flickity('playPlayer');
 				// _.options.wrapAround = false;
 

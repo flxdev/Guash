@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ваш браузер устарел</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta content="True" name="HandheldFriendly">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#2d2d2d">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <link rel="shortcut icon" href="img/fav/48x48.png" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="img/fav/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="img/fav/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/fav/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/fav/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/fav/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/fav/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/fav/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/fav/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/fav/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/fav/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="img/fav/favicon-194x194.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="img/fav/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/fav/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="msapplication-TileImage" content="img/fav/mstile-144x144.png">
+    <link rel="stylesheet" media="all" href="css/screen.min.css">
+    <link rel="stylesheet" href="css/font.css">
+    <script>
+      function checkForFlex(){
+      	var curAddress = window.location.toString(),
+      		// поменять ссылку
+      		targetAddress = "/old_browser.php";
+      	function NaiveFlexBoxSupport(d){
+      		var f = "flex", e = d.createElement('b');
+      		e.style.display = f;
+      		return e.style.display == f;
+      	}
+      	if( document.addEventListener ){
+      	}else{
+      		window.location.replace(targetAddress);
+      	}
+      	if (NaiveFlexBoxSupport(document) == false && (targetAddress.toString() != curAddress)) {
+      		window.location.replace(targetAddress);
+      	}
+      
+      }checkForFlex();
+      
+    </script>
+    <style>
+      .main-wrapper{display:table;width:100%;min-height:100%;position:relative;background-repeat:no-repeat;background-size:cover;background-position:50% 50%;z-index:-1}.main-wrapper:before{content:'';position:absolute;left:0;right:0;bottom:0;top:0;background:#000;opacity:0.4;min-height:100%;z-index:0}.main-wrapper-body{position:absolute;left:0;right:0;top:0;width:100%;min-height:100%;z-index:-1}.main-wrapper-content{display:table-row;width:100%;height:100%;text-align:center;position:relative;z-index:3;font-family:'Futura', Arial, sans-serif}.main-wrapper-content *{font-family:'Futura', Arial, sans-serif}.main-wrapper-content-inner,.main-wrapper-footer-inner{position:relative;z-index:3}.main-wrapper-footer{background-color:#000}.main-wrapper-logo{margin:100px 0 0px}.main-wrapper-logo a{display:inline-block}.main-wrapper-logo a img{max-width:145px}.main-wrapper-text{max-width:850px;margin:5px auto 50px;padding:0 10px;font-family:'Futura', Arial, sans-serif;color:#fff}.main-wrapper-text .h-title{max-width:550px;margin:0 auto 40px;font-size:52px}.main-wrapper-text .text1{font-size:25px;margin:10px 0;font-weight:400}.main-wrapper-links{max-width:900px;padding:0 10px;width:100%;margin:50px auto 90px}.main-wrapper-links:hover .main-wrapper-item:not(:hover){opacity:0.6}.main-wrapper-item{display:inline-block;vertical-align:top;width:20%;text-align:center;transition:opacity .3s}.main-wrapper-item .img-wrapp{display:inline-block;width:50px;height:50px}.main-wrapper-item .img-wrapp img{max-width:100%;max-height:100%;display:block}.main-wrapper .main-wrapper-item-text{width:100%;display:block;color:#fff;margin-top:20px}.main-wrapper-contact{margin:90px auto 100px}.main-wrapper-contact p{color:#fff;font-size:18px;margin-bottom:10px}.main-wrapper-contact .dot-divider{display:inline-block;padding-left:4px;padding-right:7px;color:#e6bd50}.main-wrapper-footer{font-size:0;padding-top:5px}.main-wrapper-footer-inner{font-size:0;padding:20px 0}.main-wrapper-footer-inner .copyright,.main-wrapper-footer-inner .social,.main-wrapper-footer-inner .developer{display:inline-block;vertical-align:middle;width:33%;text-align:center}.main-wrapper-footer-inner .social{margin:0}.main-wrapper-footer-inner .social .soc-icon-wrapp{display:inline-block;vertical-align:middle;max-width:30px;margin:0 5px}.main-wrapper-footer-inner .social a:after,.main-wrapper-footer-inner .social a:before{display:none !important}.main-wrapper-footer-inner .social a img{display:block;max-width:100%;max-height:100%}.main-wrapper-footer-inner .copyright{font-size:1rem;line-height:1.4;color:#888b8c}.main-wrapper-footer-inner .developer .dev-text{text-align:left;display:inline-block;padding-left:10px}.main-wrapper-footer-inner .developer .dev-text{color:gray;font-size:13px}.main-wrapper-footer-inner .developer .dev-text div{display:inline-block;vertical-align:baseline}.main-wrapper-footer-inner .developer .dev-text .u-bold{text-transform:uppercase;color:#fff;font-size:16px;padding-left:5px}@media only screen and (max-width: 460px){.main-wrapper-text{margin:0px auto 30px}.main-wrapper-text .h-title{max-width:650px;margin:0 auto 30px;font-size:32px}.main-wrapper-text .text1{font-size:20px}.main-wrapper-logo{margin:30px 0 0px}.main-wrapper-logo a img{max-width:120px}.main-wrapper-item{width:50%;margin-top:20px}.main-wrapper-links,.main-wrapper-contact{margin:30px auto}.main-wrapper-footer-inner .copyright,.main-wrapper-footer-inner .social{width:49%}.main-wrapper-footer-inner .developer{width:99%;margin-top:15px}}
+      
+    </style>
+  </head>
+  <body class="main-wrapper-body">
+    <div class="main-wrapper" style="background-image: url(img/zagl/browserbg.jpg);">
+      <div class="main-wrapper-content">
+        <div class="main-wrapper-content-inner">
+          <div class="main-wrapper-logo"><a href="#"><img src="img/zagl/eatlogo.png" alt=""></a></div>
+          <div class="main-wrapper-text">
+            <h1 class="h-title h1 u-white">К сожалению, ваш браузер устарел</h1>
+            <div class="text1 u-white">Мы рады приветствовать вас на сайте бутик-отеля, Akvarel Stoleshnikov! </div>
+            <div class="text1">R сожалению, ваш браузер устарел и не может отобразить наш сайт корректно.</div>
+            <div class="text1">Пожалуйста, обновите ваш браузер: </div>
+          </div>
+          <div class="main-wrapper-links"><a class="main-wrapper-item" href="https://www.google.com/chrome/browser/desktop/">
+                          <div class="img-wrapp"><img src="img/zagl/img-chrome.png" alt=""></div><span class="main-wrapper-item-text">Google Chrome</span></a><a class="main-wrapper-item" href="http://www.mozilla.org/firefox/new/">
+                          <div class="img-wrapp"><img src="img/zagl/img-ff.png" alt=""></div><span class="main-wrapper-item-text">Mozilla Firefox</span></a><a class="main-wrapper-item" href="http://windows.microsoft.com/ie">
+                          <div class="img-wrapp"><img src="img/zagl/img-edge.png" alt=""></div><span class="main-wrapper-item-text">Internet Explorer</span></a><a class="main-wrapper-item" href="http://www.apple.com/osx/">
+                          <div class="img-wrapp"><img src="img/zagl/img-sf.png" alt=""></div><span class="main-wrapper-item-text">Apple Safari</span></a><a class="main-wrapper-item" href="http://www.opera.com/ru">
+                          <div class="img-wrapp"><img src="img/zagl/img-opera.png" alt=""></div><span class="main-wrapper-item-text">Opera</span></a>
+          </div>
+          <div class="main-wrapper-contact">
+            <p>Москва м.Театральная, Столешников пер, 12/3,</p>
+            <div class="footer-mailto"><a class="u-light u-white s-text" href="tel:+79260201481">+7 (926) 02-01-481</a><span class="dot-divider u-light u-white s-text">| </span><a class="u-light u-white" href="mailto:info@eat-bit.ru">info@eat-bit.ru</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="main-wrapper-footer">
+        <div class="main-wrapper-footer-inner">
+          <div class="copyright u-light s-text u-white">© 2017, Hotel Akvarel</div>
+          <div class="social">
+            <div class="soc-icon-wrapp fb"><a class="soc-icon-item" href="https://www.facebook.com/Eat_bit-1533116000313812/" target="_blank"><img src="img/zagl/face.png" alt=""></a></div>
+            <div class="soc-icon-wrapp insta"><a class="soc-icon-item" href="https://www.instagram.com/eat_bit/" target="_blank"><img src="img/zagl/inst.png" alt=""></a></div>
+          </div><a class="developer" href="http://flxmd.by/" target="_blank">
+            <div class="dev-text">
+              <div class="smalllight">Разработка сервиса</div>
+              <div class="u-bold u-white s-text">FLEX.MEDIA</div>
+            </div></a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

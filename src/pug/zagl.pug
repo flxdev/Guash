@@ -1,0 +1,73 @@
+doctype html
+html
+	head
+		meta(charset="utf-8")
+		title Ваш браузер устарел
+		include includes/_head.pug
+		link(rel="stylesheet", href="css/font.css")
+		script.
+			function checkForFlex(){
+				var curAddress = window.location.toString(),
+					// поменять ссылку
+					targetAddress = "/old_browser.php";
+				function NaiveFlexBoxSupport(d){
+					var f = "flex", e = d.createElement('b');
+					e.style.display = f;
+					return e.style.display == f;
+				}
+				if( document.addEventListener ){
+				}else{
+					window.location.replace(targetAddress);
+				}
+				if (NaiveFlexBoxSupport(document) == false && (targetAddress.toString() != curAddress)) {
+					window.location.replace(targetAddress);
+				}
+
+			}checkForFlex();
+		
+		style.
+			.main-wrapper{display:table;width:100%;min-height:100%;position:relative;background-repeat:no-repeat;background-size:cover;background-position:50% 50%;z-index:-1}.main-wrapper:before{content:'';position:absolute;left:0;right:0;bottom:0;top:0;background:#000;opacity:0.4;min-height:100%;z-index:0}.main-wrapper-body{position:absolute;left:0;right:0;top:0;width:100%;min-height:100%;z-index:-1}.main-wrapper-content{display:table-row;width:100%;height:100%;text-align:center;position:relative;z-index:3;font-family:'Futura', Arial, sans-serif}.main-wrapper-content *{font-family:'Futura', Arial, sans-serif}.main-wrapper-content-inner,.main-wrapper-footer-inner{position:relative;z-index:3}.main-wrapper-footer{background-color:#000}.main-wrapper-logo{margin:100px 0 0px}.main-wrapper-logo a{display:inline-block}.main-wrapper-logo a img{max-width:145px}.main-wrapper-text{max-width:850px;margin:5px auto 50px;padding:0 10px;font-family:'Futura', Arial, sans-serif;color:#fff}.main-wrapper-text .h-title{max-width:550px;margin:0 auto 40px;font-size:52px}.main-wrapper-text .text1{font-size:25px;margin:10px 0;font-weight:400}.main-wrapper-links{max-width:900px;padding:0 10px;width:100%;margin:50px auto 90px}.main-wrapper-links:hover .main-wrapper-item:not(:hover){opacity:0.6}.main-wrapper-item{display:inline-block;vertical-align:top;width:20%;text-align:center;transition:opacity .3s}.main-wrapper-item .img-wrapp{display:inline-block;width:50px;height:50px}.main-wrapper-item .img-wrapp img{max-width:100%;max-height:100%;display:block}.main-wrapper .main-wrapper-item-text{width:100%;display:block;color:#fff;margin-top:20px}.main-wrapper-contact{margin:90px auto 100px}.main-wrapper-contact p{color:#fff;font-size:18px;margin-bottom:10px}.main-wrapper-contact .dot-divider{display:inline-block;padding-left:4px;padding-right:7px;color:#e6bd50}.main-wrapper-footer{font-size:0;padding-top:5px}.main-wrapper-footer-inner{font-size:0;padding:20px 0}.main-wrapper-footer-inner .copyright,.main-wrapper-footer-inner .social,.main-wrapper-footer-inner .developer{display:inline-block;vertical-align:middle;width:33%;text-align:center}.main-wrapper-footer-inner .social{margin:0}.main-wrapper-footer-inner .social .soc-icon-wrapp{display:inline-block;vertical-align:middle;max-width:30px;margin:0 5px}.main-wrapper-footer-inner .social a:after,.main-wrapper-footer-inner .social a:before{display:none !important}.main-wrapper-footer-inner .social a img{display:block;max-width:100%;max-height:100%}.main-wrapper-footer-inner .copyright{font-size:1rem;line-height:1.4;color:#888b8c}.main-wrapper-footer-inner .developer .dev-text{text-align:left;display:inline-block;padding-left:10px}.main-wrapper-footer-inner .developer .dev-text{color:gray;font-size:13px}.main-wrapper-footer-inner .developer .dev-text div{display:inline-block;vertical-align:baseline}.main-wrapper-footer-inner .developer .dev-text .u-bold{text-transform:uppercase;color:#fff;font-size:16px;padding-left:5px}@media only screen and (max-width: 460px){.main-wrapper-text{margin:0px auto 30px}.main-wrapper-text .h-title{max-width:650px;margin:0 auto 30px;font-size:32px}.main-wrapper-text .text1{font-size:20px}.main-wrapper-logo{margin:30px 0 0px}.main-wrapper-logo a img{max-width:120px}.main-wrapper-item{width:50%;margin-top:20px}.main-wrapper-links,.main-wrapper-contact{margin:30px auto}.main-wrapper-footer-inner .copyright,.main-wrapper-footer-inner .social{width:49%}.main-wrapper-footer-inner .developer{width:99%;margin-top:15px}}
+
+	body.main-wrapper-body
+		.main-wrapper(style='background-image: url(img/zagl/browserbg.jpg);')
+			.main-wrapper-content
+				.main-wrapper-content-inner
+					.main-wrapper-logo
+						a(href="#")
+							img(src="img/zagl/eatlogo.png", alt="")
+					.main-wrapper-text
+						h1.h-title.h1.u-white К сожалению, ваш браузер устарел
+						.text1.u-white Мы рады приветствовать вас на сайте бутик-отеля, Akvarel Stoleshnikov! 
+						.text1 R сожалению, ваш браузер устарел и не может отобразить наш сайт корректно.
+						.text1 Пожалуйста, обновите ваш браузер: 
+					.main-wrapper-links
+						mixin links(link,img, text)
+							a(href=link).main-wrapper-item
+								.img-wrapp
+									img(src=img, alt="")
+								span.main-wrapper-item-text #{text}
+						+links('https://www.google.com/chrome/browser/desktop/',"img/zagl/img-chrome.png",'Google Chrome')
+						+links('http://www.mozilla.org/firefox/new/',"img/zagl/img-ff.png",'Mozilla Firefox')
+						+links('http://windows.microsoft.com/ie',"img/zagl/img-edge.png",'Internet Explorer')
+						+links('http://www.apple.com/osx/',"img/zagl/img-sf.png",'Apple Safari')
+						+links('http://www.opera.com/ru',"img/zagl/img-opera.png",'Opera')
+					.main-wrapper-contact
+						p Москва м.Театральная, Столешников пер, 12/3,
+						.footer-mailto
+							a(href='tel:+79260201481').u-light.u-white.s-text +7 (926) 02-01-481
+							span.dot-divider.u-light.u-white.s-text | 
+							a(href='mailto:info@eat-bit.ru').u-light.u-white info@eat-bit.ru
+			.main-wrapper-footer
+				.main-wrapper-footer-inner
+					.copyright.u-light.s-text.u-white © 2017, Hotel Akvarel
+					.social
+						.soc-icon-wrapp.fb
+							a(href="https://www.facebook.com/Eat_bit-1533116000313812/" target="_blank").soc-icon-item
+								img(src="img/zagl/face.png", alt="")      
+						.soc-icon-wrapp.insta
+							a(href="https://www.instagram.com/eat_bit/" target="_blank").soc-icon-item
+								img(src="img/zagl/inst.png", alt="")
+					a(href="http://flxmd.by/" target="_blank").developer
+						.dev-text
+							.smalllight Разработка сервиса
+							.u-bold.u-white.s-text FLEX.MEDIA
