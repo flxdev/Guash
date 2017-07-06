@@ -1,7 +1,17 @@
 $(window).on('load', function() {
 	openOnLoad();
+	if($('#_wbord_').length){
+		setTimeout(function(){
+			var t = $('#_wbord_').offset().top;
+
+			$("html:not(:animated), body:not(:animated), .out:not(:animated)").animate({
+				scrollTop: t - 80
+			}, 300);
+		},600)
+	}
 });
 document.addEventListener("DOMContentLoaded", function() {
+
 	var conf = {
 		body: $('body'),
 		header: $('.page__header'),
@@ -15,21 +25,24 @@ document.addEventListener("DOMContentLoaded", function() {
 	};
 	(function() {
 		var mainHeader = document.querySelector('.cd-auto-hide-header');
+		if($('.book-block').length){
+			mainHeader.classList.add(conf.hidden);
+		}else{
+			$(window).on('scroll', function() {
+				requestAnimationFrame(autoHideHeader);
+			});
 
-		$(window).on('scroll', function() {
-			requestAnimationFrame(autoHideHeader);
-		});
+			function autoHideHeader() {
+				var currentTop = $(document).scrollTop();
+				checkSimpleNavigation(currentTop);
+			}
 
-		function autoHideHeader() {
-			var currentTop = $(document).scrollTop();
-			checkSimpleNavigation(currentTop);
-		}
-
-		function checkSimpleNavigation(currentTop) {
-			if (currentTop <= 100) {
-				mainHeader.classList.remove(conf.hidden);
-			} else {
-				mainHeader.classList.add(conf.hidden);
+			function checkSimpleNavigation(currentTop) {
+				if (currentTop <= 100) {
+					mainHeader.classList.remove(conf.hidden);
+				} else {
+					mainHeader.classList.add(conf.hidden);
+				}
 			}
 		}
 	})();
@@ -248,35 +261,38 @@ document.addEventListener("DOMContentLoaded", function() {
 			});
 
 			function Movehead(area,elem,elemh,range){
-				var scrollTop = window.pageYOffset || window.scrollTop;
-				var scrollPercent = scrollTop/area || 0;
-				var offset = elem.offset().top;
-				offset = offset + elemh / 2;
-				var calc = 1 - (scrollTop - offset + range) / range;
-				if(scrollTop < windowHeight * 1.5){
-					TweenLite.set(square1, {
-						y: scrollPercent*window.innerWidth*coef1,
-					});
-					TweenLite.set(square2, {
-						y: scrollPercent*window.innerWidth*coef2,
-					});
-				}
-				if(scrollTop === undefined){
-					setTimeout(function(){
+				if(elem.length){
+					console.log(elem)
+					var scrollTop = window.pageYOffset || window.scrollTop;
+					var scrollPercent = scrollTop/area || 0;
+					var offset = elem.offset().top;
+					offset = offset + elemh / 2;
+					var calc = 1 - (scrollTop - offset + range) / range;
+					if(scrollTop < windowHeight * 1.5){
 						TweenLite.set(square1, {
-							y: 0,
+							y: scrollPercent*window.innerWidth*coef1,
 						});
 						TweenLite.set(square2, {
-							y: 0,
+							y: scrollPercent*window.innerWidth*coef2,
 						});
-					},1);
-				}
+					}
+					if(scrollTop === undefined){
+						setTimeout(function(){
+							TweenLite.set(square1, {
+								y: 0,
+							});
+							TweenLite.set(square2, {
+								y: 0,
+							});
+						},1);
+					}
 
-				square1.css({ 'opacity': calc });
-				if ( calc > '1' || calc == NaN) {
-					square1.css({ 'opacity': 1 });
-				} else if ( calc < '0' ) {
-					square1.css({ 'opacity': 0 });
+					square1.css({ 'opacity': calc });
+					if ( calc > '1' || calc == NaN) {
+						square1.css({ 'opacity': 1 });
+					} else if ( calc < '0' ) {
+						square1.css({ 'opacity': 0 });
+					}
 				}
 			}
 		}

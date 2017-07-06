@@ -1,7 +1,17 @@
 $(window).on('load', function() {
 	openOnLoad();
+	if($('#_wbord_').length){
+		setTimeout(function(){
+			var t = $('#_wbord_').offset().top;
+
+			$("html:not(:animated), body:not(:animated), .out:not(:animated)").animate({
+				scrollTop: t - 80
+			}, 300);
+		},600)
+	}
 });
 document.addEventListener("DOMContentLoaded", function() {
+
 var conf = {
 	body: $('body'),
 	header: $('.page__header'),
@@ -15,21 +25,24 @@ var conf = {
 };
 	(function() {
 		var mainHeader = document.querySelector('.cd-auto-hide-header');
+		if($('.book-block').length){
+			mainHeader.classList.add(conf.hidden);
+		}else{
+			$(window).on('scroll', function() {
+				requestAnimationFrame(autoHideHeader);
+			});
 
-		$(window).on('scroll', function() {
-			requestAnimationFrame(autoHideHeader);
-		});
+			function autoHideHeader() {
+				var currentTop = $(document).scrollTop();
+				checkSimpleNavigation(currentTop);
+			}
 
-		function autoHideHeader() {
-			var currentTop = $(document).scrollTop();
-			checkSimpleNavigation(currentTop);
-		}
-
-		function checkSimpleNavigation(currentTop) {
-			if (currentTop <= 100) {
-				mainHeader.classList.remove(conf.hidden);
-			} else {
-				mainHeader.classList.add(conf.hidden);
+			function checkSimpleNavigation(currentTop) {
+				if (currentTop <= 100) {
+					mainHeader.classList.remove(conf.hidden);
+				} else {
+					mainHeader.classList.add(conf.hidden);
+				}
 			}
 		}
 	})();
@@ -248,6 +261,8 @@ var conf = {
 			});
 
 			function Movehead(area,elem,elemh,range){
+				if(elem.length){
+					console.log(elem)
 				var scrollTop = window.pageYOffset || window.scrollTop;
 				var scrollPercent = scrollTop/area || 0;
 				var offset = elem.offset().top;
@@ -279,6 +294,7 @@ var conf = {
 					square1.css({ 'opacity': 0 });
 				}
 			}
+		}
 		}
 		
 	}ScrollHead();

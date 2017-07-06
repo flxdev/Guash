@@ -17,6 +17,9 @@
 =ie11
 	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active)
 		@content 
+=notouch
+	@media not all and (-moz-touch-enabled: 1), not all and (pointer:coarse), all and (-ms-high-contrast: none) and (max-height: 600px)
+		@content 
 =clr
 	&:after
 		content: " "

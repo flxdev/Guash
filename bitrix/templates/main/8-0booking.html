@@ -193,23 +193,28 @@
             </div>
           </header>
           <main class="page__content">
-            <div class="wrapper">
-              <div class="box page-head">
-                <div class="page-head-inner">
-                  <div class="bread-cont"><a class="bread-item" href="#"> <span>Главная</span></a></div>
-                  <div class="title h1 white animate-up">Бронирование</div>
-                </div>
-              </div>
-              <div class="page-cover">
-                <div class="page-cover-inner animate-bg" style="background-image: url(img/pagehead/hs1.jpg);"></div>
-              </div>
-            </div>
-            <div class="wrapper blk">
+            <div class="wrapper blk book-block">
               <div class="box">
-                <div class="module-wrapper">
+                <!-- изначально у нас висит loading-->
+                <div class="module-wrapper loading">
                   <script src="https://wubook.net/js/wbbook.jgz"></script>
                   <div id="_wbord_"><a href="http://en.wubook.net/" style="display: block; margin-top: 5px; text-decoration:none;border:none;"><img src="https://wubook.net/imgs/default/booking_by_wu.gif" alt="Online Booking System" title="Hotel and tourism technologies" style="border:none;text-decoration:none;"></a></div>
                   <script>
+                    var load = false;
+                    function cbak(){
+                    		var ifrm = document.querySelector('iframe');
+                    		var load = false;
+                    		setInterval(function(){
+                    			if(load === true){
+                    				$('.module-wrapper').removeClass('loading');
+                    				return false
+                    			}
+                    		},100)
+                    		ifrm.onload = function(){
+                    			load = true;
+                    		}
+                    
+                    }
                     var WuBook= new _WuBook(1413618257);
                     var wbparams= {
                     	lang: 'ru',
@@ -219,7 +224,7 @@
                     	mobile: 0,
                     	mheight: 0
                     };
-                    WuBook.design_iframe("_wbord_", wbparams);
+                    WuBook.design_iframe("_wbord_", wbparams,cbak);
                   </script>
                 </div>
               </div>
