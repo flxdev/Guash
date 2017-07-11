@@ -192,35 +192,35 @@ document.addEventListener("DOMContentLoaded", function() {
 				var longTimeout;
 
 				var mouseScroll = function(e) {
-			    var delta = Math.max(-1, Math.min(1, e.originalEvent.wheelDelta || -e.originalEvent.detail));
-			    e.preventDefault();
-			    e.stopPropagation();
+					var delta = Math.max(-1, Math.min(1, e.originalEvent.wheelDelta || -e.originalEvent.detail));
+					e.preventDefault();
+					e.stopPropagation();
 
-			    if (delta === 1 || delta === -1) {
-			        clearTimeout(shortTimeout);
+					if (delta === 1 || delta === -1) {
+						clearTimeout(shortTimeout);
 
-			        shortTimeout = setTimeout(function() {
-			            clearTimeout(longTimeout);
-			            mouseScrolling = false;
-			        }, shortWaitTime);
+						shortTimeout = setTimeout(function() {
+							clearTimeout(longTimeout);
+							mouseScrolling = false;
+						}, shortWaitTime);
 
-			        if (!mouseScrolling) {
-			            mouseScrolling = true;
+						if (!mouseScrolling) {
+							mouseScrolling = true;
 
-			            if (delta === 1) {
-			                $.fn.fullpage.moveSectionUp();
-			            } else {
-			                $.fn.fullpage.moveSectionDown();
-			            }
+							if (delta === 1) {
+								$.fn.fullpage.moveSectionUp();
+							} else {
+								$.fn.fullpage.moveSectionDown();
+							}
 
-			            clearTimeout(longTimeout);
+							clearTimeout(longTimeout);
 
-			            longTimeout = setTimeout(function() {
-			                clearTimeout(shortTimeout);
-			                mouseScrolling = false;
-			            }, longWaitTime);
-			        }
-			    }
+							longTimeout = setTimeout(function() {
+								clearTimeout(shortTimeout);
+								mouseScrolling = false;
+							}, longWaitTime);
+						}
+					}
 				};
 				if(!(/iPad|iPhone/i.test(navigator.userAgent)) && window.matchMedia("(min-width: 735px)").matches){
 					$.fn.fullpage.setAllowScrolling(false);
@@ -262,7 +262,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 			function Movehead(area,elem,elemh,range){
 				if(elem.length){
-					console.log(elem)
 					var scrollTop = window.pageYOffset || window.scrollTop;
 					var scrollPercent = scrollTop/area || 0;
 					var offset = elem.offset().top;
@@ -655,9 +654,9 @@ function initMap() {
 					"stylers": [
 						{
 							"visibility": "on"
-		            }
-		        ]
-		    },
+						}
+					]
+				},
 				{
 					"featureType": "water",
 					"elementType": "geometry",
@@ -693,9 +692,13 @@ function initMap() {
 		if(trel.hasClass('map-elem-near')){
 			onMarkerLoad(elems.points);
 			map.set('zoom', 15);
+			var markers;
+			var marker;
+			// var legendItem = $('.js-legend');
+			// console.log(legendItem);
 			function onMarkerLoad (json) {
+				var markerarr = [];
 				for(var i = 0; i < json.length; i++) {
-
 					// Current object
 					var obj = json[i];
 					var imgType = {
@@ -709,7 +712,7 @@ function initMap() {
 						scaledSize: new google.maps.Size(50, 62)
 					};
 					// Adding a new marker for the object
-					var marker = new google.maps.Marker({
+					marker = new google.maps.Marker({
 						position: new google.maps.LatLng(obj.lat,obj.lng),
 						title: obj.title,
 						site: obj.site,
@@ -720,6 +723,7 @@ function initMap() {
 						map: map,
 						addr: obj.address,
 						icon: imgType,
+						id: obj.id,
 					});
 					var infowindow = new google.maps.InfoWindow({
 						content: " ",
@@ -751,42 +755,43 @@ function initMap() {
 						infowindow.open(map, this);
 					});
 					var closeInfoWindow = function() {
-					    infowindow.close();
+						infowindow.close();
 					};
 
 					google.maps.event.addListener(map, 'click', closeInfoWindow);
+					markerarr.push(marker);
+
 				} // end loop
+				markers = markerarr;
+				$('.js-legend').on('click',function(){
+					var _ = $(this);
+					var id = _.data('id');
+					_.toggleClass('active').siblings().removeClass('active');
+					filterMarkers(_,id);
+				});
+				filterMarkers = function (elem,category) {
+					if(elem.hasClass('active')){
+						for (i = 0; i < markers.length; i++) {
+							var markeri = markers[i];
+
+							// If is same category or category not picked
+							if (markeri.id == category || category.length === 0) {
+								markeri.setVisible(true);
+							}
+							// Categories don't match
+							else {
+								markeri.setVisible(false);
+							}
+						}
+						google.maps.event.trigger(map, 'click');
+					}else{
+						for (i = 0; i < markers.length; i++) {
+							markers[i].setVisible(true);
+						}
+
+					}
+				}
 			}
-			//вот тут надо будет пути поменять на актуальные
-			// function checkType(type){
-			// 	var _ = type;
-			// 	var resultPath;
-			// 	if(type == "bar"){
-			// 		resultPath = 'img/markers/bar.png'
-			// 	}
-			// 	if(type == "bank"){
-			// 		resultPath = 'img/markers/bank.png'
-			// 	}
-			// 	if(type == "med"){
-			// 		resultPath = 'img/markers/medicine.png'
-			// 	}
-			// 	if(type == "theater"){
-			// 		resultPath = 'img/markers/theater.png'
-			// 	}
-			// 	if(type == "restaraunt"){
-			// 		resultPath = 'img/markers/restaurant.png'
-			// 	}
-			// 	if(type == "magazine"){
-			// 		resultPath = 'img/markers/magazine.png'
-			// 	}
-			// 	if(type == "salon"){
-			// 		resultPath = 'img/markers/salon.png'
-			// 	}
-			// 	if(type == "interest"){
-			// 		resultPath = 'img/markers/interest.png'
-			// 	}
-			// 	return resultPath
-			// }
 		}
 	}
 }

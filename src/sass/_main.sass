@@ -893,7 +893,11 @@ body, .out
 				padding-bottom: 0
 				z-index: -1
 				pointer-events: none
-				.flickity-prev-next-button 
+				.slider-inner
+					+tr(opacity .3s)
+					&:not(.flickity-enabled)
+						opacity: 0
+				button
 					display: none
 					
 		img
@@ -1015,6 +1019,8 @@ html:not(.fp-enabled)
 		img 
 			+ie11
 				width: auto 
+			@media all and (-ms-high-contrast: none) and (max-width: 500px)
+				max-width: 100% !important
 .page-404
 		background-color: $blk		
 		.page-head-inner
@@ -1825,7 +1831,9 @@ a:hover .line-cont,a:hover ~ .line-cont
 	display: flex
 	flex-flow: column nowrap
 	+r(370)
-
+		width: 100%
+		display: block
+		
 			
 	.site
 		&-tel
@@ -1838,6 +1846,7 @@ a:hover .line-cont,a:hover ~ .line-cont
 			position: relative
 			+r(740)
 				+rem(padding-bottom,90px)
+				+rem(min-height,270px)
 			&-item
 				text-align: center
 				width: 33.33%
@@ -1867,7 +1876,7 @@ a:hover .line-cont,a:hover ~ .line-cont
 			flex-grow: 1
 			+vertical
 			height: calc(100% - 6.375rem)
-			+ie11
+			@media all and (-ms-high-contrast: none) and (min-width: 740px)
 				margin-left: 50vw !important
 				transform: translateX(-50%)
 			+r(880)
@@ -1876,6 +1885,7 @@ a:hover .line-cont,a:hover ~ .line-cont
 				+rem(padding-top,55px)
 				+rem(padding-bottom,45px)
 				height: auto
+				// margin-left: auto !important
 				.site-tel
 					+rem(padding-bottom,40px)
 			&-inner
@@ -2742,6 +2752,8 @@ a:hover .line-cont,a:hover ~ .line-cont
 		font-size: 0
 		+ie11
 			height: 70vh
+		@media all and (-ms-high-contrast: none) and (max-width: 950px)
+			height: auto !important
 		+r(951)
 			height: auto
 		// &:nth-child(even)
@@ -3356,6 +3368,11 @@ div:not(#fp-nav)
 		font-size: 0
 		white-space: nowrap
 		+rem(margin,50px 0 15px)
+		cursor: pointer
+		+nosel
+		&.active
+			.text
+				color: $active
 		+r(880)
 			width: 33.33%
 		+r(740)
