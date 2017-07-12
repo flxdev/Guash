@@ -4809,7 +4809,7 @@ div:not(#fp-nav) ul:not([class]) {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
-  .legeng-elem.active .text {
+  .legeng-elem.active .text, .legeng-elem:hover .text {
     color: #e6bd50; }
   .legeng-elem-img, .legeng-elem-text {
     display: inline-block;
@@ -4819,7 +4819,9 @@ div:not(#fp-nav) ul:not([class]) {
     padding-left: 1.25rem;
     padding-right: 1.25rem; }
     .legeng-elem-text .text {
-      line-height: 1.4; }
+      line-height: 1.4;
+      -webkit-transition: color 0.3s;
+      transition: color 0.3s; }
   .legeng-elem-img-inner {
     background-repeat: no-repeat;
     background-size: contain;

@@ -765,17 +765,28 @@ function initMap() {
 				markers = markerarr;
 				$('.js-legend').on('click',function(){
 					var _ = $(this);
-					var id = _.data('id');
-					_.toggleClass('active').siblings().removeClass('active');
+					var id = parseInt(_.data('id'));
+					if(!_.hasClass('active')){
+						_.addClass('active');
+					}else{
+						_.removeClass('active');
+					}
+					
 					filterMarkers(_,id);
 				});
+				var categoryArr = [];
+
 				filterMarkers = function (elem,category) {
+
 					if(elem.hasClass('active')){
+						categoryArr.push(category)
+						console.log(categoryArr)
+
 						for (i = 0; i < markers.length; i++) {
 							var markeri = markers[i];
-							
+							console.log(markeri.id)
 							// If is same category or category not picked
-							if (markeri.id == category || category.length === 0) {
+							if (CatCheck(categoryArr,parseInt(markeri.id)) == true || category.length === 0) {
 								markeri.setVisible(true);
 							}
 							// Categories don't match 
@@ -785,10 +796,34 @@ function initMap() {
 						}
 						google.maps.event.trigger(map, 'click');
 					}else{
-						for (i = 0; i < markers.length; i++) {
-							markers[i].setVisible(true);
+						var cat = category;
+						var index = categoryArr.indexOf(cat);
+						categoryArr.splice(index, 1);
+						if(categoryArr.length != 0){
+							for (i = 0; i < markers.length; i++) {
+								var markeri = markers[i];
+								 // markeri.setVisible(true);
+								if (CatCheck(categoryArr,parseInt(markeri.id)) == true || cat.length === 0) {
+									markeri.setVisible(true);
+								}
+								// Categories don't match 
+								else {
+									markeri.setVisible(false);
+								}
+							}
+						}else{
+							for (i = 0; i < markers.length; i++) {
+								markers[i].setVisible(true);
+							}
 						}
-						
+					}
+				}
+				function CatCheck(arr, type){
+					var index = arr.indexOf(type);
+					if(index !== -1){
+						return true
+					}else{
+						return false
 					}
 				}
 			}

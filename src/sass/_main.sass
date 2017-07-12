@@ -3370,7 +3370,8 @@ div:not(#fp-nav)
 		+rem(margin,50px 0 15px)
 		cursor: pointer
 		+nosel
-		&.active
+
+		&.active,&:hover
 			.text
 				color: $active
 		+r(880)
@@ -3394,6 +3395,7 @@ div:not(#fp-nav)
 
 			.text
 				line-height: 1.4
+				+tr(color .3s)
 		&-img 
 			&-inner
 				+contain
