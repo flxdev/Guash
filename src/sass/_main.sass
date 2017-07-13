@@ -893,6 +893,14 @@ body, .out
 				padding-bottom: 0
 				z-index: -1
 				pointer-events: none
+				contain: paint
+				position: fixed
+				top: 0
+				left: 0
+				width: 100%
+				height: 100%
+				backface-visibility: hidden
+				+gpu
 				.slider-inner
 					+tr(opacity .3s)
 					&:not(.flickity-enabled)
@@ -1215,14 +1223,21 @@ html:not(.fp-enabled)
 		.section-head
 			+rm(1601)
 				padding-top: 15px !important
+	&:not(.active)
+		+tr(visibility .1s)
+		.slider-wrap
+			transition-delay: .6s
+			visibility: hidden
 
 
 .animate-up,.animate-bg,.animate-up2
 	backface-visibility: hidden
-	will-change: transform
+	// will-change: transform
 .fp-responsive .landing-wrapper,.fp-responsive .landing-wrapper .fp-slide,.fp-responsive .landing-wrapper .fp-tableCell,.fp-responsive .landing-wrapper .landing-elem
 		height: auto !important;
 .landing-wrapper
+	// will-change: transform
+	// backface-visibility: hidden
 	&:not(.fullpage-wrapper)
 		+rm(340)
 			min-height: 100vh

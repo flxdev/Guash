@@ -70,13 +70,23 @@ document.addEventListener("DOMContentLoaded", function() {
 			body = $('body'),
 			OpenClass = 'active',
 			OpenClass2 = 'menu-open';
+
 		trigger.add(target).on('click', function() {
 
 			if (!trigger.hasClass('anim')) {
+
+				if(conf.body.scrollTop() > 50){
+					console.log(conf.body.scrollTop())
+					setTimeout(function(){
+						conf.header.addClass(conf.hidden);
+					},51)
+
+				}
 				trigger.addClass('anim');
 				scrollbody(OpenClass2);
 				body.add(header).toggleClass(OpenClass2);
 				target.toggleClass(OpenClass);
+
 				if(trigger.hasClass(OpenClass)){
 					setTimeout(function(){
 						trigger.removeClass(OpenClass);
@@ -138,11 +148,15 @@ document.addEventListener("DOMContentLoaded", function() {
 		if(!/Windows Phone|iemobile/i.test(navigator.userAgent)){
 			var elem = $('.landing-wrapper');
 			if(elem.length){
-
-				var trg = conf.landEl.find('.animate-up');
-				var trg2 = conf.landEl.find('.animate-up2');
-				var trg2 = conf.landEl.find('.animate-bg');
-
+				TweenLite.lagSmoothing( 400, 16 );
+				var animUp = $('.animate-up');
+				var animUp2 = $('.animate-up2');
+				TweenLite.set(animUp, {
+					transformOrigin:"50% 50% -100%",
+				});
+				TweenLite.set(animUp2, {
+					transformOrigin:"50% 50% -100%",
+				});
 				var elemN , elNIndex, elemC,setHide;
 				elem.fullpage({
 					navigation: true,
@@ -177,14 +191,6 @@ document.addEventListener("DOMContentLoaded", function() {
 						UpFirst(elemN);
 					}
 				});
-			// conf.body.css('height','100%');
-			// if(!(/iPad|iPhone/i.test(navigator.userAgent)) && window.matchMedia("(min-width: 735px)").matches){
-			// 	$.fn.fullpage.setAllowScrolling(false);
-			// }
-			// $('body').on('touchmove',function(){
-			// 	console.log($.fn.fullpage);
-			// })
-
 				var shortWaitTime = 570;
 				var longWaitTime = 1350;
 				var mouseScrolling = false;
@@ -302,44 +308,80 @@ document.addEventListener("DOMContentLoaded", function() {
 			var trgUp = elemNext.find('.animate-up');
 			var trgUp2 = elemNext.find('.animate-up2');
 			var trgbg = elemNext.find('.animate-bg');
-			TweenLite.set(trgUp, {
+			var myAnim = TweenLite.fromTo(trgUp, .5 ,{
 				directionalRotation: {
 					rotationX: "90_cw"
 				},
 				y: 40,
-			});
-			TweenLite.set(trgUp2, {
+			},
+				{
+				// duration: ,
+					ease: Expo.easeOut,
+					directionalRotation: {
+						rotationX: "0_cw"
+					},
+					y: 0,
+					opacity: 1,
+					delay: .5,
+				});
+			var myAnim2 = TweenLite.fromTo(trgUp2, .5 ,{
 				directionalRotation: {
 					rotationX: "90_cw"
 				},
 				y: 40,
-			});
-			TweenLite.from(trgbg, .2,{
+			},
+				{
+					ease: Expo.easeOut,
+					directionalRotation: {
+						rotationX: "0_cw"
+					},
+					y: 0,
+					opacity: 1,
+					delay: .6,
+				});
+			var myAnim3 = TweenLite.from(trgbg, .2,{
 				y: -80,
 				scale: 1.1,
-				transformOrigin: "50% 50%",
-				delay: .3
+				delay: .3,
 			});
-			TweenLite.to(trgUp, .5 ,{
-				ease: Expo.easeOut,
-				directionalRotation: {
-					rotationX: "0_cw"
-				},
-				y: 0,
-				transformOrigin:"50% 50% -100%",
-				opacity: 1,
-				delay: .5
-			});
-			TweenLite.to(trgUp2, .5 ,{
-				ease: Expo.easeOut,
-				directionalRotation: {
-					rotationX: "0_cw"
-				},
-				y: 0,
-				transformOrigin:"50% 50% -100%",
-				opacity: 1,
-				delay: .6
-			});
+			// TweenLite.set(trgUp, {
+			// 	directionalRotation: {
+			// 		rotationX: "90_cw"
+			// 	},
+			// 	y: 40,
+			// });
+			// TweenLite.set(trgUp2, {
+			// 	directionalRotation: {
+			// 		rotationX: "90_cw"
+			// 	},
+			// 	y: 40,
+			// });
+			// TweenLite.from(trgbg, .2,{
+			// 		y: -80,
+			// 		scale: 1.1,
+			// 		transformOrigin: "50% 50%",
+			// 		delay: .3
+			// });
+			// TweenLite.to(trgUp, .5 ,{
+			// 	ease: Expo.easeOut,
+			// 	directionalRotation: {
+			// 		rotationX: "0_cw"
+			// 	},
+			// 	y: 0,
+			// 	transformOrigin:"50% 50% -100%",
+			// 	opacity: 1,
+			// 	delay: .5
+			// });
+			// TweenLite.to(trgUp2, .5 ,{
+			// 	ease: Expo.easeOut,
+			// 	directionalRotation: {
+			// 		rotationX: "0_cw"
+			// 	},
+			// 	y: 0,
+			// 	transformOrigin:"50% 50% -100%",
+			// 	opacity: 1,
+			// 	delay: .6
+			// });
 		}
 	}
 	function ChangeHeader(index){
