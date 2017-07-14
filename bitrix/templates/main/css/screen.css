@@ -2662,7 +2662,11 @@ body, .out {
           -webkit-transition: opacity 0.3s;
           transition: opacity 0.3s; }
           .wrapper .page-cover-inner .slider-wrap .slider-inner:not(.flickity-enabled) {
-            opacity: 0; }
+            white-space: nowrap;
+            overflow: hidden;
+            visibility: visible; }
+            .wrapper .page-cover-inner .slider-wrap .slider-inner:not(.flickity-enabled) .slider-element {
+              opacity: 1 !important; }
         .wrapper .page-cover-inner .slider-wrap button {
           display: none; }
     .wrapper .page-cover img {
@@ -2889,13 +2893,12 @@ html:not(.fp-enabled) .hotel-about-text .text-bold {
     fill: #000; }
   .landing-elem:not(:nth-child(2)) .wrapper:not(.blk):not(.gray) .section-head {
     padding-top: 2.8125rem; }
-  .landing-elem:not(.active) {
-    -webkit-transition: visibility 0.1s;
-    transition: visibility 0.1s; }
-    .landing-elem:not(.active) .slider-wrap {
-      -webkit-transition-delay: .6s;
-      transition-delay: .6s;
-      visibility: hidden; }
+
+.landing-wrapper:not(.fullpage-wrapper) .landing-elem:first-child {
+  height: 100vh !important;
+  overflow: hidden; }
+  .landing-wrapper:not(.fullpage-wrapper) .landing-elem:first-child .page-cover, .landing-wrapper:not(.fullpage-wrapper) .landing-elem:first-child .page-head {
+    height: 100vh; }
 
 .animate-up, .animate-bg, .animate-up2 {
   -webkit-backface-visibility: hidden;

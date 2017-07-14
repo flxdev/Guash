@@ -904,7 +904,13 @@ body, .out
 				.slider-inner
 					+tr(opacity .3s)
 					&:not(.flickity-enabled)
-						opacity: 0
+						// opacity: 0
+						white-space: nowrap
+						overflow: hidden
+						visibility: visible
+						.slider-element
+							opacity: 1 !important
+
 				button
 					display: none
 					
@@ -1223,13 +1229,19 @@ html:not(.fp-enabled)
 		.section-head
 			+rm(1601)
 				padding-top: 15px !important
-	&:not(.active)
-		+tr(visibility .1s)
-		.slider-wrap
-			transition-delay: .6s
-			visibility: hidden
+	// &.fp-section:not(.active)
+	// 	+tr(visibility .1s)
+	// 	.slider-wrap
+	// 		transition-delay: .6s
+	// 		visibility: hidden
 
-
+.landing-wrapper
+	&:not(.fullpage-wrapper)
+		.landing-elem:first-child
+			height: 100vh !important
+			overflow: hidden
+			.page-cover,.page-head
+				height: 100vh
 .animate-up,.animate-bg,.animate-up2
 	backface-visibility: hidden
 	// will-change: transform
