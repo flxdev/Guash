@@ -9,6 +9,11 @@ $(window).on('load', function() {
 			}, 300);
 		},600)
 	}
+	if($('html').hasClass('fp-enabled')){
+		setTimeout(function(){
+			$('.landing-elem').first().find('.page-cover-inner').addClass('animate-bg');
+		},600)
+	}
 });
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -148,7 +153,6 @@ document.addEventListener("DOMContentLoaded", function() {
 		if(!/Windows Phone|iemobile/i.test(navigator.userAgent)){
 			var elem = $('.landing-wrapper');
 			if(elem.length){
-				TweenLite.lagSmoothing( 400, 16 );
 				var animUp = $('.animate-up');
 				var animUp2 = $('.animate-up2');
 				TweenLite.set(animUp, {
@@ -892,7 +896,10 @@ function Slider(){
 				});
 				_.flickity('stopPlayer');
 				if(_.hasClass('pagehead-slider')){
-
+					_.addClass('init');
+					setTimeout(function(){
+						_.removeClass('init');
+					},350);
 					_.data('flickity').options.wrapAround = true;
 					_.flickity('reloadCells');
 					_.flickity('playPlayer');

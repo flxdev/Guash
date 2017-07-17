@@ -101,8 +101,14 @@ body, .out
 	&.modal_open
 		position: fixed
 
-
-
+.ovh
+	&:not(.fp-enabled)
+		overflow: hidden
+		body 
+			overflow: hidden
+		.page-head-inner
+			&:before
+				display: none
 
 .loading
 	// position: relative
@@ -894,7 +900,7 @@ body, .out
 				z-index: -1
 				pointer-events: none
 				contain: paint
-				position: fixed
+				position: absolute
 				top: 0
 				left: 0
 				width: 100%
@@ -923,6 +929,9 @@ body, .out
 
 .pagehead-slider
 	pointer-events: none
+	&.init
+		.slider-element:first-child
+			transition: none
 	.flickity-slider 
 		transform: none !important;
 	.slider-element
@@ -930,6 +939,8 @@ body, .out
 		opacity: 0;
 		transition: opacity 0.3s ease-in-out;
 		z-index: -1;
+		background-size: cover !important
+
 	.slider-element:not(.is-selected)
 		transition-delay: .25s
 	.slider-element.is-selected
@@ -957,6 +968,16 @@ body, .out
 				height: 100%
 				+r(600)
 					min-height: 100vh
+	.page-cover-inner:before
+		+tr(background-color .3s)
+		transition-delay: .3s
+		
+	&:not(.fp-section)
+		+rm(600)
+			.page-cover-inner:before
+				background-color: #000
+
+			
 
 @keyframes Fade
 	0%
@@ -1518,7 +1539,6 @@ html:not(.fp-enabled)
 		font-size: 0
 		+rem(margin-right,-30px)
 		overflow: hidden
-
 .card
 	&-cont
 		+rem(padding-right,30px)
@@ -2735,6 +2755,7 @@ a:hover .line-cont,a:hover ~ .line-cont
 			width: 100%
 			height: 100%
 			+cover
+
 			will-change: transform
 			contain: paint
   
