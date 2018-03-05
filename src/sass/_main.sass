@@ -976,6 +976,11 @@ body, .out
 		+rm(600)
 			.page-cover-inner:before
 				background-color: #000
+				transition-duration: 0s
+			.input-form
+				svg
+					display: none
+					
 
 			
 
@@ -1829,9 +1834,10 @@ a:hover .line-cont,a:hover ~ .line-cont
 			.text 
 				+rem(margin-top,10px)
 				width: 100%
-				white-space: nowrap
-				text-overflow: ellipsis
-				overflow: hidden
+				// white-space: nowrap
+				// text-overflow: ellipsis
+				// overflow: hidden
+				+cut(4)
 
 
 .instawrap

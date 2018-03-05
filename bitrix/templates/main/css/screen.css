@@ -3367,8 +3367,10 @@ html:not(.fp-enabled) .hotel-about-text .text-bold {
     .news-elem-name .text {
       margin-top: 0.625rem;
       width: 100%;
-      white-space: nowrap;
       text-overflow: ellipsis;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      display: -webkit-box;
       overflow: hidden; }
 
 .instawrap {
@@ -5743,7 +5745,11 @@ div:not(#fp-nav) ul:not([class]) {
 
 @media only screen and (min-width: 600px){
   .landing-elem:not(.fp-section) .page-cover-inner:before{
-    background-color: #000; } }
+    background-color: #000;
+    -webkit-transition-duration: 0s;
+    transition-duration: 0s; }
+  .landing-elem:not(.fp-section) .input-form svg{
+    display: none; } }
 
 @media all and (-ms-high-contrast: none) and (max-width: 500px){
   html:not(.fp-enabled) .hotel-about-img img{

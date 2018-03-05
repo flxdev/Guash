@@ -919,9 +919,7 @@ function Slider(){
 				flkty.slides.forEach( function( slide, i ) {
 				var img = imgs[i];
 				var x = ( slide.target + flkty.x ) * -1/3;
-				TweenLite.set(img, {
-					x: x,
-				});
+				img.style[ transformProp ] = 'translateX(' + x  + 'px)';
 				// img.style[ transformProp ] = 'translateX(' + x  + 'px)';
 				});
 			});
